@@ -1,0 +1,174 @@
+@import "./color";
+@import "./mixins";
+
+.profileCon {
+  @include Lingth(auto, 100%);
+  position: relative;
+  .CoverPhoto {
+    @include Lingth(100vh, 100%);
+    position: relative;
+    border: none;
+    background-position: center;
+
+    animation-duration: 3s;
+    animation: backgroundwhite 40s linear infinite;
+    padding: 10px;
+    .cover {
+      @include Lingth(50%, 100%);
+    position: relative;
+      border-radius: 5px;
+      box-shadow: 1px 5px 13px;
+      img {
+        border-radius: 5px;
+        object-fit: cover;
+        @include Lingth(100%, 100%);
+      }
+      .CamIcon{
+        position: absolute;
+        @include Lingth(30px ,160px );
+        border-radius: 5px ;
+        @include Display(center,start);
+        padding: 5px;
+        background: var(--parpal-100);
+        color: var(--parpal-900);
+        right: 20px;
+        transform: translateY(-50px);
+        cursor: pointer;
+        z-index: 1;
+        .cam{
+            font-size: 19px;
+            margin: 2px;
+        }
+        p{
+            font-size: 14px;
+        }
+        @media screen and (max-width:800px) {
+          position: absolute;
+           @include Lingth(30px,50px);
+           @include Display(center,center);
+          p{
+            display: none;
+          }
+        }
+      }
+    
+    }
+    .profileP {
+      @include Lingth(45%, 100%);
+      display: flex;
+      padding: 10px;
+
+      .photo {
+        cursor: pointer;
+        img {
+          border: none;
+          @include Lingth(150px, 150px);
+          object-fit: fill;
+          border-radius: 50%;
+          box-shadow: 0 1px 3px;
+        }
+      }
+      .flowlers {
+        padding: 10px;
+        display: flex;
+        align-items: start;
+        justify-content: center;
+        width: 35%;
+        height: 100%;
+        flex-direction: column;
+        .names {
+          width: 100%;
+          height: 50%;
+          display: flex;
+          align-items: center;
+          h3 {
+            font-size: 22px;
+            color: var(--white-900);
+          }
+        }
+        .flow {
+          display: flex;
+          align-items: center;
+
+          width: 100%;
+
+          justify-content: start;
+          h4 {
+            font-size: 17px;
+            margin-right: 10px;
+            color: var(--white-900);
+          }
+          p {
+            font-size: 16px;
+            color: var(--white-900);
+          }
+        }
+      }
+      .TowButtton{
+       
+        width: 100%;
+        height: 100%;
+       
+       display: flex;
+       align-items: center;
+       justify-content: end;
+       .addstory{
+        width: 100px;
+        height: 35px;
+        margin-right: 10px;
+        background: var(--parpal-100);
+        color: var(--parpal-900);
+        border-radius: 4px;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        font-size: 15px;
+       }
+       .editProfile{
+        width: 140px;
+        height: 35px;
+        background: var(--white-400);
+        color: var(--white-1000);
+        border: none;
+        border-radius: 4px;
+        font-size: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+       }
+      }
+      @media screen and (max-width: 800px) {
+        
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        transform: translateY(-50px);
+        .names {
+          justify-content: center;
+        }
+        .flow {
+          justify-content: center !important;
+        }
+        .TowButtton{
+            flex-direction: column;
+            
+            height: 200px;
+            width: 100%;
+            .addstory{
+                margin-bottom: 20px;
+            }
+            
+        }
+      }
+    }
+  }
+  //background animation mixin;
+  @include animation(
+    backgroundwhite,
+    var(--bgparpal),
+    var(--bgray),
+    var(--bggreen)
+  );
+}

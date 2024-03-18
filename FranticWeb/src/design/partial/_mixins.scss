@@ -1,0 +1,58 @@
+@mixin Display($alien, $justify) {
+  display: flex;
+  align-items: $alien;
+  justify-content: $justify;
+}
+
+@mixin Lingth($height, $width) {
+  height: $height;
+  width: $width;
+}
+@mixin animation($name,$bg1,$bg2,$bg3) {
+  @keyframes #{$name} {
+    0% {
+      background: linear-gradient(
+        15deg,
+        $bg1,
+        $bg2,
+        $bg3
+      );
+      
+    }
+    25%{
+         background: linear-gradient(
+        45deg,
+        $bg1,
+        $bg2,
+        $bg3
+      ); 
+     
+    }
+    50% {
+      background: linear-gradient(
+        120deg,
+       $bg1,
+       $bg2,
+       $bg3
+      );
+  
+    }
+    75%{
+          background: linear-gradient(
+        200deg,
+        $bg1,
+        $bg2,
+        $bg3
+      );
+    
+    }
+    100% {
+      background: linear-gradient(
+        360deg,
+      $bg1,
+      $bg2,
+      $bg3
+      );
+    }
+  }
+}
