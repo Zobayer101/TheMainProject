@@ -3,6 +3,7 @@ import coverphoto from "../assets/img/Fer.jpg";
 import profile from "../assets/img/habib.png";
 import { IoCameraReverseOutline } from "react-icons/io5";
 import { FaRegPenToSquare } from "react-icons/fa6";
+import ProfileEnd from "./subComponent/ProfileEnd";
 
 
 const Profile = () => {
@@ -25,7 +26,7 @@ const Profile = () => {
             </div>
             <div className="flowlers">
               <div className="names">
-                <h3>Md Habib </h3>
+                <h3>Md hoseen Habib </h3>
               </div>
               <div className="flow">
                 <h4>200k </h4>
@@ -46,12 +47,7 @@ const Profile = () => {
           <hr />
         </div>
         {/* cover section end  */}
-
-        <div className="Ditials">
-          <div className="aboutyourself"></div>
-          <div className="showFirends"></div>
-        </div>
-        <div className="showAllPost"></div>
+          <ProfileEnd />
       </div>
     </div>
   );
