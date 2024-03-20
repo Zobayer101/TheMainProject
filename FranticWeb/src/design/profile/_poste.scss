@@ -1,0 +1,130 @@
+@import "../color";
+@import "../mixins";
+
+.Posts {
+  @include Lingth(auto, 100%);
+  background: var(--white-400);
+  border-radius: 10px;
+  margin-top: 10px;
+  .profileHed {
+    @include Lingth(70px, 100%);
+    //background: #948e8e;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px 0 10px;
+    .imgs {
+      height: 100%;
+      width: 50%;
+      display: flex;
+      align-items: center;
+      position: relative;
+      .active {
+        position: absolute;
+        background: #22c537;
+        @include Lingth(15px, 15px);
+        margin: 33px 0 0 40px;
+        border: 2px solid;
+        border-radius: 50%;
+      }
+      img {
+        height: 50px;
+        border-radius: 50%;
+      }
+      .text {
+        margin-left: 10px;
+        h3 {
+          font-size: 17px;
+          color: var(--white-200);
+        }
+        p {
+          font-size: 14px;
+          color: var(--white-200);
+        }
+      }
+    }
+    .dots {
+      margin-right: 10px;
+      font-size: 20px;
+      color: var(--white-200);
+      @include Display(center, center);
+      @include Lingth(40px, 40px);
+      transition: 0.3s;
+      &:hover {
+        background: var(--white-500);
+        color: var(--white-800);
+        border-radius: 50%;
+      }
+    }
+  }
+  .profileinfo {
+    width: 100%;
+    height: auto;
+    position: relative;
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+    .commentSection {
+      padding: 10px;
+      .showcomDitls {
+        @include Lingth(30px, 100%);
+        @include Display(center,space-around);
+        p{
+          color: var(--white-800);
+
+        }
+      }
+      .pushlike {
+        @include Lingth(45px, 100%);
+        @include Display(center, space-around);
+        .like,
+        .comment,
+        .shere {
+          font-size: 30px;
+          @include Lingth(100%, 20%);
+          @include Display(center,center);
+          //background: #a4a4c2;
+          color: var(--white-600);
+          transition: .3s;
+          &:hover{
+            color: var(--white-200);
+          }
+        }
+      }
+    }
+  }
+  .viewmore{
+    @include Lingth(auto,100%);
+    padding: 10px;
+    .writeacomment{
+      @include Lingth(40px,100%);
+      display: flex;
+      align-items: center;
+
+      img{
+        height: 80%;
+        border-radius: 50%;
+      }
+      input{
+        margin-left: 10px;
+        @include Lingth(85%,80%);
+        outline: none;
+        border: 1px solid var(--white-700);
+        background: var(--white-500);
+        border-radius: 20px;
+        font-size: 17px;
+       &::placeholder{
+        color: var(--white-700);
+        font-size: 16px;
+        padding: 5px;
+       }
+      }
+      .sendCom{
+        @include Lingth(60%,auto);
+        margin-left: 5px;
+        color: var(--white-700);
+      }
+    }
+  }
+}

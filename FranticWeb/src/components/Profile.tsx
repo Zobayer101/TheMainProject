@@ -3,8 +3,7 @@ import coverphoto from "../assets/img/Fer.jpg";
 import profile from "../assets/img/habib.png";
 import { IoCameraReverseOutline } from "react-icons/io5";
 import { FaRegPenToSquare } from "react-icons/fa6";
-import ProfileEnd from "./subComponent/ProfileEnd";
-
+import ProfileEnd from "./profile/ProfileEnd";
 
 const Profile = () => {
   return (
@@ -47,7 +46,7 @@ const Profile = () => {
           <hr />
         </div>
         {/* cover section end  */}
-          <ProfileEnd />
+        <ProfileEnd />
       </div>
     </div>
   );

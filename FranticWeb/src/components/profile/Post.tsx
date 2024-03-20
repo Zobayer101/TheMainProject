@@ -3,7 +3,7 @@ import myphoto from "../../assets/img/habib.png";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { RiShareForwardFill } from "react-icons/ri";
 import { FaComment } from "react-icons/fa";
-
+import { IoSend } from "react-icons/io5";
 const Post = () => {
   return (
     <div>
@@ -25,25 +25,40 @@ const Post = () => {
         </div>
         <div className="profileinfo">
           <img src={myphoto} alt="postImage" />
-            <hr />
           <div className="commentSection">
-            <div className="like">
-              <IoMdHeartEmpty />
+            <div className="showcomDitls">
+              <div className="like">
+                <p>20k</p>
+              </div>
+              <div className="comment">
+                <p>2k</p>
+              </div>
+              <div className="shear">
+                <p>253 </p>
+              </div>
             </div>
-            <div className="comment">
-              <FaComment />
+            <hr />
+            <div className="pushlike">
+              <div className="like">
+                <IoMdHeartEmpty />
+              </div>
+              <div className="comment">
+                <FaComment />
+              </div>
+              <div className="shere">
+                <RiShareForwardFill />
+              </div>
             </div>
-            <div className="shere">
-              <RiShareForwardFill />
-            </div>
+            <hr />
           </div>
-                  <hr />
-                  
-              </div>
-              <div className="viewmore">
-                  <p>view more comment</p>
-                  
-              </div>
+        </div>
+        <div className="viewmore">
+          <div className="writeacomment">
+            <img src={myphoto} alt="writer comment" />
+            <input type="text" placeholder="write a comment..." />
+            <IoSend className="sendCom" />
+          </div>
+        </div>
       </div>
     </div>
   );

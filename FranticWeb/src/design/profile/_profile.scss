@@ -1,5 +1,6 @@
-@import "./color";
-@import "./mixins";
+@import "../color";
+@import "../mixins";
+
 
 .profileCon {
   overflow: auto;
@@ -102,7 +103,7 @@
             color: var(--white-900);
           }
         }
-      }
+      } 
       .TowButtton {
         @include Lingth(100%, 100%);
         @include Display(center, end);
@@ -162,5 +163,9 @@
     var(--bgray),
     var(--bggreen)
   );
-  @import "./subPartial/subprofile";
+  //others next page 
+  @import "../profile/subprofile";
+   @media screen and (max-width:800px){
+      justify-content: center;
+    }
 }
