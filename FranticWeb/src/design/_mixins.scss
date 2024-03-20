@@ -57,6 +57,12 @@
   }
 }
 
-
+@mixin DwithL($h,$w,$a,$j){
+  display: flex;
+  align-items: $a;
+  justify-content: $j;
+  height: $h;
+  width: $w;
+}
 
 

@@ -1,12 +1,38 @@
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const Reducher = (satate: any, action: { type: string; value: any }) => {
+import React, { createContext } from "react";
+interface State{
+  counter: number;
+  them: boolean;
+  nextpage: boolean;
+}
+type Action =
+  | { type: "INCREMANT"; value: number }
+  | { type: "THEM"; value: boolean }
+  | { type: "NEXTPAGE", value: boolean };
+  
+  const Initalvalue: State = {
+    counter: 30,
+    them: false,
+    nextpage: false,
+  };
+
+
+const AppContex = createContext<{ state: State; dispach: React.Dispatch<Action> }>({
+  state: Initalvalue,
+  dispach:()=>{}
+})
+const Reducher = (
+  state: State,
+  action: Action
+) => {
   switch (action.type) {
     case "INCREMANT":
-      return { ...satate, counter: satate.counter + action.value };
+      return { ...state, counter: state.counter + action.value };
     case "THEM":
-      return { ...satate, them :action.value };
+      return { ...state, them: action.value };
+    case "NEXTPAGE":
+      return { ...state, nextpage: action.value };
     default:
-      return satate;
+      return state;
   }
 };
-export default Reducher;
+export { Reducher, AppContex, Initalvalue };
