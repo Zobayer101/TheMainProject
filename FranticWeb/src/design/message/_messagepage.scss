@@ -1,0 +1,119 @@
+
+
+
+.PageCon {
+  height: 100%;
+  width: 100%;
+ 
+  position: relative;
+  .pageHead {
+    display: flex;
+    height: 75px;
+    width: 100%;
+    background: #1506e2a8;
+    border: none;
+    border-radius: 3px;
+    position: absolute;
+    .arrow {
+      height: 100%;
+      width: 50px;
+      //background: #202794;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 30px;
+      cursor: pointer;
+      transition: 0.3s ease-out;
+      &:hover {
+        color: #921181;
+      }
+    }
+    .Imgbox {
+      height: 100%;
+      width: 90px;
+      //background: #6e1b1b;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      img {
+        width: 60px;
+        border: 2px solid #b5c908;
+        border-radius: 50%;
+      }
+      .acctive{
+        height: 14px;
+        width: 14px;
+        background: #06ac00;
+        border: 1px solid;
+        border-radius: 50%;
+        position: absolute;
+        top: 50px;
+        left: 60px;
+      }
+    }
+    .otherOptin {
+      height: 100%;
+      width: 80%;
+     // background: #5a1636;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      // padding: 0 10px 0 5px;
+      .Names {
+        height: 100%;
+        width: 50%;
+        display: flex;
+        align-items: start;
+        justify-content: center;
+        flex-direction: column;
+        h3 {
+          color: #fff;
+          font-size: 18px;
+        }
+        p {
+          color: #fff;
+          font-size: 14px;
+        }
+      }
+      .Icons {
+        height: 100%;
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        font-size: 23px;
+        color: #ebe8e8;
+        cursor: pointer;
+      }
+    }
+  }
+  .mainMsgPag{
+    height: 94%;
+    width: 100%;
+    background-image: url("../../../public/photo/lightbg.jpg");
+    object-fit: cover;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  .SenderOption{
+    width: 100%;
+    height:6%;
+    background: #8d8a8a;
+    display: flex;
+    input{
+        width: 60%;
+        height: 100%;
+        font-size: 17px;
+        padding-left: 10px;
+        border: 1px solid rgb(88, 88, 88);
+        border-radius: 0 0 0 5px;
+        outline: none;
+        &:focus{
+            border: 1px solid #3311f3;
+        }
+    }
+  }
+}

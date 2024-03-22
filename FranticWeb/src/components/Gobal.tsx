@@ -13,9 +13,9 @@ const Gobal:React.FC = () => {
         {/* <button onClick={() => dispach({ type: "INCREMANT", value: 1 })}>
           click {counter}
   </button>*/}
-        <button onClick={() => dispach({ type: "THEM", value: !them })}>
+        {/* <button onClick={() => dispach({ type: "THEM", value: !them })}>
           click {them ? "true" : "false"}
-        </button>
+        </button> */}
         <AppContex.Provider  value={{state, dispach} }>
           <Navigator />
         </AppContex.Provider>
