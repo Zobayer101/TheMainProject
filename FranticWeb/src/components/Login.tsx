@@ -5,14 +5,14 @@ const Login = () => {
       <div className="Login">
         <div className="logininfo">
           <div className="texts">
-            <h4>ouer web connect your firend.</h4>
-            <h4> shear your knolage shear your imotion</h4>
+            {/* <h4>ouer web connect your firend.</h4> */}
+            <p> shear your knolage shear your imotion</p>
           </div>
         </div>
         <div className="logincoun">
           <div className="loginfrom">
             <div className="loginfild">
-              <input type="text" placeholder="Enter your email" />
+              <input type="email" placeholder="@ email" />
               <input type="password" placeholder="Password" />
               <button className="logbtn">Login</button>
               <div className="subsecgment">

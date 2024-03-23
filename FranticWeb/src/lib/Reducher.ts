@@ -3,16 +3,19 @@ interface State{
   counter: number;
   them: boolean;
   nextpage: boolean;
+  msgpag: boolean;
 }
 type Action =
   | { type: "INCREMANT"; value: number }
   | { type: "THEM"; value: boolean }
-  | { type: "NEXTPAGE", value: boolean };
+  | { type: "NEXTPAGE", value: boolean }
+  |{type:"MSGPAGE",value:boolean};
   
   const Initalvalue: State = {
     counter: 30,
     them: false,
     nextpage: false,
+    msgpag:false,
   };
 
 
@@ -31,6 +34,8 @@ const Reducher = (
       return { ...state, them: action.value };
     case "NEXTPAGE":
       return { ...state, nextpage: action.value };
+    case "MSGPAGE":
+      return { ...state, msgpag: action.value };
     default:
       return state;
   }

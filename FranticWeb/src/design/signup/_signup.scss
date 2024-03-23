@@ -2,18 +2,14 @@
 
 .signpuCon {
   @include DwithL(100vh, 100%, center, center);
-  background: rgb(196, 126, 190);
-  background: linear-gradient(
-    52deg,
-    rgba(196, 126, 190, 1) 9%,
-    rgba(148, 173, 233, 1) 97%
-  );
+  background: rgb(125, 20, 245);
+ user-select: none;
   flex-direction: column;
   .signupbox {
     @include Lingth(550px, 450px);
-    background: #beaeae;
+    background: #fff;
     border-radius: 10px;
-    box-shadow: 0 0px 15px rgba(0, 0, 0, 0.5);
+    box-shadow:inset 0 0px 10px rgba(0, 0, 0, 0.7);
     padding: 10px;
     position: relative;
      overflow: hidden;
@@ -21,20 +17,17 @@
       position: absolute;
       @include Lingth(96%, 200%);
       display: flex;
-      transition: 1s ease;
+      transition: .3s ease;
       transform: translateX(0px);
       .firstPart {
         height: 100%;
         width: 50%;
 
         .intropage2nd {
-          height: 100%;
-          width: 96%;
-          //background: #a19b9b;
+          @include Lingth(100%,96%);
           .threeinput {
             width: 100%;
             height: 50%;
-           
             display: flex;
             flex-direction: column;
             justify-content: space-evenly;
@@ -43,11 +36,13 @@
                 height: 40px;
                 width: 90%;
                 border: none;
-                border-radius: 6px;
+                outline: none;
+                border-bottom: 2px solid #6b6a6a;
+                //border-radius: 6px;
                 font-size: 16px;
                 padding: 4px;
             }
-          }
+           
           .gender{
             width: 100%;
             height: 30%;
@@ -66,7 +61,7 @@
                     height: 50%;
                     width: 23%;
                     font-size: 18px;
-
+                  
                     display: flex;
                     align-items: center;
                     justify-content: space-around;
@@ -75,7 +70,7 @@
             button{
                 height: 25%;
                 width: 50%;
-                color: #fff;
+                color: #c7c2c2;
                 background: #c528f5;
                 border: none;
                 border-radius: 6px;
@@ -92,6 +87,7 @@
         @include Lingth(100%, 50%);
         //background: #2dd148;
         display: flex;
+        align-items: center;
         justify-content: center;
         .intropage1st {
           height: 100%;
@@ -109,7 +105,8 @@
               width: 90%;
               height: 40px;
               border: none;
-              border-radius: 6px;
+              border-bottom: 2px solid #6b6a6a;
+             outline: none;
               font-size: 16px;
               padding: 5px;
             }
@@ -152,11 +149,13 @@
     }
     .gonext {
       //right: 0;
-      transform: translateX(-450px);
+      transform: translateX(-51%);
     }
     @media screen and (max-width: 650px) {
       max-width: 90%;
       height: 550px;
     }
+   
   }
+}
 }

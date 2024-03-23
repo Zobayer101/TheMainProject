@@ -1,0 +1,1755 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+.Light {
+  --white-100: #f5f5f5;
+  --white-200: #e7e7e7;
+  --white-300: #f0efef;
+  --white-400: #b2b2b2;
+  --white-500: #777676;
+  --white-600: #4e4d4d;
+  --white-700: #474343;
+  --white-800: #302e2e;
+  --white-900: #181717;
+  --white-1000: #0c0c0c;
+  --parpal-100: #f6ecff;
+  --parpal-200: #e7d6fb;
+  --parpal-300: #caabf1;
+  --parpal-400: #ac7ce8;
+  --parpal-500: #9354e0;
+  --parpal-600: #833cdb;
+  --parpal-700: #7b2eda;
+  --parpal-800: #6921c2;
+  --parpal-900: #5d1cae;
+  --parpal-1000: #501599;
+  --bgparpal:rgba(235, 224, 247, 0.911);
+  --bgray:rgb(233, 245, 238);
+  --bggreen:rgb(212, 214, 213);
+}
+
+.Drack {
+  --parpal-1000: #f6ecff;
+  --parpal-900: #e7d6fb;
+  --parpal-800: #caabf1;
+  --parpal-700: #ac7ce8;
+  --parpal-600: #9354e0;
+  --parpal-500: #833cdb;
+  --parpal-400: #7b2eda;
+  --parpal-300: #6921c2;
+  --parpal-200: #5d1cae;
+  --parpal-100: #501599;
+  --white-1000: #f5f5f5;
+  --white-900: #e7e7e7;
+  --white-800: #cdcdcd;
+  --white-700: #b2b2b2;
+  --white-600: #777676;
+  --white-500: #4e4d4d;
+  --white-400: #474343;
+  --white-300: #302e2e;
+  --white-200: #181717;
+  --white-100: #0c0c0c;
+  --bgparpal:rgba(62, 60, 65, 0.911);
+  --bgray:rgb(46, 49, 48);
+  --bggreen:rgb(54, 59, 56);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: radial-gradient(circle, rgb(238, 174, 202) 0%, rgb(148, 187, 233) 100%);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(176deg, rgb(2, 0, 36) 0%, rgb(9, 9, 121) 49%, rgb(0, 212, 255) 100%);
+}
+
+.profileCon {
+  overflow: auto;
+  height: auto;
+  width: 100%;
+  position: relative;
+  animation-duration: 3s;
+  animation: backgroundwhite 40s linear infinite;
+  padding: 10px;
+}
+.profileCon .CoverPhoto {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+}
+.profileCon .CoverPhoto .cover {
+  height: 50%;
+  width: 100%;
+  position: relative;
+  border-radius: 5px;
+  box-shadow: 1px 5px 13px;
+}
+.profileCon .CoverPhoto .cover img {
+  border-radius: 5px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+.profileCon .CoverPhoto .cover .CamIcon {
+  position: absolute;
+  height: 30px;
+  width: 160px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  padding: 5px;
+  background: var(--parpal-100);
+  color: var(--parpal-900);
+  right: 20px;
+  transform: translateY(-50px);
+  cursor: pointer;
+  z-index: 1;
+}
+.profileCon .CoverPhoto .cover .CamIcon .cam {
+  font-size: 19px;
+  margin: 2px;
+}
+.profileCon .CoverPhoto .cover .CamIcon p {
+  font-size: 14px;
+}
+@media screen and (max-width: 800px) {
+  .profileCon .CoverPhoto .cover .CamIcon {
+    position: absolute;
+    height: 30px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .profileCon .CoverPhoto .cover .CamIcon p {
+    display: none;
+  }
+}
+.profileCon .CoverPhoto .profileP {
+  height: 45%;
+  width: 100%;
+  display: flex;
+  padding: 10px;
+}
+.profileCon .CoverPhoto .profileP .photo {
+  position: relative;
+  cursor: pointer;
+}
+.profileCon .CoverPhoto .profileP .photo img {
+  border: none;
+  height: 150px;
+  width: 150px;
+  -o-object-fit: fill;
+     object-fit: fill;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px;
+  transform: rotate(15deg) scale(0.95);
+  transition: 0.4s;
+}
+.profileCon .CoverPhoto .profileP .photo img:hover {
+  transform: rotate(0) scale(1);
+}
+.profileCon .CoverPhoto .profileP .flowlers {
+  padding: 10px;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  height: 100%;
+  width: 35%;
+  flex-direction: column;
+}
+.profileCon .CoverPhoto .profileP .flowlers .names {
+  height: 50%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.profileCon .CoverPhoto .profileP .flowlers .names h3 {
+  font-size: 22px;
+  color: var(--white-900);
+}
+.profileCon .CoverPhoto .profileP .flowlers .flow {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  height: auto;
+  width: 100%;
+}
+.profileCon .CoverPhoto .profileP .flowlers .flow h4 {
+  font-size: 17px;
+  margin-right: 10px;
+  color: var(--white-900);
+}
+.profileCon .CoverPhoto .profileP .flowlers .flow p {
+  font-size: 16px;
+  color: var(--white-900);
+}
+.profileCon .CoverPhoto .profileP .TowButtton {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+.profileCon .CoverPhoto .profileP .TowButtton .addstory {
+  height: 35px;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-right: 10px;
+  background: var(--parpal-100);
+  color: var(--parpal-900);
+  border-radius: 4px;
+  border: none;
+  font-size: 15px;
+}
+.profileCon .CoverPhoto .profileP .TowButtton .editProfile {
+  height: 35px;
+  width: 140px;
+  background: var(--white-400);
+  color: var(--white-1000);
+  border: none;
+  border-radius: 4px;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+@media screen and (max-width: 800px) {
+  .profileCon .CoverPhoto .profileP {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    transform: translateY(-50px);
+  }
+  .profileCon .CoverPhoto .profileP .names {
+    justify-content: center;
+    height: 150px;
+    margin-bottom: 10px;
+  }
+  .profileCon .CoverPhoto .profileP .flow {
+    justify-content: center !important;
+    height: 40px;
+  }
+  .profileCon .CoverPhoto .profileP .TowButtton {
+    flex-direction: column;
+    height: 200px;
+    width: 100%;
+  }
+  .profileCon .CoverPhoto .profileP .TowButtton .addstory {
+    margin-bottom: 20px;
+  }
+}
+@keyframes backgroundwhite {
+  0% {
+    background: linear-gradient(15deg, var(--bgparpal), var(--bgray), var(--bggreen));
+  }
+  25% {
+    background: linear-gradient(45deg, var(--bgparpal), var(--bgray), var(--bggreen));
+  }
+  50% {
+    background: linear-gradient(120deg, var(--bgparpal), var(--bgray), var(--bggreen));
+  }
+  75% {
+    background: linear-gradient(200deg, var(--bgparpal), var(--bgray), var(--bggreen));
+  }
+  100% {
+    background: linear-gradient(360deg, var(--bgparpal), var(--bgray), var(--bggreen));
+  }
+}
+.profileCon .Ditals {
+  height: auto;
+  width: 100%;
+  margin-top: 10px;
+  display: flex;
+}
+.profileCon .Ditals .ContU {
+  width: 48%;
+  height: 100%;
+}
+.profileCon .Ditals .ContU .Bio {
+  height: 600px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  padding: 10px;
+}
+.profileCon .Ditals .ContU .Bio .intro {
+  position: relative;
+  background: var(--white-400);
+  border-radius: 8px;
+  height: 100%;
+  width: 100%;
+  flex-basis: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+}
+.profileCon .Ditals .ContU .Bio .intro .TextIntor {
+  top: 5px;
+  position: absolute;
+  width: 100%;
+  height: 40px;
+  color: var(--white-800);
+  font-size: 20px;
+  left: 20px;
+}
+.profileCon .Ditals .ContU .Bio .intro .intorbutton {
+  height: 35px;
+  top: 34px;
+  position: absolute;
+  width: 95%;
+  background: var(--white-300);
+  border: none;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: var(--white-800);
+}
+.profileCon .Ditals .ContU .Bio .intro .content {
+  position: relative;
+  margin-top: 35px;
+  padding: 10px;
+  min-height: 60%;
+  width: 100%;
+}
+.profileCon .Ditals .ContU .Bio .intro .editDtils {
+  height: 35px;
+  width: 95%;
+  background: var(--parpal-300);
+  color: var(--white-800);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+.profileCon .Ditals .ContU .Bio .intro .editDtils .Ed {
+  color: var(--white-900);
+  font-size: 18px;
+  margin-right: 5px;
+}
+.profileCon .Ditals .ContU .Bio .intro .addfirnds {
+  height: 35px;
+  width: 95%;
+  background: var(--white-600);
+  color: var(--white-800);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.profileCon .Ditals .ContU .Bio .intro .addfirnds .Ad {
+  color: var(--parpal-300);
+  font-size: 18px;
+  margin-right: 5px;
+}
+@media screen and (max-width: 800px) {
+  .profileCon .Ditals .ContU .Bio {
+    justify-content: center;
+  }
+}
+.profileCon .Ditals .ContU .myphoto {
+  height: 600px;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+.profileCon .Ditals .ContU .myphoto .myphotogallary {
+  border-radius: 10px;
+  background: var(--white-400);
+  height: 95%;
+  width: 90%;
+  flex-basis: 500px;
+}
+.profileCon .Ditals .ContU .myphoto .myphotogallary .photobutton {
+  height: 55px;
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.profileCon .Ditals .ContU .myphoto .myphotogallary .photobutton h4 {
+  color: var(--white-800);
+  font-size: 20px;
+}
+.profileCon .Ditals .ContU .myphoto .myphotogallary .photobutton p {
+  color: var(--white-800);
+  font-size: 16px;
+}
+.profileCon .Ditals .ContU .myphoto .myphotogallary .Pg {
+  height: 87%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.profileCon .Ditals .ContU .myphoto .myphotogallary .Pg .allphotos img {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  margin-left: 5px;
+  width: 32%;
+  height: auto;
+}
+@media screen and (max-width: 800px) {
+  .profileCon .Ditals .ContU .myphoto {
+    justify-content: center;
+  }
+}
+.profileCon .Ditals .ContU .myfirend {
+  height: 700px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  padding: 10px;
+}
+.profileCon .Ditals .ContU .myfirend .firendgallary {
+  background: var(--white-400);
+  height: 98%;
+  width: 90%;
+  flex-basis: 500px;
+  border: none;
+  border-radius: 10px;
+}
+.profileCon .Ditals .ContU .myfirend .firendgallary .firendgallary {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 10%;
+  width: 100%;
+}
+.profileCon .Ditals .ContU .myfirend .firendgallary .firendgallary .num h4 {
+  font-size: 20px;
+  color: var(--white-800);
+}
+.profileCon .Ditals .ContU .myfirend .firendgallary .firendgallary .num p {
+  font-size: 16px;
+  color: var(--white-800);
+}
+.profileCon .Ditals .ContU .myfirend .firendgallary .firendgallary p {
+  color: var(--white-800);
+  font-size: 14px;
+}
+.profileCon .Ditals .ContU .myfirend .firendgallary .Pg {
+  height: 90%;
+  padding: 5px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+.profileCon .Ditals .ContU .myfirend .firendgallary .Pg .allphotos {
+  margin: 5px;
+  height: 90%;
+  width: 95%;
+}
+.profileCon .Ditals .ContU .myfirend .firendgallary .Pg .allphotos img {
+  width: 100%;
+  border-radius: 5px;
+}
+.profileCon .Ditals .ContU .myfirend .firendgallary .Pg .allphotos .firendName {
+  color: var(--white-800);
+}
+@media screen and (max-width: 800px) {
+  .profileCon .Ditals .ContU .myfirend {
+    justify-content: center;
+  }
+}
+.profileCon .Ditals .ContU .Footer {
+  width: 100%;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  justify-content: end;
+}
+.profileCon .Ditals .ContU .Footer .Footbox {
+  height: 98%;
+  width: 90%;
+  flex-basis: 500px;
+  border-radius: 10px;
+  background: var(--white-400);
+  box-shadow: inset 0px 0px 17px var(--white-500);
+}
+.profileCon .Ditals .ContU .Footer .Footbox .header {
+  display: flex;
+  height: 50px;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
+}
+.profileCon .Ditals .ContU .Footer .Footbox .header h4 {
+  font-size: 20px;
+  color: var(--white-800);
+}
+.profileCon .Ditals .ContU .Footer .Footbox .header p {
+  font-size: 14px;
+  color: var(--white-800);
+}
+.profileCon .Ditals .ContU .Footer .Footbox .lifeEvent {
+  width: 100%;
+  height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.profileCon .Ditals .ContU .Footer .Footbox .lifeEvent .carearevent,
+.profileCon .Ditals .ContU .Footer .Footbox .lifeEvent .profileevent {
+  background: var(--white-500);
+  height: 85%;
+  width: 40%;
+  color: var(--parpal-300);
+  border: 0.5px solid var(--white-600);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.profileCon .Ditals .ContU .Footer .Footbox .lifeEvent .carearevent .bif,
+.profileCon .Ditals .ContU .Footer .Footbox .lifeEvent .profileevent .bif {
+  padding: 10px;
+  height: 50px;
+  border-radius: 50%;
+  width: 50px;
+  background: var(--white-700);
+}
+@media screen and (max-width: 800px) {
+  .profileCon .Ditals .ContU .Footer {
+    justify-content: center;
+  }
+}
+.profileCon .Ditals .outerAll {
+  width: 52%;
+  height: 100%;
+}
+.profileCon .Ditals .outerAll .AllPost {
+  height: auto;
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  overflow: auto;
+}
+.profileCon .Ditals .outerAll .AllPost .postcountuner {
+  height: 100%;
+  width: 100%;
+  flex-basis: 600px;
+  border-radius: 10px;
+}
+.profileCon .Ditals .outerAll .AllPost .postcountuner .think {
+  width: 100%;
+  height: 130px;
+  background: var(--white-400);
+  border-radius: 10px;
+  padding: 10px;
+}
+.profileCon .Ditals .outerAll .AllPost .postcountuner .think .photo {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  position: relative;
+  justify-content: space-evenly;
+}
+.profileCon .Ditals .outerAll .AllPost .postcountuner .think .photo img {
+  height: 40px;
+  border-radius: 50%;
+}
+.profileCon .Ditals .outerAll .AllPost .postcountuner .think .photo .whatDoyouThink {
+  height: 70%;
+  width: 80%;
+  background: var(--white-700);
+  border-radius: 20px;
+  color: var(--white-400);
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+.profileCon .Ditals .outerAll .AllPost .postcountuner .think .photo .whatDoyouThink p {
+  margin-left: 20px;
+  font-size: 18px;
+}
+.profileCon .Ditals .outerAll .AllPost .postcountuner .think .icon {
+  height: 50%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.profileCon .Ditals .outerAll .AllPost .postcountuner .think .icon .livevideo, .profileCon .Ditals .outerAll .AllPost .postcountuner .think .icon .photsvideo, .profileCon .Ditals .outerAll .AllPost .postcountuner .think .icon .lifeevents {
+  height: 80%;
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  font-size: 30px;
+  cursor: pointer;
+  background: var(--white-500);
+  transition: 0.4s;
+}
+.profileCon .Ditals .outerAll .AllPost .postcountuner .think .icon .livevideo:hover, .profileCon .Ditals .outerAll .AllPost .postcountuner .think .icon .photsvideo:hover, .profileCon .Ditals .outerAll .AllPost .postcountuner .think .icon .lifeevents:hover {
+  background: var(--white-600);
+}
+.profileCon .Ditals .outerAll .AllPost .postcountuner .think .icon .livevideo {
+  color: rgb(136, 5, 5);
+}
+.profileCon .Ditals .outerAll .AllPost .postcountuner .think .icon .photsvideo {
+  color: rgb(5, 151, 42);
+}
+.profileCon .Ditals .outerAll .AllPost .postcountuner .think .icon .lifeevents {
+  color: rgb(30, 149, 228);
+}
+.profileCon .Ditals .outerAll .AllPost .postcountuner .Posts {
+  height: auto;
+  width: 100%;
+  background: var(--white-400);
+  border-radius: 10px;
+  margin-top: 10px;
+}
+.profileCon .Ditals .outerAll .AllPost .postcountuner .Posts .profileHed {
+  height: 70px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px 0 10px;
+}
+.profileCon .Ditals .outerAll .AllPost .postcountuner .Posts .profileHed .imgs {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.profileCon .Ditals .outerAll .AllPost .postcountuner .Posts .profileHed .imgs .active {
+  position: absolute;
+  background: #22c537;
+  height: 15px;
+  width: 15px;
+  margin: 33px 0 0 40px;
+  border: 2px solid;
+  border-radius: 50%;
+}
+.profileCon .Ditals .outerAll .AllPost .postcountuner .Posts .profileHed .imgs img {
+  height: 50px;
+  border-radius: 50%;
+}
+.profileCon .Ditals .outerAll .AllPost .postcountuner .Posts .profileHed .imgs .text {
+  margin-left: 10px;
+}
+.profileCon .Ditals .outerAll .AllPost .postcountuner .Posts .profileHed .imgs .text h3 {
+  font-size: 17px;
+  color: var(--white-200);
+}
+.profileCon .Ditals .outerAll .AllPost .postcountuner .Posts .profileHed .imgs .text p {
+  font-size: 14px;
+  color: var(--white-200);
+}
+.profileCon .Ditals .outerAll .AllPost .postcountuner .Posts .profileHed .dots {
+  margin-right: 10px;
+  font-size: 20px;
+  color: var(--white-200);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 40px;
+  transition: 0.3s;
+}
+.profileCon .Ditals .outerAll .AllPost .postcountuner .Posts .profileHed .dots:hover {
+  background: var(--white-500);
+  color: var(--white-800);
+  border-radius: 50%;
+}
+.profileCon .Ditals .outerAll .AllPost .postcountuner .Posts .profileinfo {
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+.profileCon .Ditals .outerAll .AllPost .postcountuner .Posts .profileinfo img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.profileCon .Ditals .outerAll .AllPost .postcountuner .Posts .profileinfo .commentSection {
+  padding: 10px;
+}
+.profileCon .Ditals .outerAll .AllPost .postcountuner .Posts .profileinfo .commentSection .showcomDitls {
+  height: 30px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.profileCon .Ditals .outerAll .AllPost .postcountuner .Posts .profileinfo .commentSection .showcomDitls p {
+  color: var(--white-800);
+}
+.profileCon .Ditals .outerAll .AllPost .postcountuner .Posts .profileinfo .commentSection .pushlike {
+  height: 45px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.profileCon .Ditals .outerAll .AllPost .postcountuner .Posts .profileinfo .commentSection .pushlike .like,
+.profileCon .Ditals .outerAll .AllPost .postcountuner .Posts .profileinfo .commentSection .pushlike .comment,
+.profileCon .Ditals .outerAll .AllPost .postcountuner .Posts .profileinfo .commentSection .pushlike .shere {
+  font-size: 30px;
+  height: 100%;
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white-600);
+  transition: 0.3s;
+}
+.profileCon .Ditals .outerAll .AllPost .postcountuner .Posts .profileinfo .commentSection .pushlike .like:hover,
+.profileCon .Ditals .outerAll .AllPost .postcountuner .Posts .profileinfo .commentSection .pushlike .comment:hover,
+.profileCon .Ditals .outerAll .AllPost .postcountuner .Posts .profileinfo .commentSection .pushlike .shere:hover {
+  color: var(--white-200);
+}
+.profileCon .Ditals .outerAll .AllPost .postcountuner .Posts .viewmore {
+  height: auto;
+  width: 100%;
+  padding: 10px;
+}
+.profileCon .Ditals .outerAll .AllPost .postcountuner .Posts .viewmore .writeacomment {
+  height: 40px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.profileCon .Ditals .outerAll .AllPost .postcountuner .Posts .viewmore .writeacomment img {
+  height: 80%;
+  border-radius: 50%;
+}
+.profileCon .Ditals .outerAll .AllPost .postcountuner .Posts .viewmore .writeacomment input {
+  margin-left: 10px;
+  height: 85%;
+  width: 80%;
+  outline: none;
+  border: 1px solid var(--white-700);
+  background: var(--white-500);
+  border-radius: 20px;
+  font-size: 17px;
+}
+.profileCon .Ditals .outerAll .AllPost .postcountuner .Posts .viewmore .writeacomment input::-moz-placeholder {
+  color: var(--white-700);
+  font-size: 16px;
+  padding: 5px;
+}
+.profileCon .Ditals .outerAll .AllPost .postcountuner .Posts .viewmore .writeacomment input::placeholder {
+  color: var(--white-700);
+  font-size: 16px;
+  padding: 5px;
+}
+.profileCon .Ditals .outerAll .AllPost .postcountuner .Posts .viewmore .writeacomment .sendCom {
+  height: 60%;
+  width: auto;
+  margin-left: 5px;
+  color: var(--white-700);
+}
+@media screen and (max-width: 800px) {
+  .profileCon .Ditals .outerAll .AllPost {
+    justify-content: center;
+  }
+}
+@media screen and (max-width: 800px) {
+  .profileCon .Ditals {
+    flex-direction: column;
+  }
+  .profileCon .Ditals .ContU {
+    width: 100%;
+    align-items: center;
+  }
+  .profileCon .Ditals .outerAll {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 800px) {
+  .profileCon {
+    justify-content: center;
+  }
+}
+
+.notCount {
+  background: var(--white-800);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.notCount h2 {
+  font-size: 10em;
+  color: var(--white-300);
+}
+.notCount .BUT {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  width: 100%;
+}
+.notCount .BUT button {
+  color: var(--white-800);
+  border: none;
+  height: 30px;
+  width: 60%;
+  border-radius: 5px;
+  background: var(--white-300);
+  cursor: pointer;
+}
+
+.Login {
+  background: var(--white-800);
+  height: 100vh;
+  width: 100%;
+  display: flex;
+}
+.Login .logincoun {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  height: 100%;
+  width: 55%;
+}
+.Login .logincoun .loginfrom {
+  height: 65%;
+  width: 400px;
+  background: var(--white-900);
+  box-shadow: 0 0 17px var(--white-400);
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+}
+.Login .logincoun .loginfrom .loginfild {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+}
+.Login .logincoun .loginfrom .loginfild input {
+  outline: none;
+  height: 40px;
+  width: 90%;
+  border-radius: 10px;
+  border: 1px solid var(--white-500);
+  font-size: 17px;
+  padding: 3px;
+}
+.Login .logincoun .loginfrom .loginfild .logbtn {
+  height: 42px;
+  width: 90%;
+  border: none;
+  border-radius: 10px;
+  background: #a420a8;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+}
+.Login .logincoun .loginfrom .loginfild .subsecgment {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+  width: 100%;
+  flex-direction: column;
+}
+.Login .logincoun .loginfrom .loginfild .subsecgment h4 {
+  font-size: 15px;
+  color: rgb(230, 194, 36);
+  cursor: pointer;
+}
+.Login .logincoun .loginfrom .loginfild .subsecgment .logcre {
+  height: 40px;
+  width: 90%;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background: #13dd45;
+}
+.Login .logincoun .loginfrom .loginfild .subsecgment .logcre a {
+  text-decoration: none;
+  font-size: 16px;
+  color: #fff;
+}
+.Login .logininfo {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  height: 100%;
+  width: 45%;
+}
+.Login .logininfo .texts {
+  height: 65%;
+  width: 400px;
+  border-radius: 10px;
+  padding: 10px;
+}
+.Login .logininfo .texts h4 {
+  color: var(--white-300);
+  font-size: 18px;
+}
+@media screen and (max-width: 800px) {
+  .Login {
+    flex-direction: column;
+  }
+  .Login .logincoun {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    height: 75%;
+    width: 100%;
+  }
+  .Login .logincoun .loginfrom {
+    height: 90%;
+  }
+  .Login .logininfo {
+    height: 35%;
+    width: 100%;
+    align-items: end;
+    justify-content: center;
+  }
+}
+
+.signpuCon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  background: rgb(196, 126, 190);
+  background: linear-gradient(52deg, rgb(196, 126, 190) 9%, rgb(148, 173, 233) 97%);
+  flex-direction: column;
+}
+.signpuCon .signupbox {
+  height: 550px;
+  width: 450px;
+  background: #beaeae;
+  border-radius: 10px;
+  box-shadow: 0 0px 15px rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  position: relative;
+  overflow: hidden;
+}
+.signpuCon .signupbox .mainFrom {
+  position: absolute;
+  height: 96%;
+  width: 200%;
+  display: flex;
+  transition: 1s ease;
+  transform: translateX(0px);
+}
+.signpuCon .signupbox .mainFrom .firstPart {
+  height: 100%;
+  width: 50%;
+}
+.signpuCon .signupbox .mainFrom .firstPart .intropage2nd {
+  height: 100%;
+  width: 96%;
+}
+.signpuCon .signupbox .mainFrom .firstPart .intropage2nd .threeinput {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.signpuCon .signupbox .mainFrom .firstPart .intropage2nd .threeinput input {
+  height: 40px;
+  width: 90%;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  padding: 4px;
+}
+.signpuCon .signupbox .mainFrom .firstPart .intropage2nd .gender {
+  width: 100%;
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.signpuCon .signupbox .mainFrom .firstPart .intropage2nd .gender .malefemale {
+  width: 70%;
+  height: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.signpuCon .signupbox .mainFrom .firstPart .intropage2nd .gender .malefemale .male, .signpuCon .signupbox .mainFrom .firstPart .intropage2nd .gender .malefemale .female {
+  height: 50%;
+  width: 23%;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.signpuCon .signupbox .mainFrom .firstPart .intropage2nd .gender button {
+  height: 25%;
+  width: 50%;
+  color: #fff;
+  background: #c528f5;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: 0.4s;
+}
+.signpuCon .signupbox .mainFrom .firstPart .intropage2nd .gender button:hover {
+  background: #038f1a;
+}
+.signpuCon .signupbox .mainFrom .scoundPart {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+}
+.signpuCon .signupbox .mainFrom .scoundPart .intropage1st {
+  height: 100%;
+  width: 96%;
+}
+.signpuCon .signupbox .mainFrom .scoundPart .intropage1st .inp {
+  width: 100%;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.signpuCon .signupbox .mainFrom .scoundPart .intropage1st .inp input {
+  width: 90%;
+  height: 40px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  padding: 5px;
+}
+.signpuCon .signupbox .mainFrom .scoundPart .intropage1st .Ihave {
+  width: 100%;
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.signpuCon .signupbox .mainFrom .scoundPart .intropage1st .Ihave .nextBtn {
+  width: 50%;
+  height: 25%;
+  color: #fff;
+  background: #18b42d;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.signpuCon .signupbox .mainFrom .scoundPart .intropage1st .Ihave .nextBtn:hover {
+  background: #017410;
+}
+.signpuCon .signupbox .mainFrom .scoundPart .intropage1st .Ihave h4 {
+  color: #fdfffd;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.signpuCon .signupbox .mainFrom .scoundPart .intropage1st .Ihave h4 a {
+  text-decoration: none;
+}
+.signpuCon .signupbox .mainFrom .scoundPart .intropage1st .Ihave h4:hover {
+  color: #017410;
+}
+.signpuCon .signupbox .gonext {
+  transform: translateX(-450px);
+}
+@media screen and (max-width: 650px) {
+  .signpuCon .signupbox {
+    max-width: 90%;
+    height: 550px;
+  }
+}
+
+.verifycover {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  background: #8430bd;
+}
+.verifycover .varifybox {
+  height: 450px;
+  width: 400px;
+  background: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: inset 0 0 16px rgba(0, 0, 0, 0.6);
+}
+@media screen and (max-width: 600px) {
+  .verifycover .varifybox {
+    width: 90%;
+  }
+}
+.verifycover .varifybox .varifyHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 45%;
+  width: 100%;
+  flex-direction: column;
+}
+.verifycover .varifybox .varifyHead .logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  width: 100px;
+  background: #6a05bd;
+  border-radius: 50%;
+}
+.verifycover .varifybox .varifyHead .logo .userVlid {
+  height: 60%;
+  width: 60%;
+  color: rgb(255, 255, 255);
+}
+.verifycover .varifybox .varifyHead .text {
+  color: #454546;
+}
+.verifycover .varifybox .infobox {
+  height: 55%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.verifycover .varifybox .infobox .timer {
+  width: 100%;
+  height: 16%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(2, 190, 27);
+}
+.verifycover .varifybox .infobox .out {
+  color: #ff1621;
+}
+.verifycover .varifybox .infobox .inputBox {
+  width: 100%;
+  height: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 0 25px 0 25px;
+}
+.verifycover .varifybox .infobox .inputBox input {
+  width: 50px;
+  height: 45px;
+  border-radius: 5px;
+  border: none;
+  color: #494949;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.7);
+  font-size: 25px;
+  font-weight: 700;
+  text-align: center;
+}
+.verifycover .varifybox .infobox .inputBox input::-webkit-inner-spin-button {
+  display: none;
+}
+.verifycover .varifybox .infobox .inputBox input:focus {
+  outline: 2px solid #552ceb;
+}
+.verifycover .varifybox .infobox #OK input {
+  color: #068301;
+  box-shadow: 0 0 8px #068301;
+}
+.verifycover .varifybox .infobox .Errors {
+  animation: vibrate 0.4s linear forwards;
+}
+.verifycover .varifybox .infobox .Errors input {
+  box-shadow: 0 0 10px rgb(236, 1, 1);
+  color: #e20505;
+}
+@keyframes vibrate {
+  0% {
+    transform: translateX(7px);
+  }
+  10% {
+    transform: translateX(-7px);
+  }
+  20% {
+    transform: translateX(7px);
+  }
+  30% {
+    transform: translateX(-7px);
+  }
+  40% {
+    transform: translateX(5px);
+  }
+  50% {
+    transform: translateX(-7px);
+  }
+  60% {
+    transform: translateX(7px);
+  }
+  70% {
+    transform: translateX(-7px);
+  }
+  80% {
+    transform: translateX(7px);
+  }
+  90% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(5px);
+  }
+}
+.verifycover .varifybox .infobox .submit {
+  width: 100%;
+  height: 25%;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+}
+.verifycover .varifybox .infobox .submit button {
+  height: 70%;
+  width: 40%;
+  color: #fff;
+  background: #552ceb;
+  border-radius: 5px;
+  border: none;
+  font-size: 20px;
+  letter-spacing: 1px;
+  transition: 0.2s ease;
+  cursor: pointer;
+}
+.verifycover .varifybox .infobox .submit button:hover {
+  background: #068301;
+}
+.verifycover .varifybox .infobox .resend {
+  width: 100%;
+  height: 15%;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  color: #17566e;
+  font-weight: 600;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.verifycover .varifybox .infobox .resend:hover {
+  color: #068301;
+}
+
+.messageCon {
+  height: 100vh;
+  width: 100%;
+  display: grid;
+  grid-template: repeat(10, 1fr)/repeat(12, 1fr);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.messageCon .messageBar {
+  grid-row: 1/-1;
+  grid-column: 1/5;
+}
+.messageCon .messageBar .barcoun {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+.messageCon .messageBar .barcoun .sideBar {
+  position: absolute;
+  height: 85vh;
+  width: 300px;
+  top: 100px;
+  left: -300px;
+  z-index: 1;
+  transition: 0.4s;
+}
+.messageCon .messageBar .barcoun .sideBar.showbar {
+  background: rgba(90, 129, 90, 0.4392156863);
+  box-shadow: 0 0px 15px rgba(0, 0, 0, 0.3);
+  transform: translate(300px);
+  filter: blur(2px);
+}
+.messageCon .messageBar .barcoun .barhed {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 70px;
+  width: 100%;
+  padding: 5px;
+}
+.messageCon .messageBar .barcoun .barhed .togglebtn {
+  height: 30px;
+  width: 35px;
+  cursor: pointer;
+}
+.messageCon .messageBar .barcoun .barhed .togglebtn .bar1,
+.messageCon .messageBar .barcoun .barhed .togglebtn .bar2,
+.messageCon .messageBar .barcoun .barhed .togglebtn .bar3 {
+  height: 5px;
+  width: 100%;
+  background: #a557e6;
+  margin-bottom: 5px;
+  border-radius: 3px;
+  transition: 0.5s;
+}
+.messageCon .messageBar .barcoun .barhed .togglebtn.ON .bar1 {
+  transform: translate(0px, 12px) rotate(45deg);
+}
+.messageCon .messageBar .barcoun .barhed .togglebtn.ON .bar2 {
+  transform: translate(30px);
+  opacity: 0;
+}
+.messageCon .messageBar .barcoun .barhed .togglebtn.ON .bar3 {
+  transform: translate(0px, -8px) rotate(-45deg);
+}
+.messageCon .messageBar .barcoun .barhed .searchBox {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  height: 90%;
+  width: 80%;
+}
+.messageCon .messageBar .barcoun .barhed .searchBox input {
+  height: 70%;
+  width: 100%;
+  background: #f1ecec;
+  border: 1px solid #736d79;
+  border-radius: 15px;
+  padding: 10px;
+  font-size: 17px;
+  outline: none;
+  color: #575454;
+}
+.messageCon .messageBar .barcoun .barhed .searchBox input:focus {
+  border: 2px solid #a557e6;
+}
+.messageCon .messageBar .barcoun .allusers {
+  height: 85%;
+  width: 100%;
+  margin-top: 5%;
+  overflow: auto;
+  padding: 5px;
+}
+.messageCon .messageBar .barcoun .allusers .usersBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 72px;
+  width: 100%;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+  background: linear-gradient(55deg, rgb(96, 91, 255) 27%, rgb(183, 87, 228) 96%);
+  border: none;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+.messageCon .messageBar .barcoun .allusers .usersBar .userImg {
+  height: 55px;
+  width: 55px;
+  border: 2px solid #9b8d15;
+  border-radius: 50%;
+  position: relative;
+}
+.messageCon .messageBar .barcoun .allusers .usersBar .userImg img {
+  width: 100%;
+  border-radius: 50%;
+}
+.messageCon .messageBar .barcoun .allusers .usersBar .userImg .acttive {
+  top: 30px;
+  left: 43px;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background: #04a704;
+  position: absolute;
+  border: 2px solid;
+}
+.messageCon .messageBar .barcoun .allusers .usersBar .userdigials {
+  height: 100%;
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.messageCon .messageBar .barcoun .allusers .usersBar .userdigials .Name {
+  height: 100%;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+}
+.messageCon .messageBar .barcoun .allusers .usersBar .userdigials .Name h3 {
+  padding-left: 5px;
+  font-size: 18px;
+  color: #fff;
+}
+.messageCon .messageBar .barcoun .allusers .usersBar .userdigials .Name p {
+  padding-left: 5px;
+  color: #fff;
+  font-size: 14px;
+}
+.messageCon .messageBar .barcoun .allusers .usersBar .userdigials .sendMessage {
+  width: 30%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.messageCon .messageBar .barcoun .allusers .usersBar .userdigials .sendMessage .Tick {
+  color: #fff;
+  font-size: 24px;
+}
+.messageCon .messagePage {
+  background: #ffd1f4;
+  grid-row: 1/-1;
+  grid-column: 5/-1;
+}
+.messageCon .messagePage .PageCon {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+.messageCon .messagePage .PageCon .pageHead {
+  display: flex;
+  height: 85px;
+  width: 100%;
+  background: rgba(21, 6, 226, 0.6588235294);
+  border: none;
+  border-radius: 3px;
+  position: absolute;
+}
+.messageCon .messagePage .PageCon .pageHead .arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 50px;
+  color: #fff;
+  font-size: 30px;
+  cursor: pointer;
+  transition: 0.3s ease-out;
+}
+.messageCon .messagePage .PageCon .pageHead .arrow:hover {
+  color: #921181;
+}
+.messageCon .messagePage .PageCon .pageHead .Imgbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 90px;
+  position: relative;
+}
+.messageCon .messagePage .PageCon .pageHead .Imgbox img {
+  width: 60px;
+  border: 2px solid #b5c908;
+  border-radius: 50%;
+}
+.messageCon .messagePage .PageCon .pageHead .Imgbox .acctive {
+  height: 14px;
+  width: 14px;
+  background: #06ac00;
+  border: 1px solid;
+  border-radius: 50%;
+  position: absolute;
+  top: 50px;
+  left: 60px;
+}
+.messageCon .messagePage .PageCon .pageHead .otherOptin {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  width: 80%;
+}
+.messageCon .messagePage .PageCon .pageHead .otherOptin .Names {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  height: 100%;
+  width: 50%;
+  flex-direction: column;
+}
+.messageCon .messagePage .PageCon .pageHead .otherOptin .Names h3 {
+  color: #fff;
+  font-size: 18px;
+}
+.messageCon .messagePage .PageCon .pageHead .otherOptin .Names p {
+  color: #fff;
+  font-size: 14px;
+}
+.messageCon .messagePage .PageCon .pageHead .otherOptin .Icons {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 100%;
+  width: 50%;
+  font-size: 23px;
+  color: #ebe8e8;
+  cursor: pointer;
+}
+.messageCon .messagePage .PageCon .mainMsgPag {
+  height: 94%;
+  width: 100%;
+  background-image: url("../../../public/photo/lightbg.jpg");
+  -o-object-fit: cover;
+     object-fit: cover;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  overflow: auto;
+}
+.messageCon .messagePage .PageCon .mainMsgPag .pagecountuner {
+  height: auto;
+  width: 100%;
+}
+.messageCon .messagePage .PageCon .mainMsgPag .pagecountuner .userPro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 350px;
+  width: 100%;
+  flex-direction: column;
+}
+.messageCon .messagePage .PageCon .mainMsgPag .pagecountuner .userPro .IMG {
+  height: 100px;
+  width: 100px;
+}
+.messageCon .messagePage .PageCon .mainMsgPag .pagecountuner .userPro .IMG img {
+  width: 100px;
+  border-radius: 50%;
+}
+.messageCon .messagePage .PageCon .mainMsgPag .pagecountuner .userPro .Ditils {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 30%;
+  width: 60%;
+  padding: 5px;
+  flex-direction: column;
+}
+.messageCon .messagePage .PageCon .mainMsgPag .pagecountuner .userPro .Ditils .name {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 50%;
+  width: 100%;
+  flex-direction: column;
+}
+.messageCon .messagePage .PageCon .mainMsgPag .pagecountuner .userPro .Ditils .name h3 {
+  color: #1a1818;
+  font-size: 20px;
+}
+.messageCon .messagePage .PageCon .mainMsgPag .pagecountuner .userPro .Ditils .name p {
+  color: #221d1d;
+  font-size: 14px;
+}
+.messageCon .messagePage .PageCon .mainMsgPag .pagecountuner .userPro .Ditils .acctives {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  background: #03a103;
+}
+.messageCon .messagePage .PageCon .mainMsgPag .pagecountuner .userPro .Ditils .acctives .mainAc {
+  position: absolute;
+  animation: circlesflow 2s linear infinite;
+  height: 12px;
+  width: 12px;
+  border: 1px solid #27da03;
+  border-radius: 50%;
+}
+@keyframes circlesflow {
+  0% {
+    transform: scale(1.2);
+  }
+  20% {
+    transform: scale(1.5);
+  }
+  40% {
+    opacity: 0.5;
+    transform: scale(2);
+  }
+  100% {
+    opacity: 0.2;
+    transform: scale(2.5);
+  }
+}
+.messageCon .messagePage .PageCon .mainMsgPag .pagecountuner .sendermsg {
+  height: auto;
+  max-width: 50%;
+}
+.messageCon .messagePage .PageCon .mainMsgPag .pagecountuner .sendermsg .mainmassage {
+  height: 100%;
+  width: auto;
+  display: flex;
+}
+.messageCon .messagePage .PageCon .mainMsgPag .pagecountuner .sendermsg .mainmassage .img {
+  width: 50px;
+  height: 100%;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+}
+.messageCon .messagePage .PageCon .mainMsgPag .pagecountuner .sendermsg .mainmassage .img img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.messageCon .messagePage .PageCon .mainMsgPag .pagecountuner .sendermsg .mainmassage .msgbox {
+  margin: 10px 0 0 10px;
+  width: 80%;
+  height: 90%;
+  padding: 3px;
+  border-radius: 0px 10px 10px 10px;
+  background: #e7e1e1;
+}
+.messageCon .messagePage .PageCon .mainMsgPag .pagecountuner .sendermsg .mainmassage .msgbox img {
+  width: 100px;
+  height: 100px;
+}
+.messageCon .messagePage .PageCon .mainMsgPag .pagecountuner .resivermsg {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: end;
+}
+.messageCon .messagePage .PageCon .mainMsgPag .pagecountuner .resivermsg .mainmassage {
+  display: flex;
+  flex-direction: row-reverse;
+  max-width: 50%;
+  min-width: 40%;
+  height: 300px;
+}
+.messageCon .messagePage .PageCon .mainMsgPag .pagecountuner .resivermsg .mainmassage .img {
+  width: 50px;
+  height: 100%;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+}
+.messageCon .messagePage .PageCon .mainMsgPag .pagecountuner .resivermsg .mainmassage .img img {
+  height: 40px;
+  border-radius: 50%;
+}
+.messageCon .messagePage .PageCon .mainMsgPag .pagecountuner .resivermsg .mainmassage .msgbox {
+  height: 90%;
+  width: 89%;
+  background: #e7e1e1;
+  align-items: end;
+  justify-content: start;
+  flex-direction: column;
+  padding: 5px;
+  margin: 5px 10px 0 0;
+  border-radius: 10px 0 10px 10px;
+  display: flex;
+}
+.messageCon .messagePage .PageCon .mainMsgPag .pagecountuner .resivermsg .mainmassage .msgbox p {
+  float: right;
+}
+.messageCon .messagePage .PageCon .mainMsgPag .pagecountuner .resivermsg .mainmassage .msgbox img {
+  float: right;
+  width: 100px;
+  height: 100px;
+}
+.messageCon .messagePage .PageCon .SenderOption {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  height: 6%;
+  width: 100%;
+}
+.messageCon .messagePage .PageCon .SenderOption input {
+  height: 100%;
+  width: 85%;
+  flex-shrink: 2;
+  font-size: 17px;
+  padding-left: 10px;
+  border: 1px solid rgb(196, 168, 168);
+  border-radius: 0 0 0 5px;
+  outline: none;
+}
+.messageCon .messagePage .PageCon .SenderOption input:focus {
+  border: 1px solid #3311f3;
+}
+.messageCon .messagePage .PageCon .SenderOption .icons {
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  height: 100%;
+  width: 150px;
+}
+.messageCon .messagePage .PageCon .SenderOption .icons .microphone, .messageCon .messagePage .PageCon .SenderOption .icons .attichmant, .messageCon .messagePage .PageCon .SenderOption .icons button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 33.3%;
+  flex-basis: 150px;
+  position: relative;
+  border: none;
+  color: #fff;
+  font-size: 25px;
+  cursor: pointer;
+  background: #4b2cfa;
+  transition: 0.2s ease;
+}
+.messageCon .messagePage .PageCon .SenderOption .icons .microphone:hover, .messageCon .messagePage .PageCon .SenderOption .icons .attichmant:hover, .messageCon .messagePage .PageCon .SenderOption .icons button:hover {
+  color: #16f50e;
+  filter: blur(0.5px);
+}
+.messageCon .messagePage .PageCon .SenderOption .icons .microphone input[type=file], .messageCon .messagePage .PageCon .SenderOption .icons .attichmant input[type=file], .messageCon .messagePage .PageCon .SenderOption .icons button input[type=file] {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+}
+.messageCon .messagePage .PageCon .SenderOption .icons button {
+  color: #fff;
+  background: #4b2cfa;
+}
+@media screen and (max-width: 800px) {
+  .messageCon .messageBar {
+    grid-column: 1/-1;
+  }
+  .messageCon .messagePage {
+    display: none;
+  }
+}/*# sourceMappingURL=main.css.map */

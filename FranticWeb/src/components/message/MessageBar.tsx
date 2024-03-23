@@ -1,9 +1,12 @@
 import photo from "../../assets/img/habib.png";
 import { BiCheckDouble } from "react-icons/bi";
 import { useState } from "react";
-
+import { AppContex } from "../../lib/Reducher";
+import { useContext } from "react";
 const MessageBar = () => {
+  const {state:{msgpag},dispach } = useContext(AppContex);
   const [bar, setBar] = useState(false);
+  //console.log(state.msgpag);
   return (
       <div className="barcoun">
           <div className={bar ? "sideBar showbar" : "sideBar"}>
@@ -25,7 +28,7 @@ const MessageBar = () => {
       <div className="allusers">
               {/* User bar */}
               
-        <div className="usersBar">
+        <div onClick={()=>{dispach({type:"MSGPAGE",value:!msgpag})}} className="usersBar">
                   <div className="userImg">
                       <div className="acttive"></div>
             <img src={photo} alt="" />

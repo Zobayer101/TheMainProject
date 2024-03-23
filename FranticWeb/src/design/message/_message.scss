@@ -25,6 +25,14 @@
         .messagePage{
             display: none;
         }
+        .messageBar.showmsg{
+            display: none;
+        }
+        .messagePage.showmsg{
+            // display: none;
+            display: block;
+            grid-column: 1/-1 ;
+        }
     }
 }
 

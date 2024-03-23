@@ -45,7 +45,7 @@ const Signup = () => {
                 <div className="inp">
                   <input type="text" placeholder="First name" />
                   <input type="text" placeholder="Last name" />
-                  <input type="text" placeholder="Email@" />
+                  <input type="email" placeholder="@ email" />
                   <input type="password" placeholder="Password" />
                 </div>
                 <div className="Ihave">
