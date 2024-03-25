@@ -3,7 +3,7 @@
 .verifycover{
     user-select: none;
     @include DwithL(100vh,100%,center,center);
-    background: #8430bd;
+    background: rgb(125, 20, 245);
     .varifybox{
         @include Lingth(450px,400px);
         background: #fff;

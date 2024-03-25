@@ -11,5 +11,5 @@ const Inputhandel = (
     [propaty]: value,
   }));
 };
-
+ 
 export default Inputhandel;

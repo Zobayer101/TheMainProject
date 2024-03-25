@@ -1,6 +1,6 @@
 .Login {
   user-select: none;
-  background: #6026e9;
+  background: rgb(125, 20, 245);
   @include Lingth(100vh, 100%);
   display: flex;
   .logincoun {
@@ -19,14 +19,59 @@
       .loginfild {
         @include DwithL(100%, 100%, center, space-evenly);
         flex-direction: column;
-        input {
-          outline: none;
+        .email{
+          position: relative;
           @include Lingth(40px, 90%);
-          //border-radius: 10px;
-          border: none;
-          border-bottom: 2px solid #5d665f;
-          font-size: 17px;
-          padding-left: 10px;
+          input {
+            outline: none;
+            @include Lingth(100%, 100%);
+            
+            border: none;
+            border-bottom: 2px solid #1229fd;
+            font-size: 17px;
+            padding-left: 10px;
+          }
+          p{
+            display: none;
+          }
+        }
+        .email.err{
+          input{
+            color: red;
+            border-bottom: 2px solid #fd1212;
+          }
+          p{
+            display: block;
+            color: #ff0000;
+          }
+
+        }
+        .password{
+          position: relative;
+          @include Lingth(40px, 90%);
+         
+          input {
+            outline: none;
+            @include Lingth(100%, 100%);
+            //border-radius: 10px;
+            border: none;
+            border-bottom: 2px solid #122afd;
+            font-size: 17px;
+            padding-left: 10px;
+          }
+          p{
+            display: none;
+          }
+
+        }
+        .password.err{
+          input{
+            color: #ff0000;
+            border-bottom: 2px solid #ff0000;
+          }
+          p{display: block;
+            color: #ff0000;
+          }
         }
         .logbtn {
           @include Lingth(42px, 90%);
@@ -36,6 +81,11 @@
           color: #4e0ffa;
           font-size: 18px;
           cursor: not-allowed;
+        }
+        .logbtn.acctive{
+          cursor: pointer;
+          color: #fff;
+          background: #4e0ffa;
         }
         .logbtn.valid {
           cursor: pointer;
@@ -79,7 +129,7 @@
         }
       }
     }
-  }
+  } 
   .logininfo {
     @include DwithL(100%, 45%, center, end);
     .texts {
