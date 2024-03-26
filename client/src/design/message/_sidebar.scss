@@ -1,0 +1,17 @@
+
+.sideBar{
+    position: absolute;
+    height: 85vh;
+    width: 300px;
+    top: 100px;
+    left: -300px;
+    z-index: 1;
+    transition: .4s;
+    
+}
+.sideBar.showbar{
+    background: #5a815a70;
+ box-shadow: 0 0px 15px rgba(0,0,0,0.3) ;
+ transform: translate(300px);
+ filter: blur(2px);
+}

@@ -1,0 +1,24 @@
+
+
+
+.notCount{
+    background: var(--white-800);
+    @include DwithL(100vh,100%,center,center);
+    user-select: none;
+    h2{
+        font-size: 10em;
+        color: var(--white-300);
+    }
+    .BUT{
+        @include DwithL(100px,100%,center,center);
+      button{
+        color: var(--white-800);
+        border: none;
+        height: 30px;
+        width: 60%;
+        border-radius: 5px;
+        background: var(--white-300);
+        cursor: pointer;
+      }
+    }
+}

@@ -1,0 +1,41 @@
+
+
+.Ditals {
+  @include Lingth(auto, 100%);
+  margin-top: 10px;
+display: flex;
+
+.ContU{
+ width: 48%;
+ height: 100%;
+  // Bio here
+
+  @import "../profile/Bio"; 
+  //Myphto gallary
+  @import "../profile/Myphoto";
+  
+  //myfirends photo
+  @import "../profile/myfirendphoto";
+  
+  //myFooter
+  @import "../profile/Footer";
+}
+//profile all post 
+.outerAll{
+width: 52%;
+height: 100%;
+  @import "../profile/allprofilepost";
+}
+
+@media screen and (max-width:800px){
+  flex-direction: column;
+  .ContU{
+    width: 100%;
+    align-items: center;
+    
+  }
+  .outerAll{
+    width: 100%;
+  }
+}
+}

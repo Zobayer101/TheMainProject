@@ -1,0 +1,112 @@
+//parpal-color variable
+// :root {
+//   --parpal-100: #f6ecff;
+//   --parpal-200: #e7d6fb;
+//   --parpal-300: #caabf1;
+//   --parpal-400: #ac7ce8;
+//   --parpal-500: #9354e0;
+//   --parpal-600: #833cdb;
+//   --parpal-700: #7b2eda;
+//   --parpal-800: #6921c2;
+//   --parpal-900: #5d1cae;
+//   --parpal-1000: #501599;
+//   //gray color
+//   --gray-100: #f3f3fe;
+//   --gray-200: #e4e6ed;
+//   --gray-300: #c8cad3;
+//   --gray-400: #a9adb9;
+//   --gray-500: #9093a4;
+//   --gray-600: #808496;
+//   --gray-700: #767c91;
+//   --gray-800: #656a7e;
+//   --gray-900: #585e72;
+//   --gray-1000: #4a5167;
+
+//   // magenta color
+
+//   --magenta-100: #ffe9f6;
+//   --magenta-200: #ffd1e6;
+//   --magenta-300: #faa1c9;
+//   --magenta-400: #f66eab;
+//   --magenta-500: #f24391;
+//   --magenta-600: #f02881;
+//   --magenta-700: #f01879;
+//   --magenta-800: #d60867;
+//   --magenta-900: #c0005c;
+//   --magenta-1000: #a9004f;
+
+//   //white color
+
+//   --white-100: #f5f5f5;
+//   --white-200: #e7e7e7;
+//   --white-300: #cdcdcd;
+//   --white-400: #b2b2b2;
+//   --white-500: #777676;
+//   --white-600: #4e4d4d;
+//   --white-700: #474343;
+//   --white-800: #302e2e;
+//   --white-900: #181717;
+//   --white-1000: #0c0c0c;
+
+//   --white: --gray-100;
+//   --drack: --gray-1000;
+// }
+.Light {
+  //white
+  --white-100: #f5f5f5;
+  --white-200: #e7e7e7;
+  --white-300: #f0efef;
+  --white-400: #b2b2b2;
+  --white-500: #777676;
+  --white-600: #4e4d4d;
+  --white-700: #474343;
+  --white-800: #302e2e;
+  --white-900: #181717;
+  --white-1000: #0c0c0c;
+  //parpal
+  --parpal-100: #f6ecff;
+  --parpal-200: #e7d6fb;
+  --parpal-300: #caabf1;
+  --parpal-400: #ac7ce8;
+  --parpal-500: #9354e0;
+  --parpal-600: #833cdb;
+  --parpal-700: #7b2eda;
+  --parpal-800: #6921c2;
+  --parpal-900: #5d1cae;
+  --parpal-1000: #501599;
+  //variant 
+  --bgparpal:rgba(235, 224, 247, 0.911);
+  --bgray:rgb(233, 245, 238);
+  --bggreen:rgb(212, 214, 213);
+
+
+  
+}
+.Drack {
+  --parpal-1000: #f6ecff;
+  --parpal-900: #e7d6fb;
+  --parpal-800: #caabf1;
+  --parpal-700: #ac7ce8;
+  --parpal-600: #9354e0;
+  --parpal-500: #833cdb;
+  --parpal-400: #7b2eda;
+  --parpal-300: #6921c2;
+  --parpal-200: #5d1cae;
+  --parpal-100: #501599;
+  //drack
+
+  --white-1000: #f5f5f5;
+  --white-900: #e7e7e7;
+  --white-800: #cdcdcd;
+  --white-700: #b2b2b2;
+  --white-600: #777676;
+  --white-500: #4e4d4d;
+  --white-400: #474343;
+  --white-300: #302e2e;
+  --white-200: #181717;
+  --white-100: #0c0c0c;
+  //variant 
+  --bgparpal:rgba(62, 60, 65, 0.911);
+  --bgray:rgb(46, 49, 48);
+  --bggreen:rgb(54, 59, 56);
+}

@@ -1,0 +1,170 @@
+
+@import "../mixins";
+
+.profileCon {
+  overflow: auto;
+  @include Lingth(auto, 100%);
+  position: relative;
+
+  
+  animation-duration: 3s;
+  animation: backgroundwhite 40s linear infinite;
+  padding: 10px;
+  .CoverPhoto {
+    @include Lingth(100vh, 100%);
+    position: relative;
+    .cover {
+      @include Lingth(50%, 100%);
+      position: relative;
+      border-radius: 5px;
+      box-shadow: 1px 5px 13px;
+      img {
+        border-radius: 5px;
+        object-fit: cover;
+        @include Lingth(100%, 100%);
+      }
+      .CamIcon {
+        position: absolute;
+        @include Lingth(30px, 160px);
+        border-radius: 5px;
+        @include Display(center, start);
+        padding: 5px;
+        background: var(--parpal-100);
+        color: var(--parpal-900);
+        right: 20px;
+        transform: translateY(-50px);
+        cursor: pointer;
+        z-index: 1;
+        .cam {
+          font-size: 19px;
+          margin: 2px;
+        }
+        p {
+          font-size: 14px;
+        }
+        @media screen and (max-width: 800px) {
+          position: absolute;
+          @include Lingth(30px, 50px);
+          @include Display(center, center);
+          p {
+            display: none;
+          }
+        }
+      }
+    }
+    .profileP {
+      @include Lingth(45%, 100%);
+      display: flex;
+      padding: 10px;
+      .photo {
+        position: relative;
+        cursor: pointer;
+        
+        img {
+          border: none;
+          @include Lingth(150px, 150px);
+          object-fit: fill;
+          border-radius: 50%;
+          box-shadow: 0 1px 3px;
+          transform: rotate(15deg) scale(.95);
+          transition: .4s;
+          &:hover{
+            transform: rotate(0) scale(1);
+          }
+         
+        }
+      }
+      .flowlers {
+        padding: 10px;
+        @include Display(start, center);
+        @include Lingth(100%, 35%);
+        flex-direction: column;
+        .names {
+          @include Lingth(50%, 100%);
+          display: flex;
+          align-items: center;
+          h3 {
+            font-size: 22px;
+            color: var(--white-900);
+          }
+        }
+        .flow {
+          @include Display(center, start);
+          @include Lingth(auto, 100%);
+
+          h4 {
+            font-size: 17px;
+            margin-right: 10px;
+            color: var(--white-900);
+          }
+          p {
+            font-size: 16px;
+            color: var(--white-900);
+          }
+        }
+      } 
+      .TowButtton {
+        @include Lingth(100%, 100%);
+        @include Display(center, end);
+
+        .addstory {
+          @include Lingth(35px, 100px);
+          @include Display(center, space-evenly);
+          margin-right: 10px;
+          background: var(--parpal-100);
+          color: var(--parpal-900);
+          border-radius: 4px;
+          border: none;
+          font-size: 15px;
+        }
+        .editProfile {
+          @include Lingth(35px, 140px);
+
+          background: var(--white-400);
+          color: var(--white-1000);
+          border: none;
+          border-radius: 4px;
+          font-size: 15px;
+          @include Display(center, space-evenly);
+        }
+      }
+      @media screen and (max-width: 800px) {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        transform: translateY(-50px);
+        .names {
+          justify-content: center;
+          height: 150px;
+          margin-bottom: 10px;
+        }
+        .flow {
+          justify-content: center !important;
+          height: 40px;
+        }
+        .TowButtton {
+          flex-direction: column;
+
+          height: 200px;
+          width: 100%;
+          .addstory {
+            margin-bottom: 20px;
+          }
+        }
+      }
+    }
+  }
+  //background animation mixin;
+  @include animation(
+    backgroundwhite,
+    var(--bgparpal),
+    var(--bgray),
+    var(--bggreen)
+  );
+  //others next page 
+  @import "../profile/subprofile";
+   @media screen and (max-width:800px){
+      justify-content: center;
+    }
+}

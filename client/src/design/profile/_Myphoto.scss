@@ -1,0 +1,51 @@
+
+
+.myphoto {
+    //background: #9cb9da;
+    @include Lingth(600px, 100%);
+  
+    padding: 10px;
+    border: none;
+    @include Display(center, end);
+    .myphotogallary {
+      border-radius: 10px;
+      background: var(--white-400);
+      @include Lingth(95%, 90%);
+      flex-basis: 500px;
+      .photobutton {
+        @include Lingth(55px, 100%);
+        // background: #faefef;
+        border-radius: 10px 10px 0 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        h4 {
+          color: var(--white-800);
+          font-size: 20px;
+        }
+        p {
+          color: var(--white-800);
+          font-size: 16px;
+        }
+      }
+      .Pg {
+        @include Lingth(87%, 100%);
+        // background: #252f33;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        .allphotos {
+          img {
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            margin-left: 5px;
+            width: 32%;
+            height: auto;
+          }
+        }
+      }
+    }
+     @media screen and (max-width:800px){
+      justify-content: center;
+    }
+  }

@@ -1,0 +1,38 @@
+
+
+.messageCon{
+    //background: #fff;
+    height: 100vh;
+    width: 100%;
+    display: grid;
+    grid-template: repeat(10,1fr) / repeat(12,1fr);
+    user-select: none;
+    .messageBar{
+        grid-row: 1/-1;
+        grid-column: 1/5;
+        @import "./messagebar";
+    }
+    .messagePage{
+        background: #ffd1f4;
+        grid-row: 1/-1;
+        grid-column: 5/-1;
+        @import "./messagepage";
+    }
+    @media screen and (max-width:800px){
+        .messageBar{
+            grid-column: 1/-1;
+        }
+        .messagePage{
+            display: none;
+        }
+        .messageBar.showmsg{
+            display: none;
+        }
+        .messagePage.showmsg{
+            // display: none;
+            display: block;
+            grid-column: 1/-1 ;
+        }
+    }
+}
+
