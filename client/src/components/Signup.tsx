@@ -1,7 +1,9 @@
 import { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AppContex } from "../lib/Reducher";
 import Inputhandel from "../lib/InputHandel";
+import PostData from "../lib/Post";
+import { BsInfoLg } from "react-icons/bs";
 
 const Signup = () => {
   const [formdata, setFormdata] = useState({
@@ -26,7 +28,9 @@ const Signup = () => {
     OK: "",
     changebtn: "",
     signpunow: "",
+    showSuccess: "",
   });
+  const navigate = useNavigate();
   const { fname, lname, email, password, Cpass, date, city, gendar } = formdata;
   const {
     fnameErr,
@@ -39,6 +43,7 @@ const Signup = () => {
     OK,
     changebtn,
     signpunow,
+    showSuccess,
   } = errors;
   const {
     dispach,
@@ -114,8 +119,16 @@ const Signup = () => {
     OK,
   ]);
 
+  useEffect(() => {
+    if (showSuccess == "show") {
+      setTimeout(() => {
+        navigate("/profile");
+      }, 3000);
+    }
+  }, [showSuccess, navigate]);
+
   //previus button with signup button
-  const PreviusButton = () => {
+  const PreviusButton = async () => {
     if (!date) {
       setErrors((pre) => ({ ...pre, dateErr: "err" }));
     }
@@ -123,7 +136,14 @@ const Signup = () => {
       setErrors((pre) => ({ ...pre, gendarErr: "err" }));
     }
     if (signpunow == "signup") {
-      alert("post all data");
+      const url: string = "http://localhost:3300/route/api/user/signup";
+      const data = await PostData(url, formdata);
+      if (data) {
+        console.log(data);
+        setErrors((pre) => ({ ...pre, showSuccess: "show" }));
+        alert("post all data");
+        localStorage.setItem(JSON.stringify(data));
+      }
     } else {
       dispach({ type: "NEXTPAGE", value: false });
     }
@@ -168,6 +188,21 @@ const Signup = () => {
   return (
     <div>
       <div className="signpuCon">
+        <div
+          className={showSuccess == "show" ? "showSuccess SHOW" : "showSuccess"}
+        >
+          <div className="mainBox">
+            <div className="had">
+              <div className="icon">
+                <BsInfoLg className="Icon" />
+              </div>
+              <div className="test">
+                <p>account created !</p>
+              </div>
+            </div>
+            <div className="animationG"></div>
+          </div>
+        </div>
         <div className="signupbox">
           <div className={nextpage ? "mainFrom " : "mainFrom gonext"}>
             <div className="firstPart">

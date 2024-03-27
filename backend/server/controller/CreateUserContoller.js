@@ -2,13 +2,15 @@
 const UserDB = require("../model/UserModel");
 const bcrypt = require("bcrypt");
 const TokenGenara = require("../middleware/TokenGenarator");
+const mailSend = require("../service/MailGenarator");
 
 //signup controller
 exports.signupUser = async (req, res) => {
     try {
         const { fname, lname, email, password, date, city, geander } = req.body;
         console.log(req.body);
-        let otp = Math.round(Math.random() * (90000 + 10000) - 1);
+        //genarate otp
+        let otp = Math.round((Math.random() * 90000 )+ 10000-1);
         const hashpassword = await bcrypt.hash(password, 10);
         const user = new UserDB({
             fname: fname,
@@ -22,8 +24,9 @@ exports.signupUser = async (req, res) => {
             Statusx:"inactive"
         })
         let data = await user.save(user);
+        //send otp 
+        mailSend(email, otp);
         
-       
         res.status(200).json({data:{ID:data._id,email:data.email}})
     } catch (error) {
         res.status(409).json({ msg: error.message });

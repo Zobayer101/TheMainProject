@@ -8,6 +8,7 @@ const bodyParser = require("body-parser");
 const route = require("./server/router/routes");
 const DBconnect = require("./server/database/DBconnection");
 
+
 const app = express();
 dotenv.config();
 const PORT = process.env.PORT || 8800;
@@ -19,6 +20,7 @@ app.use("/route", route);
 
 //DB connection
 DBconnect();
+
 //error handeller
 app.use((err, req, res, next) => {
   if (err) {

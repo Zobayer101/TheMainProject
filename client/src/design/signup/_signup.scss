@@ -3,6 +3,8 @@
   background: rgb(125, 20, 245);
   user-select: none;
   flex-direction: column;
+  position: relative;
+
   .signupbox {
     @include Lingth(550px, 450px);
     background: #fff;
@@ -176,5 +178,128 @@
       //right: 0;
       transform: translateX(-51%);
     }
+  }
+
+  .showSuccess {
+    @include Lingth(100vh, 100%);
+    display: none;
+    background: #6211f8;
+    position: absolute;
+    z-index: 1;
+
+    .mainBox {
+      width: 350px;
+      height: 300px;
+      animation: Likecss 3s linear forwards;
+      border-radius: 4px;
+      transform: translate(0, -250px) scale(0.5);
+      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.7);
+      .had {
+        @include Lingth(20%, 100%);
+        border-radius: 4px 4px 0 0;
+
+        display: flex;
+        .icon {
+          @include DwithL(100%, 25%, center, center);
+          border-right: 2px solid #ffffff;
+          background: #06b1db;
+          border-radius: 4px 0 0 0px;
+          .Icon {
+            color: #fff;
+            font-weight: 700;
+            font-size: 35px;
+            background: #009200;
+            border-radius: 50%;
+            box-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
+          }
+        }
+
+        .test {
+          @include DwithL(100%, 75%, center, center);
+
+          background: #02ca45;
+          border-radius: 0 4px 0px 0;
+          p {
+            color: #fff;
+            font-weight: 500;
+            font-size: 20px;
+          }
+        }
+        .animation {
+          width: 100%;
+          height: 80%;
+        }
+      }
+      .animationG {
+        width: 100%;
+        height: 80%;
+
+        border-radius: 0 0 4px 4px;
+        animation: showimg 3s linear forwards;
+      }
+      @keyframes showimg {
+        0% {
+          background: #fff;
+        }
+        10% {
+        }
+        20% {
+        }
+        30% {
+          opacity: 0;
+          //background: url("../../../public/images/GIF/Success.gif");
+        }
+        90% {
+          background: url("../../../public/images/GIF/Success.gif");
+          background-position: center;
+          object-fit: cover;
+          opacity: 1;
+        }
+        100% {
+          background: #fff;
+        }
+      }
+    }
+    @keyframes Likecss {
+      0% {
+        transform: translateY(-210px) scale(0.5);
+        background: #fff;
+      }
+      10% {
+        transform: translateY(-150px) scale(0.6);
+      }
+      20% {
+        transform: translateY(-80px) scale(0.7);
+      }
+      30% {
+        transform: translateY(20px) scale(0.8);
+      }
+      40% {
+        transform: translateY(80px) scale(1);
+      }
+      90% {
+        transform: translateY(80px) scale(1);
+      }
+      // 70%{
+      //   transform: translateY(80px) scale(1);
+
+      // }80%{
+      //   transform: translateY(80px) scale(1);
+
+      // }90%{
+      //   transform: translateY(80px) scale(1);
+
+      // }
+      100% {
+        background: #fff;
+        transform: translateY(-250px) scale(0.5);
+      }
+    }
+  }
+  .showSuccess.SHOW {
+    display: block;
+    display: flex;
+    align-items: start;
+    justify-content: center;
   }
 }
