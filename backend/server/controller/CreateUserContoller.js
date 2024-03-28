@@ -8,7 +8,7 @@ const mailSend = require("../service/MailGenarator");
 exports.signupUser = async (req, res) => {
     try {
         const { fname, lname, email, password, date, city, geander } = req.body;
-        console.log(req.body);
+        
         //genarate otp
         let otp = Math.round((Math.random() * 90000 )+ 10000-1);
         const hashpassword = await bcrypt.hash(password, 10);
@@ -58,20 +58,17 @@ exports.loginUser = async (req, res) => {
 //OTP verification
 exports.OTPviryfy = async (req, res) => {
     try {
-        const { ID, OTP } = req.body;
+        const { ID, otp:OTP } = req.body;
         const otp = await UserDB.findOne({ _id: ID });
-        
-        if (otp&&OTP) {
-            if (otp.OTP == OTP) {
+        if (otp.OTP == OTP) {
+           
                 const token = TokenGenara(otp._id, otp.fname);
                 await UserDB.updateOne({ _id: otp._id }, { $set: { OTP: "", Statusx: "acctive" } });
-                res.status(200).json({ token,ok:"" });
-            } else {
-                
-                res.status(403).json({msg:"OTP is worng !"})
-            }
+                res.status(200).json({ token});
+          
         } else {
-            res.status(403).json({msg:"somthing want worng !"})
+            res.status(403).json({msg:"OTP is worng !"})
+            //res.status(403).json({msg:"somthing want worng !"})
         }
     } catch (error) {
         res.status(409).json({ msg: error.message });

@@ -1,4 +1,4 @@
-const PostData = async (url: string, data: object) => {
+const PostData = async (url: string, data: object|number) => {
   try {
     const response = await fetch(url, {
       method: "POST",

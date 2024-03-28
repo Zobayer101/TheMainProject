@@ -29,7 +29,9 @@ const Signup = () => {
     changebtn: "",
     signpunow: "",
     showSuccess: "",
+    localstor: "",
   });
+  
   const navigate = useNavigate();
   const { fname, lname, email, password, Cpass, date, city, gendar } = formdata;
   const {
@@ -44,6 +46,7 @@ const Signup = () => {
     changebtn,
     signpunow,
     showSuccess,
+    localstor,
   } = errors;
   const {
     dispach,
@@ -121,11 +124,13 @@ const Signup = () => {
 
   useEffect(() => {
     if (showSuccess == "show") {
+      localStorage.setItem("userDitials", localstor);
       setTimeout(() => {
-        navigate("/profile");
+        navigate("/verify");
       }, 3000);
+
     }
-  }, [showSuccess, navigate]);
+  }, [showSuccess, navigate, localstor]);
 
   //previus button with signup button
   const PreviusButton = async () => {
@@ -138,12 +143,17 @@ const Signup = () => {
     if (signpunow == "signup") {
       const url: string = "http://localhost:3300/route/api/user/signup";
       const data = await PostData(url, formdata);
-      if (data) {
-        console.log(data);
-        setErrors((pre) => ({ ...pre, showSuccess: "show" }));
-        alert("post all data");
-        localStorage.setItem(JSON.stringify(data));
-      }
+      if (data.data) {
+        console.log(data.data);
+        setErrors((pre) => ({
+          ...pre,
+          showSuccess: "show",
+          localstor:JSON.stringify(data.data),
+        }))
+          ;
+      }else{
+        alert(JSON.stringify(data.msg));
+        }
     } else {
       dispach({ type: "NEXTPAGE", value: false });
     }
@@ -200,7 +210,11 @@ const Signup = () => {
                 <p>account created !</p>
               </div>
             </div>
-            <div className="animationG"></div>
+            <div className="animationG">
+              <div className="circles">
+                <div className="innerShad"></div>
+              </div>
+            </div>
           </div>
         </div>
         <div className="signupbox">

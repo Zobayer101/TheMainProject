@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { IoShieldCheckmark } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
+import PostData from "../lib/Post";
 
 const Verify = () => {
-  const [err, setErr] = useState({ OK: "",enable:"" });
+  const [err, setErr] = useState({ OK: "", enable: "" });
   const [counter, setCounter] = useState(100);
   const [digit, setDigit] = useState({
     num1: "",
@@ -11,7 +13,7 @@ const Verify = () => {
     num4: "",
     num5: "",
   });
-  
+  const Navigate = useNavigate();
   const { num1, num2, num3, num4, num5 } = digit;
   const ref1 = useRef<HTMLInputElement>(null);
   const ref2 = useRef<HTMLInputElement>(null);
@@ -20,7 +22,11 @@ const Verify = () => {
   const ref5 = useRef<HTMLInputElement>(null);
   useEffect(() => {
     const { num1, num2, num3, num4, num5 } = digit;
+setErr((pre) => ({
+  ...pre,
 
+  OK: "",
+}));
     if (!num1) {
       !num2 && !ref2.current?.hasAttribute("disabled")
         ? ref2.current?.setAttribute("disabled", "")
@@ -47,23 +53,60 @@ const Verify = () => {
     }
     if (num1 && num2 && num3 && num4 && num5) {
       //alert('ok')
+      const otp: number = Number(Object.values(digit).join(""));
+      const url: string = "http://localhost:3300/route/api/otp/user/verify";
+      (async () => {
+        const store = localStorage.getItem("userDitials");
+        if (!store) {
+          console.log("goto signup");
+        } else {
+          const { ID } = JSON.parse(store);
+
+          const data = await PostData(url, { ID, otp });
+          if (!data.token) {
+            setErr((pre) => ({
+              ...pre,
+
+              OK: "error",
+            }));
+            //alert(JSON.stringify(data.msg));
+          } else {
+            localStorage.setItem('token', JSON.stringify(data.token));
+            console.log(data.token);
+            setErr((pre) => ({
+              ...pre,
+  
+              OK: "OK",
+            }));
+            
+          }
+        }
+      })();
+
       setErr((pre) => ({
         ...pre,
-        OK: "error",
-        enable:"enable"
+
+        enable: "enable",
       }));
     }
   }, [setErr, digit]);
-    useEffect(() => {
-        
-        const timer: number = setInterval(() => {
-            setCounter((pre) => pre - 1)
-        }, 1000);
-        if (counter < 1) clearInterval(timer);
-        return () => {
-            clearInterval(timer);
-        }
-    },[setCounter,counter])
+  useEffect(() => {
+      if (err.OK == "OK") {
+        setTimeout(() => {
+          Navigate("/profile");
+        }, 2000);
+      }
+    const timer: number = setInterval(() => {
+      setCounter((pre) => pre - 1);
+    }, 1000);
+    if (counter < 1) {
+      clearInterval(timer)
+    }
+  
+    return () => {
+      clearInterval(timer);
+    };
+  }, [setCounter, counter,err,Navigate]);
 
   const DigitHandel = (propaty: keyof typeof digit, value: string) => {
     if (digit[propaty].length < 1 || value == "") {
@@ -74,7 +117,14 @@ const Verify = () => {
     }
   };
 
-
+  if (!localStorage.getItem("userDitials")) return Navigate("/signpu");
+  const store = localStorage.getItem("userDitials");
+  if (!store) {
+    console.log("data not exist");
+  } else {
+    const { ID } = JSON.parse(store);
+    console.log(ID);
+  }
 
   return (
     <div>
