@@ -1,0 +1,50 @@
+.feedhub {
+  height: 100%;
+  width: 600px;
+
+  //background: #dbdada;
+  flex-basis: 2;
+  .Head {
+    margin-top: 10px;
+    width: 100%;
+    height: 100px;
+    //background: #45599b;
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    position: relative;
+    .previus,
+    .next {
+      height: 40px;
+      font-size: 40px;
+      width: 40px;
+      color: var(--white-400);
+      position: absolute;
+    }
+    .previus {
+      left: 10px;
+    }
+    .next {
+      right: 10px;
+    }
+    .Outerimg {
+      @include DwithL(80px, 80px, center, center);
+      .innerIMG {
+        @include DwithL(70px, 70px, center, center);
+        border-radius: 50%;
+        background: linear-gradient(
+          45deg,
+          rgb(248, 252, 11),
+          rgb(255, 12, 235)
+        );
+      }
+      img {
+        width: 65px;
+        height: 65px;
+        border-radius: 50%;
+        border: 2px solid;
+      }
+    }
+  }
+  @import "./post";
+}

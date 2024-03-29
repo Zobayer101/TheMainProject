@@ -1,0 +1,102 @@
+
+
+.sussageCoun{
+    width: 100%;
+    height: 100%;
+    padding: 20px 10px 10px 10px;
+    
+    user-select: none;
+    .mypro{
+        border-radius: 5px;
+        @include DwithL(60px,100%,center,space-between);
+        padding: 5px;
+        
+        .img{
+            display: flex;
+            width: 70%;
+            align-items: center;
+            
+            height: auto;
+            border-radius: 50%;
+            img{
+                width: 50px;
+                height: auto;
+                border-radius: 50%;
+            }
+            p{
+                font-size: 15px;
+                margin-left: 5px;
+                color: var(--white-900);
+                
+            }
+        }
+        .switch{
+            font-size: 17px;
+            color: rgb(11, 42, 180);
+            font-weight: 500;
+            &:hover{
+               color: var(--white-900);
+             cursor: pointer;
+            }
+            transition: .3s;
+        }
+        transition: .3s;
+        &:hover{
+           color: var(--white-500);
+           background: var(--white-400);
+        }
+    }
+    .sussageedfor{
+        @include DwithL(40px ,100%,center,space-between);
+        
+        color: var(--white-700);
+        transition: .2s ease;
+       
+        padding:0 10px 0 10px ;
+
+       p{
+        color: var(--white-900);
+
+        &:hover{
+            color: var(--white-400);
+            cursor: pointer;
+        }
+       }
+    }
+    .neibar{
+        @include DwithL(60px,100%,center,space-between);
+        margin-top: 8px;
+        border-radius: 5px;
+        padding: 5px ;
+        .imgs{
+            
+            @include DwithL(100%,70%,center,start);
+            img{
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                
+            }
+            p{
+                color: var(--white-900);
+                padding-left: 5px;
+                font-size: 15px;
+            }
+        }
+        .fllow{
+             font-size: 17px;
+            color: rgb(11, 42, 180);
+            font-weight: 500;
+            &:hover{
+               color: var(--white-900);
+             cursor: pointer;
+            }
+            transition: .3s;
+        }
+         transition: .3s;
+        &:hover{
+           color: var(--white-500);
+           background: var(--white-400);
+        }
+    }
+}

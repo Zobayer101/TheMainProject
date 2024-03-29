@@ -1,7 +1,15 @@
+import MainFeed from "./Feed/MainFeed";
+import SideBar from "./Feed/Sidebar";
+
 const Feed = () => {
   return (
-    <div>
-      <h2>Thsi is a home page </h2>
+    <div className="FeedCon">
+      <div className="Sidebar">
+        <SideBar/>
+      </div>
+      <div className="mainsection">
+        <MainFeed/>
+      </div>
     </div>
   );
 };
