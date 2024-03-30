@@ -1,50 +1,67 @@
 .feedhub {
-  height: 100%;
+  height: auto;
   width: 600px;
 
   //background: #dbdada;
-  flex-basis: 2;
+ 
   .Head {
-    margin-top: 10px;
-    width: 100%;
-    height: 100px;
-    //background: #45599b;
-    display: flex;
-    overflow: hidden;
-    align-items: center;
+    @include DwithL(100px,auto,center,start);
+    margin: 10px 0 10px 0;
+    overflow:hidden;
+   
     position: relative;
     .previus,
     .next {
+      top: 20px;
       height: 40px;
       font-size: 40px;
       width: 40px;
       color: var(--white-400);
       position: absolute;
+      z-index: 99;
     }
     .previus {
-      left: 10px;
+      left: 5%;
+     
     }
     .next {
-      right: 10px;
+     
+      right: 5%;
     }
     .Outerimg {
-      @include DwithL(80px, 80px, center, center);
-      .innerIMG {
-        @include DwithL(70px, 70px, center, center);
-        border-radius: 50%;
-        background: linear-gradient(
-          45deg,
-          rgb(248, 252, 11),
-          rgb(255, 12, 235)
-        );
-      }
-      img {
-        width: 65px;
-        height: 65px;
-        border-radius: 50%;
-        border: 2px solid;
+      @include DwithL(100px,85px, center, center);
+      flex-direction: column;
+     flex-shrink: 0;
+      .innerCount{
+  @include DwithL(80%, 100%, center, center);
+
+  .innerIMG {
+    @include DwithL(70px, 70px, center, center);
+    border-radius: 50%;
+    background: linear-gradient(
+      45deg,
+      rgb(251, 255, 11),
+      rgb(255, 17, 235)
+    );
+    img {
+      display: inline-block;
+      object-fit: cover;
+      clip-path: circle(45%);
+      width: 70px;
+      height: 70px;
+      
+    }
+  }
+}
+      .texts{
+        color: var(--white-900);
+        font-size: 12px;
       }
     }
   }
+
   @import "./post";
+  @media screen and (max-width:500px){
+    width: 350px;
+  }
 }

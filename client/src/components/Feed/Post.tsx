@@ -22,13 +22,20 @@ const Post = () => {
         </div>
         <div className="Status">
           <div className="togather">
-            <FaRegHeart />
-            <FaRegComment />
-            <IoIosSend />
+            <FaRegHeart className="love" />
+            <FaRegComment className="comment" />
+            <IoIosSend className="send" />
           </div>
           <div className="along">
             <FaRegBookmark />
           </div>
+        </div>
+        <div className="like">34k like</div>
+        <div className="commentext">
+          the_coding_wizard Master Frontend To Backend 👨‍💻 Link In Bio ✅️
+        </div>
+        <div className="viewComment">
+          view all 23k comment
         </div>
       </div>
     </div>

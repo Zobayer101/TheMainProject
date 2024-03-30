@@ -8,13 +8,17 @@ import { HiOutlineMicrophone } from "react-icons/hi2";
 import { AppContex } from "../../lib/Reducher";
 import { useContext } from "react";
 import photo from "../../assets/img/habib.png";
+import bgImg from "../../assets/BGimg/Wallpaper.jpg";
 const MessagePage = () => {
    const { state:{msgpag},dispach} = useContext(AppContex);
   // console.log(state);
   return (
     <div className="PageCon">
       <div className="pageHead">
-        <div onClick={()=>dispach({type:"MSGPAGE",value: !msgpag})} className="arrow">
+        <div
+          onClick={() => dispach({ type: "MSGPAGE", value: !msgpag })}
+          className="arrow"
+        >
           <BiCaretLeft />
         </div>
         <div className="Imgbox">
@@ -33,7 +37,16 @@ const MessagePage = () => {
           </div>
         </div>
       </div>
-      <div className="mainMsgPag">
+      <div
+        className="mainMsgPag"
+        style={{
+          background: `url(${bgImg})`,
+          objectFit: "cover",
+          // backgroundRepeat: "no-repeat",
+          backgroundSize:"cover",
+          backgroundPosition:"center",
+        }}
+      >
         <div className="pagecountuner">
           <div className="userPro">
             <div className="IMG">

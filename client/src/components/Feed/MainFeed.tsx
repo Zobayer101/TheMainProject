@@ -16,29 +16,92 @@ const MainFeed = () => {
             <div className="next">
               <CiCircleChevRight />
             </div>
+
             <div className="Outerimg">
-              <div className="innerIMG">
-                <img src={nophoto} alt="nophoto" />
+              <div className="innerCount">
+                <div className="innerIMG">
+                  <img src={nophoto} alt="nophoto" />
+                </div>
               </div>
+              <div className="texts">Name</div>
             </div>
 
             <div className="Outerimg">
-              <div className="innerIMG">
-                <img src={nophoto} alt="nophoto" />
+              <div className="innerCount">
+                <div className="innerIMG">
+                  <img src={nophoto} alt="nophoto" />
+                </div>
               </div>
+              <div className="texts">what's Name</div>
             </div>
+
             <div className="Outerimg">
-              <div className="innerIMG">
-                <img src={nophoto} alt="nophoto" />
+              <div className="innerCount">
+                <div className="innerIMG">
+                  <img src={nophoto} alt="nophoto" />
+                </div>
               </div>
+              <div className="texts">Name</div>
             </div>
+
             <div className="Outerimg">
-              <div className="innerIMG">
-                <img src={nophoto} alt="nophoto" />
+              <div className="innerCount">
+                <div className="innerIMG">
+                  <img src={nophoto} alt="nophoto" />
+                </div>
               </div>
+              <div className="texts">Name</div>
             </div>
-                  </div>
-               <Post/>   
+
+            <div className="Outerimg">
+              <div className="innerCount">
+                <div className="innerIMG">
+                  <img src={nophoto} alt="nophoto" />
+                </div>
+              </div>
+              <div className="texts">Name</div>
+            </div>
+
+            <div className="Outerimg">
+              <div className="innerCount">
+                <div className="innerIMG">
+                  <img src={nophoto} alt="nophoto" />
+                </div>
+              </div>
+              <div className="texts">Name</div>
+            </div>
+
+            <div className="Outerimg">
+              <div className="innerCount">
+                <div className="innerIMG">
+                  <img src={nophoto} alt="nophoto" />
+                </div>
+              </div>
+              <div className="texts">Name</div>
+            </div>
+
+            <div className="Outerimg">
+              <div className="innerCount">
+                <div className="innerIMG">
+                  <img src={nophoto} alt="nophoto" />
+                </div>
+              </div>
+              <div className="texts">Name</div>
+            </div>
+
+            <div className="Outerimg">
+              <div className="innerCount">
+                <div className="innerIMG">
+                  <img src={nophoto} alt="nophoto" />
+                </div>
+              </div>
+              <div className="texts">Name</div>
+            </div>
+          </div>
+          <Post />
+          <Post />
+          <Post />
+          <Post />
         </div>
       </div>
       <div className="sussagedfirend">

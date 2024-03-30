@@ -67,13 +67,12 @@
   }
 
   .mainMsgPag {
-    @include Lingth(94%, 100%);
-    background-image: url("../../../public/photo/lightbg.jpg");
-    object-fit: cover;
-    background-repeat: no-repeat;
-    background-size: cover;
+    @include Lingth(95%, 100%);
+   // background-image: url("../../../public/photo/lightbg.jpg");
+   
     background-position: center;
     overflow: auto;
+    padding-bottom: 20px;
     .pagecountuner {
       @include Lingth(auto, 100%);
 
@@ -165,14 +164,18 @@
 
             padding: 3px;
             border-radius: 0px 10px 10px 10px;
-            background: #e7e1e1;
+           // background: #e7e1e1;
             p {
-              //background: #000;
-              color: #6b6565;
+              padding: 10px;
+              background: linear-gradient(45deg,#f0c,#0cf);
+              margin-bottom: 4px;
+              color: var(--white-1000);
+              border-radius: 0px 10px 10px 10px ;
             }
             img {
               width: 200px;
               height: 200px;
+              border-radius: 5px;
             }
           }
         }
@@ -180,6 +183,7 @@
       .resivermsg {
         width: 100%;
         height: auto;
+        
         // background: #b6b4b477;
         display: flex;
         justify-content: end;
@@ -205,7 +209,7 @@
           .msgbox {
             // height: 90%;
             // width: 89%;
-            background: #e7e1e1;
+           // background: #e7e1e1;
             align-items: end;
             justify-content: start;
             flex-direction: column;
@@ -214,12 +218,18 @@
             border-radius: 10px 0 10px 10px;
             display: flex;
             p {
+              padding: 10px;
+              background: linear-gradient(45deg,#f0c,#0cf);
+              margin-bottom: 4px;
+              color: var(--white-1000);
+              border-radius: 10px 0 10px 10px ;
               float: right;
             }
             img {
               float: right;
               width: 200px;
               height: 200px;
+              border-radius: 5px;
             }
           }
         }
@@ -227,7 +237,10 @@
     }
   }
   .SenderOption {
-    @include DwithL(6%, 100%, start, space-between);
+    @include DwithL(50px, 66%, start, space-between);
+    position: fixed;
+    z-index: 1;
+    bottom: 0;
     input {
       @include Lingth(100%, 85%);
       flex-shrink: 2;
@@ -269,6 +282,9 @@
         color: #fff;
         background: #4b2cfa;
       }
+    }
+    @media screen and (max-width:800px) {
+       width: 100%;
     }
   }
 }

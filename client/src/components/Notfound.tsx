@@ -4,10 +4,7 @@ const Notfound = () => {
         <div>
             <div className="notCount">
                 <div className="notfoundtext">
-                    <h2>404</h2>
-                    <div className="BUT">
-                       <button>Go To Home page</button>
-                    </div>
+                   <img src="../../public/images/GIF/error.gif" alt="" />
                 </div>
             </div>
         </div>
