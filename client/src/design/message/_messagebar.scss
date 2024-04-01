@@ -1,54 +1,27 @@
 .barcoun {
   @include Lingth(100%, 100%);
     position: relative;
+    //massage bar hide show bar design
     @import "./sidebar";
-  // background: #b6b6b6 ;
+   background: var(--white-300) ;
   .barhed {
-    @include DwithL(70px, 100%, center, space-around);
+    @include DwithL(70px, 100%, center, end);
     //background: #fa3efa;
-    padding: 5px;
-    .togglebtn {
-      height: 30px;
-      width: 35px;
-      cursor: pointer;
-      //background: #a7a2ec;
-      .bar1,
-      .bar2,
-      .bar3 {
-        height: 5px;
-        width: 100%;
-        background: #a557e6;
-        margin-bottom: 5px;
-        border-radius: 3px;
-        //box-shadow:  0 0 3px ;
-        transition: 0.5s;
-      }
-    }
-    .togglebtn.ON {
-      .bar1 {
-        transform: translate(0px, 12px) rotate(45deg);
-      }
-      .bar2 {
-        transform: translate(30px);
-        opacity: 0;
-      }
-      .bar3 {
-        transform: translate(0px, -8px) rotate(-45deg);
-      }
-    }
+    padding: 5px 10px 5px 5px;
+    
 
     .searchBox {
-      @include DwithL(90%, 80%, center, start);
+      @include DwithL(90%,80%, center, end);
       input {
         height: 70%;
         width: 100%;
-        background: #f1ecec;
-        border: 1px solid #736d79;
+        background: var(--white-600);
+        border: 1px solid var(--white-400);
         border-radius: 15px;
         padding: 10px;
         font-size: 17px;
         outline: none;
-        color: #575454;
+        color: var(--white-300);
         &:focus {
           border: 2px solid #a557e6;
         }
@@ -97,39 +70,26 @@
         }
       }
       .userdigials {
-        height: 100%;
-        width: 80%;
-        //background: #e676d7;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+        @include DwithL(100%,80%,center,space-between);;
         .Name {
-          height: 100%;
-          width: 70%;
-          display: flex;
+          @include DwithL(100%,70%,start,center);
           flex-direction: column;
-          align-items: start;
-          justify-content: center;
           h3 {
               padding-left: 5px;
               font-size: 18px;
-              color: #fff;
+              color:var(--white-900);
             }
             p{
               padding-left: 5px;
-            color: #fff;
+            color: var(--white-900);
             font-size: 14px;
           }
           
         }
         .sendMessage {
-          width: 30%;
-          height: 100%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
+          @include DwithL(100%,30%,center,center);
           .Tick {
-            color: #fff;
+            color: var(--white-900);
             font-size: 24px;
           }
         }

@@ -1,0 +1,148 @@
+.countuner {
+  height: 100%;
+  width: 100%;
+  padding: 10px 30px 0 30px;
+  .Head {
+    width: 100%;
+    height: 400px;
+    .aboutSection {
+      width: 100%;
+      height: 50%;
+      display: flex;
+      .photo {
+        @include DwithL(100%, 35%, center, center);
+        img {
+          width: 150px;
+          height: auto;
+          border-radius: 50%;
+        }
+      }
+      .ditials {
+        height: 100%;
+        width: 65%;
+        .aboutName {
+          @include DwithL(50px, 100%, center, start);
+          .text {
+            @include DwithL(100%, 30%, center, start);
+            color: var(--white-900);
+            font-size: 18px;
+          }
+          .button {
+            @include DwithL(70%, 40%, center, space-around);
+            button {
+              cursor: pointer;
+              width: 100px;
+              padding: 5px;
+              border-radius: 5px;
+              border: none;
+              background: var(--white-400);
+              color: var(--white-800);
+              margin-right: 5px;
+            }
+            .setting {
+              cursor: pointer;
+              height: 90%;
+              width: auto;
+              color: var(--white-800);
+            }
+          }
+        }
+        .fllower {
+          width: 100%;
+          height: 40px;
+          display: flex;
+          .post,
+          .fllowers,
+          .fllowing {
+            @include DwithL(100%, 20%, center, start);
+            color: var(--white-800);
+            font-size: 16px;
+          }
+        }
+        .bio {
+          width: 100%;
+          height: 60px;
+          .wonername {
+            width: 100%;
+            height: 20px;
+            font-size: 15px;
+            color: var(--white-800);
+          }
+          .fullBio {
+            width: 100%;
+            height: auto;
+            font-size: 14px;
+            color: var(--white-800);
+          }
+        }
+      }
+    }
+    .createSection {
+      width: 100%;
+      height: 50%;
+      .creates {
+        @include DwithL(100%, 30%, center, center);
+        flex-direction: column;
+        .Icons {
+          @include DwithL(90px, 90px, center, center);
+          font-size: 80px;
+          background: var(--white-400);
+          border-radius: 50%;
+          color: var(--white-800);
+        }
+        p {
+          margin-top: 5px;
+          color: var(--white-800);
+          font-size: 15px;
+        }
+      }
+    }
+    @media screen and (max-width: 890px) {
+      width: 100%;
+      height: 600px;
+      .aboutSection {
+        width: 100%;
+        height: 65%;
+        flex-direction: column;
+        .photo {
+          @include DwithL(40%, 100%, center, center);
+        }
+        .ditials {
+          width: 100%;
+          height: 60%;
+        }
+      }
+      .createSection {
+        width: 100%;
+        height: 35%;
+      }
+    }
+  }
+  .postBar {
+    @include DwithL(50px, 100%, start, center);
+    border-top: 1px solid var(--white-400);
+    .allpost,
+    .save,
+    .tage {
+      @include DwithL(100%, 100px, center, space-evenly);
+      margin-left: 5px;
+      font-size: 15px;
+      color: var(--white-700);
+      text-transform: uppercase;
+    }
+  }
+  .allpost {
+    border-top: 1.5px solid var(--white-900);
+  }
+  .Allpost {
+    width: 100%;
+    height: 300px;
+    border-bottom: 1px solid var(--white-400);
+    
+  }
+  .Footer {
+    width: 100%;
+    height: 300px;
+    
+  }
+}

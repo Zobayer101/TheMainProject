@@ -8,9 +8,9 @@ import { HiOutlineMicrophone } from "react-icons/hi2";
 import { AppContex } from "../../lib/Reducher";
 import { useContext } from "react";
 import photo from "../../assets/img/habib.png";
-import bgImg from "../../assets/BGimg/Wallpaper.jpg";
+//import bgImg from "../../assets/BGimg/Wallpaper.jpg";
 const MessagePage = () => {
-   const { state:{msgpag},dispach} = useContext(AppContex);
+   const { state:{msgpag,setimge},dispach} = useContext(AppContex);
   // console.log(state);
   return (
     <div className="PageCon">
@@ -40,11 +40,11 @@ const MessagePage = () => {
       <div
         className="mainMsgPag"
         style={{
-          background: `url(${bgImg})`,
+          background:`url("../../../public/images/photo/${setimge}.jpg")`,
           objectFit: "cover",
           // backgroundRepeat: "no-repeat",
-          backgroundSize:"cover",
-          backgroundPosition:"center",
+          //backgroundSize:"cover",
+          //backgroundPosition:"center",
         }}
       >
         <div className="pagecountuner">

@@ -1,0 +1,26 @@
+.backgroundCountuner {
+  height: 250px;
+  width: 150px;
+  background: var(--white-600);
+  z-index: 101;
+  position: fixed;
+  top: 25%;
+  left: 30%;
+  border-radius: 6px;
+  box-shadow: 0 0 5px;
+  .changeBG {
+    @include DwithL(15%, 100%, center, center);
+    color: var(--white-800);
+    border-bottom: 1px solid var(--white-800);
+  }
+  .img1,.img2,.img3,.img4{
+    @include DwithL(20%,100%,center,center);
+    border-bottom: 1px solid var(--white-800);
+    font-size: 19px;
+    cursor: pointer;
+    color: var(--white-800);
+  }
+}
+.backgroundCountuner.OFF{
+    display: none !important;
+}

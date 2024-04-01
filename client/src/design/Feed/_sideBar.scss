@@ -64,7 +64,6 @@
       display: none;
     }
     
-
     .home,
     .Search,
     .explor,
@@ -72,9 +71,9 @@
     .message,
     .Notify,
     .create,
-    .profile,
-    .more {
-      width: 10%;
+    .profile
+    {
+      width: 12%;
       height: 100%;
       background: var(--white-100);
     }

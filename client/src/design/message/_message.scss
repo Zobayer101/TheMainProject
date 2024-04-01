@@ -1,5 +1,4 @@
 
-
 .messageCon{
     //background: #fff;
     height: 100vh;
@@ -8,13 +7,15 @@
     grid-template: repeat(10,1fr) / repeat(12,1fr);
     user-select: none;
     overflow: hidden;
+     @import "../functionality/BGchooage";
+    @import "../functionality/moreOption";
     .messageBar{
         grid-row: 1/-1;
         grid-column: 1/5;
         @import "./messagebar";
     }
     .messagePage{
-        background: #ffd1f4;
+        //background: #ffd1f4;
         grid-row: 1/-1;
         grid-column: 5/-1;
         @import "./messagepage";

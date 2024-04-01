@@ -8,8 +8,11 @@ import { FaRegPlusSquare } from "react-icons/fa";
 import { FaBars } from "react-icons/fa6";
 import nophoto from "../../assets/img/npphoto.jpg";
 import { Link } from "react-router-dom";
-
+import { AppContex } from "../../lib/Reducher";
+import { useContext } from "react";
 const SideBar = () => {
+  const { state, dispach } = useContext(AppContex);
+  
   return (
     <div className="BarCoun">
       <div className="Logo">LOGO</div>
@@ -64,7 +67,7 @@ const SideBar = () => {
       </div>
       </Link>
       <Link to={"#"}>
-      <div className="more">
+      <div className="more" onClick={()=> dispach({type:"MORE", value:!state.more})} >
               <FaBars />
               <p>More</p>
       </div>

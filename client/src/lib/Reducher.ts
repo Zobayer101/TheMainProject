@@ -4,29 +4,27 @@ interface State {
   them: boolean;
   nextpage: boolean;
   msgpag: boolean;
-  form: object;
+  more: boolean;
+  bgimage: boolean;
+  setimge: string;
 }
 type Action =
   | { type: "INCREMANT"; value: number }
   | { type: "THEM"; value: boolean }
   | { type: "NEXTPAGE"; value: boolean }
   | { type: "MSGPAGE"; value: boolean }
-  | { type: "FORM"; value:object};
+  | { type: "MORE"; value: boolean }
+  | { type: "BGIMG"; value: boolean }
+  | { type: "SETIMGE"; value:string};
 
 const Initalvalue: State = {
   counter: 30,
   them: false,
   nextpage: false,
   msgpag: false,
-  form: {
-    fname: "",
-    lname: "",
-    email: "",
-    password: "",
-    date: "",
-    city: "",
-    gender: "",
-  },
+  more: false,
+  bgimage: false,
+  setimge:"image",
 };
 
 const AppContex = createContext<{
@@ -46,10 +44,12 @@ const Reducher = (state: State, action: Action) => {
       return { ...state, nextpage: action.value };
     case "MSGPAGE":
       return { ...state, msgpag: action.value };
-    case "FORM":
-      return {
-        ...state, form: action.value
-      };
+    case "MORE":
+      return { ...state, more: action.value };
+    case "BGIMG":
+      return { ...state, bgimage: action.value };
+    case "SETIMGE":
+      return { ...state, setimge :action.value};
     default:
       return state;
   }

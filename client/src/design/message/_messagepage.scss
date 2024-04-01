@@ -69,7 +69,8 @@
   .mainMsgPag {
     @include Lingth(95%, 100%);
    // background-image: url("../../../public/photo/lightbg.jpg");
-   
+   object-fit: cover;
+   background-size: cover;
     background-position: center;
     overflow: auto;
     padding-bottom: 20px;
@@ -95,11 +96,11 @@
             @include DwithL(50%, 100%, center, space-between);
             flex-direction: column;
             h3 {
-              color: #1a1818;
+              color:var(--white-900);
               font-size: 20px;
             }
             p {
-              color: #221d1d;
+              color: var(--white-900);
               font-size: 14px;
             }
           }
@@ -247,8 +248,9 @@
       font-size: 17px;
       padding-left: 10px;
       border: 1px solid rgb(196, 168, 168);
-      border-radius: 0 0 0 5px;
       outline: none;
+      background:var(--white-400);
+      color: var(--white-900);
       &:focus {
         border: 1px solid #3311f3;
       }

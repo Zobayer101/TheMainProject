@@ -13,11 +13,13 @@
     position: fixed;
     @import "./sideBar";
   }
+   //for model them change
+   @import "../functionality/moreOption";
   .mainsection {
     width: 85%;
     height: 200%;
-
     margin-left: 250px;
+   
     .feedDividor {
       height: 100%;
       width: 100%;
@@ -36,7 +38,7 @@
        // background: var(--white-100);
         @import "./sussageed";
       }
-    }
+    } 
   }
   @media screen and (max-width: 1100px) {
     .Sidebar {

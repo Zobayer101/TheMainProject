@@ -1,14 +1,17 @@
 import MainFeed from "./Feed/MainFeed";
 import SideBar from "./Feed/Sidebar";
+import MoreOption from "./functionality/MoreOption";
+
 
 const Feed = () => {
   return (
     <div className="FeedCon">
+      <MoreOption/>
       <div className="Sidebar">
-        <SideBar/>
+        <SideBar />
       </div>
       <div className="mainsection">
-        <MainFeed/>
+        <MainFeed />
       </div>
     </div>
   );
