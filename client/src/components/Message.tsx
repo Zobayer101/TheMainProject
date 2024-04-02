@@ -1,11 +1,22 @@
 import MessageBar from "./message/MessageBar";
 import MessagePage from "./message/MessagePage";
 import { AppContex } from "../lib/Reducher";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import MoreOption from "./functionality/MoreOption";
 import BgImage from './functionality/BgImage';
+import { useNavigate } from "react-router-dom";
 const Message = () => {
-  const { state:{msgpag}} = useContext(AppContex);
+  const { state: { msgpag } } = useContext(AppContex);
+  const navigate = useNavigate();
+  useEffect(() => {
+    const stor = localStorage.getItem("userDitials");
+    if (stor) {
+      console.log(stor);
+      // Navigate("/login");
+    } else {
+      navigate("/login");
+    }
+  })
   return (
     <div> 
       <div className={"messageCon"}>

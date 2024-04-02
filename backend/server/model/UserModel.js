@@ -23,7 +23,11 @@ const schema = new mongoose.Schema({
       default:  Date().toLocaleString()
     },
     OTP: String,
-    Statusx:String,
+    Statusx: String,
+    Photo: String,
+    follower: String,
+    following: String,
+    Bio:String,
 }, {
     timestamps: true,
 });

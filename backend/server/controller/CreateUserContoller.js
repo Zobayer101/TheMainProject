@@ -27,7 +27,7 @@ exports.signupUser = async (req, res) => {
         //send otp 
         mailSend(email, otp);
         
-        res.status(200).json({data:{ID:data._id,email:data.email}})
+        res.status(200).json({data:{ID:data._id,email:data.email ,times: Date.now()}})
     } catch (error) {
         res.status(409).json({ msg: error.message });
     }

@@ -7,7 +7,23 @@ import { BsGrid3X3 } from "react-icons/bs";
 import { FaRegBookmark } from "react-icons/fa";
 import { BiSolidUserRectangle } from "react-icons/bi";
 
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+
 const Profile = () => {
+  const Navigate = useNavigate();
+  useEffect(() => {
+    
+    const stor = localStorage.getItem("userDitials");
+    if (stor) {
+      console.log(stor)
+      // Navigate("/login");
+    } else {
+      Navigate("/login");
+  
+    }
+  })
+  //Navigate("/message");
   return (
     <div className="profileCon">
       <MoreOption />
@@ -52,7 +68,7 @@ const Profile = () => {
           </div>
           <div className="postBar">
             <div className="allpost">
-              <BsGrid3X3 /> posts 
+              <BsGrid3X3 /> posts
             </div>
             <div className="save">
               <FaRegBookmark /> saved

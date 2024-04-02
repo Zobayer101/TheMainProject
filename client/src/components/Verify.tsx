@@ -3,9 +3,11 @@ import { IoShieldCheckmark } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import PostData from "../lib/Post";
 
-const Verify = () => {
+const Verify= () => {
   const [err, setErr] = useState({ OK: "", enable: "" });
-  const [counter, setCounter] = useState(100);
+  //const store = localStorage.getItem("userDitials");
+  const [time, setTime] = useState(Number);
+  const [counter, setCounter] = useState(time);
   const [digit, setDigit] = useState({
     num1: "",
     num2: "",
@@ -95,9 +97,11 @@ setErr((pre) => ({
         setTimeout(() => {
           Navigate("/profile");
         }, 2000);
-      }
+    }
+ 
+    //const num = 200;
     const timer: number = setInterval(() => {
-      setCounter((pre) => pre - 1);
+      setCounter((time )=> time-1);
     }, 1000);
     if (counter < 1) {
       clearInterval(timer)
@@ -106,7 +110,7 @@ setErr((pre) => ({
     return () => {
       clearInterval(timer);
     };
-  }, [setCounter, counter,err,Navigate]);
+  }, [setCounter, counter,err,Navigate,time]);
 
   const DigitHandel = (propaty: keyof typeof digit, value: string) => {
     if (digit[propaty].length < 1 || value == "") {
@@ -116,16 +120,27 @@ setErr((pre) => ({
       }));
     }
   };
-
+  useEffect(() => {
+    const store:string|null = localStorage.getItem("userDitials");
+    const { times } = JSON.parse(store);
+    const initvalue = Math.round((Date.now() - times) / 1000);
+    if (initvalue < 199) {
+      setTime(initvalue)
+      setCounter(200-time)
+    } else {
+      setCounter(0);
+    }
+    //console.log(time);
+  },[setTime,time])
   if (!localStorage.getItem("userDitials")) return Navigate("/signpu");
-  const store = localStorage.getItem("userDitials");
-  if (!store) {
-    console.log("data not exist");
-  } else {
-    const { ID } = JSON.parse(store);
-    console.log(ID);
-  }
-
+  // const store = localStorage.getItem("userDitials");
+  // if (!store) {
+  //   console.log("data not exist");
+  // } else {
+  //   const { ID, times } = JSON.parse(store);
+  
+  // }
+ //Navigate("/profile");
   return (
     <div>
       <div className="verifycover">
