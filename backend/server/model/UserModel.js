@@ -28,7 +28,7 @@ const schema = new mongoose.Schema({
     follower: String,
     following: String,
     Bio:String,
-}, {
+}, { 
     timestamps: true,
 });
 

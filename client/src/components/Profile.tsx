@@ -7,22 +7,20 @@ import { BsGrid3X3 } from "react-icons/bs";
 import { FaRegBookmark } from "react-icons/fa";
 import { BiSolidUserRectangle } from "react-icons/bi";
 
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 const Profile = () => {
   const Navigate = useNavigate();
   useEffect(() => {
-    
     const stor = localStorage.getItem("userDitials");
     if (stor) {
-      console.log(stor)
+      console.log(stor);
       // Navigate("/login");
     } else {
       Navigate("/login");
-  
     }
-  })
+  });
   //Navigate("/message");
   return (
     <div className="profileCon">
@@ -41,7 +39,10 @@ const Profile = () => {
                 <div className="aboutName">
                   <div className="text">mdzobayer</div>
                   <div className="button">
-                    <button>Edit profile</button>
+                    <Link to={"/Editprofile"}>
+                      <button>Edit profile</button>
+                    </Link>
+
                     <button>View profile</button>
                     <TfiSettings className="setting" />
                   </div>

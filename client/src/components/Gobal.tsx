@@ -1,23 +1,60 @@
 import Navigator from "./Navigator";
-import {  useReducer, } from "react";
-
-
+import { useReducer, useState } from "react";
+import React from "react";
+interface Datatype {
+  fname: string;
+  lname: string;
+  email: string;
+  date: string;
+  city: string;
+  geander: string;
+  Photo: string;
+  follower: string;
+  following: string;
+  Bio: string;
+}
 import { Reducher, AppContex, Initalvalue } from "../lib/Reducher";
-const Gobal:React.FC = () => {
+const DataContex = React.createContext<{
+  data: Datatype;
+  setData: React.Dispatch<React.SetStateAction<Datatype>>;
+}>({
+  data: {
+    fname: "",
+    lname: "",
+    email: "",
+    date: "",
+    city: "",
+    geander: "",
+    Photo: "",
+    follower: "",
+    following: "",
+    Bio: "",
+  },
+  setData: () => {},
+});
+const Gobal: React.FC = () => {
   const [state, dispach] = useReducer(Reducher, Initalvalue);
-  
-  const {  them } = state;
+  const [data, setData] = useState({
+    fname: "",
+    lname: "",
+    email: "",
+    date: "",
+    city: "",
+    geander: "",
+    Photo: "",
+    follower: "",
+    following: "",
+    Bio:""
+  });
+
+  const { them } = state;
   return (
     <div>
       <div className={them ? "Light" : "Drack"}>
-        {/* <button onClick={() => dispach({ type: "INCREMANT", value: 1 })}>
-          click {counter}
-  </button>*/}
-        {/* <button onClick={() => dispach({ type: "THEM", value: !them })}>
-          click {them ? "true" : "false"}
-        </button> */}
-        <AppContex.Provider  value={{state, dispach} }>
-          <Navigator />
+        <AppContex.Provider value={{ state, dispach }}>
+          <DataContex.Provider value={{ data, setData }}>
+            <Navigator />
+          </DataContex.Provider>
         </AppContex.Provider>
       </div>
     </div>

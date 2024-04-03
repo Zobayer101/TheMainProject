@@ -11,7 +11,7 @@ route.post("/api/user/signup",signupValidator.signupVlidate,userControll.signupU
 route.post("/api/user/login", userControll.loginUser);
 //OTP verify api
 route.post("/api/otp/user/verify", userControll.OTPviryfy);
-
+//
 
 
 

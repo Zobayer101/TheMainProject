@@ -7,6 +7,7 @@ import Profile from "./Profile";
 import Message from "./Message";
 import Feed from "./Feed";
 import Verify from "./Verify";
+import Editprofile from "./profile/Editprofile";
 
 const Navigator = () => {
     return (
@@ -19,6 +20,7 @@ const Navigator = () => {
             <Route path="/signup" element={<Signup />} />
             <Route path="/verify" element={<Verify />} />
             <Route path="/message" element={<Message />} />
+            <Route path="/Editprofile" element={ <Editprofile/>} />
             <Route path="*" element={<Notfound />} />
           </Routes>
         </BrowserRouter>

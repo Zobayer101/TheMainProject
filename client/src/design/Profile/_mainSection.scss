@@ -28,7 +28,7 @@
             font-size: 18px;
           }
           .button {
-            @include DwithL(70%, 40%, center, space-around);
+            @include DwithL(70%, auto, center, space-around);
             button {
               cursor: pointer;
               width: 100px;
@@ -54,9 +54,10 @@
           .post,
           .fllowers,
           .fllowing {
-            @include DwithL(100%, 20%, center, start);
+            @include DwithL(100%, auto, center, start);
             color: var(--white-800);
             font-size: 16px;
+            margin-left: 20px;
           }
         }
         .bio {

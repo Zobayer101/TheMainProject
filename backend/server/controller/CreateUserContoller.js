@@ -21,7 +21,11 @@ exports.signupUser = async (req, res) => {
             city: city,
             geander: geander,
             OTP: otp,
-            Statusx:"inactive"
+            Statusx: "inactive",
+            Photo: "",
+            follower: "",
+            following: "",
+            Bio:"", 
         })
         let data = await user.save(user);
         //send otp 
@@ -43,7 +47,17 @@ exports.loginUser = async (req, res) => {
             const isvalid = bcrypt.compare(password, data.password);
             if (isvalid) {
                 const token = TokenGenara(data._id, data.fname);
-                res.status(200).json({ data, token });
+                res
+                  .status(200)
+                  .json({
+                    data,
+                    token,
+                    userDitils: {
+                      ID: data._id,
+                      email: data.email,
+                      times: Date.now(),
+                    },
+                  });
             } else {
                 res.status(403).json({ msg: "worng password" });
             }
@@ -74,3 +88,7 @@ exports.OTPviryfy = async (req, res) => {
         res.status(409).json({ msg: error.message });
     }
 }
+
+
+
+

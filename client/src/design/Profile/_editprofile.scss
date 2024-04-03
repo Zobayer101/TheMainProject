@@ -1,0 +1,124 @@
+
+.EditCoun{
+    @include DwithL(100vh,100%,center,center);
+    background: var(--white-100);
+    .editContent{
+        width:450px;
+        height:600px;
+        background: var(--white-500);
+        border-radius: 5px ;
+        .editprofile{
+            @include DwithL(60px,100%,center,center);
+            background: var(--white-700);
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--white-200);
+            border-radius: 5px 5px 0 0 ;
+        }
+        .PhotoName{
+           // @include DwithL(200px,100%,center,center);
+            width: 100%;
+            //background: #7366c0;
+            height: 150px;
+            display: flex;
+            .photo{
+                
+               //background: #61bd8a;
+                @include DwithL(100%,40%,center,center);
+                flex-direction: column;
+                .texts{
+                    color: var(--white-200);
+                    padding: 4px ;
+                   
+                }
+                .innerSide{
+                    @include DwithL(100px,100px,center,center);
+                    position: relative;
+                   
+                   img{
+                       border-radius: 50%;
+                       width: 100px;
+                       height: 100px;
+                       
+                   }
+                   input{
+                       position: absolute;
+                       width: 100%;
+                       height: 100%;
+                       opacity: 0;
+                   }
+               }
+            }
+            .UserName{
+                @include DwithL(100%,60%,center,space-evenly);
+             
+               // background: #458aca;
+                flex-direction: column;
+                textarea{
+                    border-radius: 4px;
+                    resize: none;
+                    width: 90%;
+                    height: 40px;
+                    padding-left: 10px;
+                    outline: none;
+                    font-size: 18px;
+                    background: var(--white-800);
+                    color: var(--white-200);
+                }
+                .changeName{
+                    color: var(--white-200);
+                    font-size: 18px;
+                }
+            }
+        }
+        .BioEdit{
+            @include DwithL(30%,100%,center,center);
+            
+            //background: #4966c5;
+            display: flex;
+            flex-direction: column;
+            textarea{
+                width: 80%;
+                height: auto;
+                font-size: 18px;
+                resize: none;
+                outline: none;
+                border-radius: 5px;
+                padding-left: 5px;
+                background: var(--white-700);
+            }
+            .Bio{
+                padding: 10px;
+                color: var(--white-200);
+                font-size: 18px;
+
+            }
+        }
+        .tobtn{
+            @include DwithL(20%,100%,center,space-around);
+            .btn1,.btn2{
+                width: 90px;
+                height: 30px;
+                font-size: 16px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: .3s ease;
+            }
+            .btn1{
+                background: rgb(153, 17, 17);
+                color: #fff;
+                &:hover{
+                    background:  red;
+                }
+            }
+            .btn2{
+                background: rgb(20, 58, 20);
+                color: #fff;
+                &:hover{
+                    background: green;
+                }
+            }
+        }
+    }
+}

@@ -7,6 +7,7 @@ interface State {
   more: boolean;
   bgimage: boolean;
   setimge: string;
+  
 }
 type Action =
   | { type: "INCREMANT"; value: number }
