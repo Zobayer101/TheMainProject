@@ -22,7 +22,7 @@ exports.signupUser = async (req, res) => {
             geander: geander,
             OTP: otp,
             Statusx: "inactive",
-            Photo: "",
+            Photo: " ",
             follower: "",
             following: "",
             Bio:"", 
@@ -89,6 +89,15 @@ exports.OTPviryfy = async (req, res) => {
     }
 }
 
-
+exports.UserDitials = async (req, res) => {
+    try { 
+        
+        const data = await UserDB.findOne({ _id: req.ID }, {OTP:0,status:0,password:0,__v:0,_id:0});
+        res.status(200).json(data);
+    } catch (error) {
+        res.status(409).json({ error });
+        console.log(error)
+    }
+}
 
 

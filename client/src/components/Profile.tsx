@@ -9,18 +9,28 @@ import { BiSolidUserRectangle } from "react-icons/bi";
 
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import GetUser from "../lib/Get";
 
 const Profile = () => {
   const Navigate = useNavigate();
   useEffect(() => {
-    const stor = localStorage.getItem("userDitials");
-    if (stor) {
-      console.log(stor);
-      // Navigate("/login");
+  const stor = localStorage.getItem("userDitials");
+  const token = localStorage.getItem("token");
+  const url = "http://localhost:3300/route/api/user/retrive";
+    if (stor&&token) {
+      //const {ID,token } = stor;
+      (async () => {
+        
+        const data = await GetUser(url, token.split(`"`)[1]);
+        console.log(data);
+      })()
+      
     } else {
       Navigate("/login");
     }
   });
+
+
   //Navigate("/message");
   return (
     <div className="profileCon">
