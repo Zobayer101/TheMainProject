@@ -22,10 +22,10 @@ exports.signupUser = async (req, res) => {
             geander: geander,
             OTP: otp,
             Statusx: "inactive",
-            Photo: " ",
-            follower: "",
-            following: "",
-            Bio:"", 
+            Photo: "",
+            follower: "0",
+            following: "0",
+            Bio:" ", 
         })
         let data = await user.save(user);
         //send otp 

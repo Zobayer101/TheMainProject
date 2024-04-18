@@ -14,7 +14,7 @@ interface Datatype {
   Bio: string;
 }
 import { Reducher, AppContex, Initalvalue } from "../lib/Reducher";
-const DataContex = React.createContext<{
+export const DataContex = React.createContext<{
   data: Datatype;
   setData: React.Dispatch<React.SetStateAction<Datatype>>;
 }>({

@@ -1,58 +1,62 @@
 
-import { Link } from "react-router-dom";
 import nophoto from "../../assets/img/npphoto.jpg";
-import {  useState } from "react";
+import {  useContext } from "react";
 import Inputhandel from "../../lib/InputHandel";
 import ImageLoder from "../../lib/ImageLoder";
+import { AppContex } from "../../lib/Reducher";
+import { DataContex } from "../Gobal";
 const Editprofile = () => {
-  interface dataInterfase{
-    photo: string,
-    name: string,
-    Bio:string
-  }
-  const [userData, setUserData] = useState<dataInterfase>({ photo:"", name: "", Bio: "" });
-  // const [photo, setPhoto] = useState("");
-  const { photo, name, Bio } = userData;
+
+  const { state, dispach } = useContext(AppContex);
+  const {data:{lname,Photo,Bio},setData } = useContext(DataContex);
+  // interface dataInterfase{
+  //   photo: string,
+  //   name: string,
+  //   Bio:string
+  // }
+  // const [userData, setUserData] = useState<dataInterfase>({ photo:"", name: "", Bio: "" });
   
-  console.log(userData);
+  // const { photo, name, Bio } = userData;
+  
+  
   const FileData = async (file:File) => {
     //this is a base64 converter
     const imagefile:any = await ImageLoder(file);
-    setUserData((pre) => ({
+    setData((pre) => ({
       ...pre,
-      photo:imagefile
+      Photo:imagefile
    }))
    
   }
   return (
-    <div className="EditCoun">
+    <div className={state.proData?"EditCoun":"EditCoun OFF"}>
       <div className="editContent">
         <div className="editprofile">Edit Profile</div>
         <div className="PhotoName">
           <div className="photo">
             <div className="innerSide">
               <input type="file" accept=".png , .jpg ,.jpeg" onChange={(e)=> FileData(e.target.files[0]) } />
-              <img src={photo || nophoto} alt="" />
+              <img src={Photo || nophoto} alt="" />
             </div>
             <div className="texts">change photo</div>
           </div>
           <div className="UserName">
             <textarea
-              value={name}
+              value={lname}
               placeholder="Enter your new name..."
-              onChange={(e) => Inputhandel("name", e.target.value, setUserData)}
+              onChange={(e) => Inputhandel("lname", e.target.value, setData)}
             ></textarea>
             <div className="changeName">Change your name</div>
           </div>
         </div>
         <div className="BioEdit">
-          <textarea value={Bio} placeholder="write your bio.." onChange={(e)=>Inputhandel("Bio",e.target.value,setUserData)}></textarea>
+          <textarea value={Bio} placeholder="write your bio.." onChange={(e)=>Inputhandel("Bio",e.target.value,setData)}></textarea>
           <div className="Bio"> Write Bio </div>
         </div>
         <div className="tobtn">
-          <Link to={"/profile"}>
-            <button className="btn1">Cancile</button>
-          </Link>
+         
+            <button onClick={()=>{dispach({type:"PRODATA",value:false})}} className="btn1">Cancile</button>
+         
 
           <button className="btn2">Save</button>
         </div>

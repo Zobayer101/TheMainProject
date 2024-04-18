@@ -7,6 +7,7 @@ interface State {
   more: boolean;
   bgimage: boolean;
   setimge: string;
+  proData: boolean;
   
 }
 type Action =
@@ -16,7 +17,8 @@ type Action =
   | { type: "MSGPAGE"; value: boolean }
   | { type: "MORE"; value: boolean }
   | { type: "BGIMG"; value: boolean }
-  | { type: "SETIMGE"; value:string};
+  | { type: "SETIMGE"; value: string }
+  | { type: "PRODATA";  value : boolean};
 
 const Initalvalue: State = {
   counter: 30,
@@ -25,7 +27,8 @@ const Initalvalue: State = {
   msgpag: false,
   more: false,
   bgimage: false,
-  setimge:"image",
+  setimge: "image",
+  proData:false,
 };
 
 const AppContex = createContext<{
@@ -50,7 +53,9 @@ const Reducher = (state: State, action: Action) => {
     case "BGIMG":
       return { ...state, bgimage: action.value };
     case "SETIMGE":
-      return { ...state, setimge :action.value};
+      return { ...state, setimge: action.value };
+    case "PRODATA":
+      return { ...state, proData:action.value}
     default:
       return state;
   }

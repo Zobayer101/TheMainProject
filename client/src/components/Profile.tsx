@@ -7,11 +7,16 @@ import { BsGrid3X3 } from "react-icons/bs";
 import { FaRegBookmark } from "react-icons/fa";
 import { BiSolidUserRectangle } from "react-icons/bi";
 
-import { Link, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import {  useNavigate } from "react-router-dom";
+import { useEffect ,useContext} from "react";
 import GetUser from "../lib/Get";
+import Editprofile from "./profile/Editprofile";
+import { AppContex } from "../lib/Reducher";
+import { DataContex } from "./Gobal";
 
 const Profile = () => {
+  const {  dispach} = useContext(AppContex);
+  const { data,setData} = useContext(DataContex);
   const Navigate = useNavigate();
   useEffect(() => {
   const stor = localStorage.getItem("userDitials");
@@ -22,14 +27,35 @@ const Profile = () => {
       (async () => {
         
         const data = await GetUser(url, token.split(`"`)[1]);
-        console.log(data);
+        setData({
+          fname: data.fname,
+          lname: data.lname,
+          email: data.email,
+          date: data.dateofbarth,
+          city: data.city,
+          geander: data.geander,
+          Photo: data.Photo,
+          follower: data.follower,
+          following: data.following,
+          Bio: data.Bio,
+        });
+       
       })()
       
     } else {
       Navigate("/login");
     }
-  });
-
+  },[Navigate, setData]);
+  //console.log(data)
+  const getProfileData = async () => {
+    try {
+      console.log("ok");
+      dispach({type:"PRODATA",value:true})
+    } catch (error) {
+      console.log(error)
+    }
+  
+  }
 
   //Navigate("/message");
   return (
@@ -39,6 +65,7 @@ const Profile = () => {
         <SideBar />
       </div>
       <div className="mainSection">
+          <Editprofile/>
         <div className="countuner">
           <div className="Head">
             <div className="aboutSection">
@@ -49,9 +76,9 @@ const Profile = () => {
                 <div className="aboutName">
                   <div className="text">mdzobayer</div>
                   <div className="button">
-                    <Link to={"/Editprofile"}>
-                      <button>Edit profile</button>
-                    </Link>
+                   
+                      <button onClick={getProfileData} className="Edit">Edit profile</button>
+                    
 
                     <button>View profile</button>
                     <TfiSettings className="setting" />

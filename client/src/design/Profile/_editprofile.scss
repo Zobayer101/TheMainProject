@@ -2,6 +2,9 @@
 .EditCoun{
     @include DwithL(100vh,100%,center,center);
     background: var(--white-100);
+    display: block ;
+    left:calc(50% - 225px);
+    position: absolute;
     .editContent{
         width:450px;
         height:600px;
@@ -121,4 +124,8 @@
             }
         }
     }
+}
+
+.EditCoun.OFF{
+    display: none;
 }
