@@ -28,6 +28,9 @@ const Editprofile = () => {
    }))
    
   }
+  const SendProData = () => {
+    console.log(lname+" "+ Bio);
+  };
   return (
     <div className={state.proData?"EditCoun":"EditCoun OFF"}>
       <div className="editContent">
@@ -58,7 +61,7 @@ const Editprofile = () => {
             <button onClick={()=>{dispach({type:"PRODATA",value:false})}} className="btn1">Cancile</button>
          
 
-          <button className="btn2">Save</button>
+          <button className="btn2" onClick={()=> SendProData()}>Save</button>
         </div>
       </div>
     </div>

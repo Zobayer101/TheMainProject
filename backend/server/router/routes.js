@@ -16,7 +16,7 @@ route.post("/api/otp/user/verify", userControll.OTPviryfy);
 //read all user data
 route.get("/api/user/retrive",Gard,userControll.UserDitials);
 
-//read profile data
-route.get("/api/user/profiledata", Gard, ProfileController.ReadPdata);
+//update profile data
+route.put("/api/user/profiledata", Gard, ProfileController.ReadPdata);
 
 module.exports = route;
