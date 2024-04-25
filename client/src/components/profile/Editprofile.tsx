@@ -5,6 +5,7 @@ import Inputhandel from "../../lib/InputHandel";
 import ImageLoder from "../../lib/ImageLoder";
 import { AppContex } from "../../lib/Reducher";
 import { DataContex } from "../Gobal";
+import PutData from "../../lib/Put";
 const Editprofile = () => {
 
   const { state, dispach } = useContext(AppContex);
@@ -28,8 +29,16 @@ const Editprofile = () => {
    }))
    
   }
-  const SendProData = () => {
-    console.log(lname+" "+ Bio);
+  const SendProData = async() => {
+    console.log(lname + " " + Bio);
+    const token = localStorage.getItem("token")?.split(`"`)[1];
+    if (token) {
+      
+      console.log(token);
+      const url = "http://localhost:3300/route/api/user/profiledata";
+      const msg = await PutData(url, { lname,Photo, Bio },token);
+      console.log(msg);
+    }
   };
   return (
     <div className={state.proData?"EditCoun":"EditCoun OFF"}>
