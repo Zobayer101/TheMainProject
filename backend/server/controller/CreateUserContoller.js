@@ -46,7 +46,7 @@ exports.loginUser = async (req, res) => {
         if (data) {
             const isvalid = bcrypt.compare(password, data.password);
             if (isvalid) {
-                const token = TokenGenara(data._id, data.fname);
+                const token = TokenGenara(data._id, data.email);
                 res
                   .status(200)
                   .json({
@@ -76,7 +76,7 @@ exports.OTPviryfy = async (req, res) => {
         const otp = await UserDB.findOne({ _id: ID });
         if (otp.OTP == OTP) {
            
-                const token = TokenGenara(otp._id, otp.fname);
+                const token = TokenGenara(otp._id, otp.email);
                 await UserDB.updateOne({ _id: otp._id }, { $set: { OTP: "", Statusx: "acctive" } });
                 res.status(200).json({ token});
           
