@@ -47,15 +47,7 @@ const Profile = () => {
     }
   },[Navigate, setData]);
   //console.log(data)
-  const getProfileData = async () => {
-    try {
-      console.log("ok");
-      dispach({type:"PRODATA",value:true})
-    } catch (error) {
-      console.log(error)
-    }
-  
-  }
+  console.log(data.Photo);
 
   //Navigate("/message");
   return (
@@ -70,14 +62,14 @@ const Profile = () => {
           <div className="Head">
             <div className="aboutSection">
               <div className="photo">
-                <img src={photo} alt="" />
+                <img src={data.Photo||photo} alt="" />
               </div>
               <div className="ditials">
                 <div className="aboutName">
-                  <div className="text">mdzobayer</div>
+                  <div className="text">{data.fname+data.lname }</div>
                   <div className="button">
                    
-                      <button onClick={getProfileData} className="Edit">Edit profile</button>
+                      <button onClick={()=>{dispach({type:"PRODATA", value:true})}} className="Edit">Edit profile</button>
                     
 
                     <button>View profile</button>
@@ -90,8 +82,8 @@ const Profile = () => {
                   <div className="fllowing">{"92"} following</div>
                 </div>
                 <div className="bio">
-                  <div className="wonername">mdzobayer</div>
-                  <div className="fullBio">hello and wellcome</div>
+                  <div className="wonername">{ data.fname}</div>
+                  <div className="fullBio">{ data.Bio||"Edit Bio "}</div>
                 </div>
               </div>
             </div>

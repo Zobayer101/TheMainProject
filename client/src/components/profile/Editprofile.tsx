@@ -38,8 +38,22 @@ const Editprofile = () => {
       const url = "http://localhost:3300/route/api/user/profiledata";
       const msg = await PutData(url, { lname,Photo, Bio },token);
       console.log(msg);
+      if (msg.data.acknowledged) {
+        dispach({ type: "PRODATA", value: false });
+      }
     }
+
   };
+  const Cancile = () => {
+    dispach({ type: "PRODATA", value: false })
+    setData((pre) => ({
+      ...pre,
+      Photo:""
+    }))
+  }
+  
+   
+  
   return (
     <div className={state.proData?"EditCoun":"EditCoun OFF"}>
       <div className="editContent">
@@ -67,7 +81,7 @@ const Editprofile = () => {
         </div>
         <div className="tobtn">
          
-            <button onClick={()=>{dispach({type:"PRODATA",value:false})}} className="btn1">Cancile</button>
+          <button onClick={()=> Cancile()} className="btn1">Cancile</button>
          
 
           <button className="btn2" onClick={()=> SendProData()}>Save</button>

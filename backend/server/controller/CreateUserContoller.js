@@ -3,6 +3,7 @@ const UserDB = require("../model/UserModel");
 const bcrypt = require("bcrypt");
 const TokenGenara = require("../middleware/TokenGenarator");
 const mailSend = require("../service/MailGenarator");
+const Converter = require(".././service/imageProvider");
 
 //signup controller
 exports.signupUser = async (req, res) => {
@@ -92,7 +93,8 @@ exports.OTPviryfy = async (req, res) => {
 exports.UserDitials = async (req, res) => {
     try { 
         
-        const data = await UserDB.findOne({ _id: req.ID }, {OTP:0,status:0,password:0,__v:0,_id:0});
+        const data = await UserDB.findOne({ _id: req.ID }, { OTP: 0, status: 0, password: 0, __v: 0, _id: 0 });
+        data.Photo = await Converter.converter(data.Photo);
         res.status(200).json(data);
     } catch (error) {
         res.status(409).json({ error });

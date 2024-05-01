@@ -13,7 +13,8 @@
         @include DwithL(100%, 35%, center, center);
         img {
           width: 150px;
-          height: auto;
+          height: 150px;
+          object-fit: cover;
           border-radius: 50%;
         }
       }

@@ -10,8 +10,10 @@ import nophoto from "../../assets/img/npphoto.jpg";
 import { Link } from "react-router-dom";
 import { AppContex } from "../../lib/Reducher";
 import { useContext } from "react";
+import { DataContex } from "../Gobal";
 const SideBar = () => {
   const { state, dispach } = useContext(AppContex);
+  const { data} = useContext(DataContex);
   
   return (
     <div className="BarCoun">
@@ -62,7 +64,7 @@ const SideBar = () => {
         <Link to={"/profile"}>
       <div className="profile">
 
-        <img src={nophoto} alt="" />
+        <img src={data.Photo||nophoto} alt="" />
         <p>Profile</p>
       </div>
       </Link>
