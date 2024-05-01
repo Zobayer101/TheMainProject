@@ -30,14 +30,13 @@ const Editprofile = () => {
    
   }
   const SendProData = async() => {
-    console.log(lname + " " + Bio);
     const token = localStorage.getItem("token")?.split(`"`)[1];
     if (token) {
       
       console.log(token);
       const url = "http://localhost:3300/route/api/user/profiledata";
       const msg = await PutData(url, { lname,Photo, Bio },token);
-      console.log(msg);
+     
       if (msg.data.acknowledged) {
         dispach({ type: "PRODATA", value: false });
       }

@@ -1,4 +1,5 @@
 import React, { createContext } from "react";
+import PostData from "./Post";
 interface State {
   counter: number;
   them: boolean;
@@ -8,6 +9,7 @@ interface State {
   bgimage: boolean;
   setimge: string;
   proData: boolean;
+  postData: boolean;
   
 }
 type Action =
@@ -18,7 +20,8 @@ type Action =
   | { type: "MORE"; value: boolean }
   | { type: "BGIMG"; value: boolean }
   | { type: "SETIMGE"; value: string }
-  | { type: "PRODATA";  value : boolean};
+  | { type: "PRODATA"; value: boolean }
+  | { type: "POSTDATA"; value:boolean};
 
 const Initalvalue: State = {
   counter: 30,
@@ -28,7 +31,8 @@ const Initalvalue: State = {
   more: false,
   bgimage: false,
   setimge: "image",
-  proData:false,
+  proData: false,
+  postData:false,
 };
 
 const AppContex = createContext<{
@@ -55,7 +59,9 @@ const Reducher = (state: State, action: Action) => {
     case "SETIMGE":
       return { ...state, setimge: action.value };
     case "PRODATA":
-      return { ...state, proData:action.value}
+      return { ...state, proData: action.value };
+    case "POSTDATA":
+      return { ...state, postData: action.value };
     default:
       return state;
   }

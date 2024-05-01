@@ -47,7 +47,6 @@ const Profile = () => {
     }
   },[Navigate, setData]);
   //console.log(data)
-  console.log(data.Photo);
 
   //Navigate("/message");
   return (

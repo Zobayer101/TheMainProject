@@ -11,10 +11,10 @@ import { Link } from "react-router-dom";
 import { AppContex } from "../../lib/Reducher";
 import { useContext } from "react";
 import { DataContex } from "../Gobal";
+import CreatePost from "../subComponent/CreatePost";
 const SideBar = () => {
   const { state, dispach } = useContext(AppContex);
   const { data} = useContext(DataContex);
-  
   return (
     <div className="BarCoun">
       <div className="Logo">LOGO</div>
@@ -56,9 +56,12 @@ const SideBar = () => {
       </div>
       </Link>
       <Link to={"#"}>
-      <div className="create">
-        <FaRegPlusSquare />
-        <p>Create</p>
+      <div className="create" onClick={()=>dispach({type:"POSTDATA", value:!state.postData})}>
+          <FaRegPlusSquare />
+          {
+            state.postData ? <CreatePost/> :
+             <p>Create</p>
+         }
       </div>
       </Link>
         <Link to={"/profile"}>
