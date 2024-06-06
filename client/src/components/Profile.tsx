@@ -8,47 +8,20 @@ import { FaRegBookmark } from "react-icons/fa";
 import { BiSolidUserRectangle } from "react-icons/bi";
 
 import {  useNavigate } from "react-router-dom";
-import { useEffect ,useContext} from "react";
-import GetUser from "../lib/Get";
+import { useContext} from "react";
+
 import Editprofile from "./profile/Editprofile";
 import { AppContex } from "../lib/Reducher";
 import { DataContex } from "./Gobal";
 
 const Profile = () => {
   const {  dispach} = useContext(AppContex);
-  const { data,setData} = useContext(DataContex);
+  const { data} = useContext(DataContex);
   const Navigate = useNavigate();
-  useEffect(() => {
-  const stor = localStorage.getItem("userDitials");
-  const token = localStorage.getItem("token");
-  const url = "http://localhost:3300/route/api/user/retrive";
-    if (stor&&token) {
-      //const {ID,token } = stor;
-      (async () => {
-        
-        const data = await GetUser(url, token.split(`"`)[1]);
-        setData({
-          fname: data.fname,
-          lname: data.lname,
-          email: data.email,
-          date: data.dateofbarth,
-          city: data.city,
-          geander: data.geander,
-          Photo: data.Photo,
-          follower: data.follower,
-          following: data.following,
-          Bio: data.Bio,
-        });
-       
-      })()
-      
-    } else {
-      Navigate("/login");
-    }
-  },[Navigate, setData]);
-  //console.log(data)
 
-  //Navigate("/message");
+  // chacke validation
+  localStorage.getItem("token") ? "" : Navigate("/login");
+  
   return (
     <div className="profileCon">
       <MoreOption />

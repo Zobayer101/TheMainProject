@@ -11,7 +11,6 @@ import { Link } from "react-router-dom";
 import { AppContex } from "../../lib/Reducher";
 import { useContext } from "react";
 import { DataContex } from "../Gobal";
-import CreatePost from "../subComponent/CreatePost";
 const SideBar = () => {
   const { state, dispach } = useContext(AppContex);
   const { data} = useContext(DataContex);
@@ -19,64 +18,66 @@ const SideBar = () => {
     <div className="BarCoun">
       <div className="Logo">LOGO</div>
       <Link to={"/"}>
-      
-      <div className="home">
-        <MdHomeFilled />
-        <p>Home</p>
-      </div>
+        <div className="home">
+          <MdHomeFilled />
+          <p>Home</p>
+        </div>
       </Link>
       <Link to={"#"}>
-      <div className="Search">
-        <IoIosSearch />
-        <p>Search</p>
-      </div>
+        <div className="Search">
+          <IoIosSearch />
+          <p>Search</p>
+        </div>
       </Link>
       <Link to={"#"}>
-      <div className="explor">
-        <FaRegCompass />
-        <p>Explor</p>
-      </div>
+        <div className="explor">
+          <FaRegCompass />
+          <p>Explor</p>
+        </div>
       </Link>
       <Link to={"#"}>
-      <div className="video">
-        <FaClapperboard />
-        <p>Reels</p>
-      </div>
+        <div className="video">
+          <FaClapperboard />
+          <p>Reels</p>
+        </div>
       </Link>
       <Link to={"/message"}>
-      <div className="message">
-        <IoIosSend />
-        <p>Message</p>
-      </div>
+        <div className="message">
+          <IoIosSend />
+          <p>Message</p>
+        </div>
       </Link>
       <Link to={"#"}>
-      <div className="Notify">
-        <FaRegHeart />
-        <p>Notification</p>
-      </div>
+        <div className="Notify">
+          <FaRegHeart />
+          <p>Notification</p>
+        </div>
       </Link>
       <Link to={"#"}>
-      <div className="create" onClick={()=>dispach({type:"POSTDATA", value:!state.postData})}>
+        <div
+          className="create"
+          onClick={() => dispach({ type: "POSTDATA", value: !state.postData })}
+        >
           <FaRegPlusSquare />
-          {
-            state.postData ? <CreatePost/> :
-             <p>Create</p>
-         }
-      </div>
+          <p>Create</p>
+        </div>
       </Link>
-        <Link to={"/profile"}>
-      <div className="profile">
-
-        <img src={data.Photo||nophoto} alt="" />
-        <p>Profile</p>
-      </div>
+      <Link to={"/profile"}>
+        <div className="profile">
+          <img src={data.Photo || nophoto} alt="" />
+          <p>Profile</p>
+        </div>
       </Link>
       <Link to={"#"}>
-      <div className="more" onClick={()=> dispach({type:"MORE", value:!state.more})} >
-              <FaBars />
-              <p>More</p>
-      </div>
+        <div
+          className="more"
+          onClick={() => dispach({ type: "MORE", value: !state.more })}
+        >
+          <FaBars />
+          <p>More</p>
+        </div>
       </Link>
+     
     </div>
   );
 };

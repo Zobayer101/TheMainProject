@@ -6,6 +6,7 @@
   position: relative;
 
   overflow: hidden;
+
   .Logo {
     @include DwithL(80px, 100%, center, start);
     font-size: 20px;
@@ -55,11 +56,14 @@
       }
     }
   }
-  }
+}
+
+
   @media screen and (max-width: 750px) {
     display: flex;
     align-items: center;
     justify-content: space-around;
+   
     .Logo {
       display: none;
     }

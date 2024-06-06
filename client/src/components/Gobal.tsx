@@ -14,6 +14,7 @@ interface Datatype {
   Bio: string;
 }
 import { Reducher, AppContex, Initalvalue } from "../lib/Reducher";
+import CreatePost from './subComponent/CreatePost';
 export const DataContex = React.createContext<{
   data: Datatype;
   setData: React.Dispatch<React.SetStateAction<Datatype>>;
@@ -54,6 +55,7 @@ const Gobal: React.FC = () => {
         <AppContex.Provider value={{ state, dispach }}>
           <DataContex.Provider value={{ data, setData }}>
             <Navigator />
+            <CreatePost/>
           </DataContex.Provider>
         </AppContex.Provider>
       </div>
