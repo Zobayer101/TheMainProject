@@ -26,6 +26,14 @@
                 color: var(--white-800);
                 font-size: 18px;
             }
+            .cancile{
+                position: absolute;
+                font-size: 30px;
+                right: 5px;
+                top: 3px;
+                cursor: pointer;
+                color: rgb(255, 0, 0);
+            }
         }
         .mainBody{
             width: 100%;
@@ -34,6 +42,64 @@
             flex-direction: column;
             align-items: center;
             justify-content: space-evenly;
+            .postnow{
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: space-evenly;
+                    #post{
+                        width: 90%;
+                        height: 100px;
+                        resize: none;
+                        font-size: 18px;
+                        border: 1px solid #0fc;
+                        outline: none;
+                        background: var(--white-300);
+                        color: var(--white-800);
+                        padding: 5px;
+                    }
+                    .btnPost{
+                        background: #000;
+                        cursor: pointer;
+                        transition: .3s ease;
+                        &:hover{
+                            background: rgb(68, 0, 255);
+                        }
+                    }
+                }
+            .boundary{
+                width: 100%;
+                height: 100%;
+                
+                img{
+                   object-fit: cover;
+                   width: 100%;
+                   height: 95%;
+                }
+                .towbtn{
+                    width: 100%;
+                    height: 40px;
+                    position: absolute;
+                    bottom: 2px;
+                    border: none;
+                    border-radius: 0 0 10px 10px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-around;
+                    .pre,.next{
+                        font-size: 20px;
+                        font-weight: 800;
+                        color: #fff;
+                        cursor: pointer;
+                        transition: .2s;
+                    &:hover{
+                            color: rgb(5, 153, 0);
+                        }
+                    }
+                }
+            }
             .IMG{
                 font-size: 100px;
                 padding: 0;
