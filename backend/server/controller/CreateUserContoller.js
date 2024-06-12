@@ -5,6 +5,7 @@ const TokenGenara = require("../middleware/TokenGenarator");
 const mailSend = require("../service/MailGenarator");
 //const Converter = require(".././service/imageProvider");
 const Organizer = require("../lib/Organiger");
+const PostUsers = require("../model/PostUser");
 
 //signup controller
 exports.signupUser = async (req, res) => {
@@ -96,7 +97,7 @@ exports.UserDitials = async (req, res) => {
         
         const data = await UserDB.findOne({ _id: req.ID }, { OTP: 0, status: 0, password: 0, __v: 0, _id: 0 });
         //data.Photo = await Converter.converter(data.Photo);
-        data.Photo = await Organizer.Provider(data.Photo,'jpeg');
+        data.Photo = await Organizer.Provider(data.Photo, 'jpeg');
         res.status(200).json(data);
     } catch (error) {
         res.status(409).json({ error });
@@ -104,4 +105,23 @@ exports.UserDitials = async (req, res) => {
     }
 }
 
+exports.UserPost = async (req, res) => {
+    try {
+        
+        const { image, text } = req.body;
+        const path = `C://Users//mdzob//Desktop//media//backend//storage//photo//${req.name}PostData`;
+        const imagePath = await Organizer.Consumer(image, path, `${Date.now()}-PostData.jpeg`);
+        const post = new PostUsers({
+            PosterID: req.ID,
+            Image: imagePath,
+            postText: text
+        });
+        const data = await post.save(post);
+        res.status(200).json(data);
+    } catch (error) {
+        console.log(error.message);
+        req.status(500).json({ error });
+
+    }
+}
 

@@ -15,6 +15,7 @@ interface Datatype {
 }
 import { Reducher, AppContex, Initalvalue } from "../lib/Reducher";
 import CreatePost from './subComponent/CreatePost';
+
 export const DataContex = React.createContext<{
   data: Datatype;
   setData: React.Dispatch<React.SetStateAction<Datatype>>;
@@ -47,6 +48,8 @@ const Gobal: React.FC = () => {
     following: "",
     Bio:""
   });
+  
+ 
 
   const { them } = state;
   return (

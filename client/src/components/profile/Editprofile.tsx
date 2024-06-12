@@ -33,7 +33,6 @@ const Editprofile = () => {
     const token = localStorage.getItem("token")?.split(`"`)[1];
     if (token) {
       
-      console.log(token);
       const url = "http://localhost:3300/route/api/user/profiledata";
       const msg = await PutData(url, { lname,Photo, Bio },token);
      

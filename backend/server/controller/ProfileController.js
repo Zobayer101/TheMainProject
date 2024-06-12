@@ -7,7 +7,7 @@ exports.ReadPdata = async (req, res) => {
     const { lname, Photo, Bio } = req.body.data;
     const path = `C://Users//mdzob//Desktop//media//backend//storage//photo//${req.name}`;
     const photoPath = await Organization.Consumer(Photo, path,`${Date.now()}-profile.jpeg`);
-    console.log(photoPath);
+  
     const data = await UserDB.updateOne(
       { _id: req.ID },
       { Photo: photoPath, lname, Bio }

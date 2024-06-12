@@ -5,22 +5,24 @@ import { CiCircleChevLeft } from "react-icons/ci";
 import Post from "./Post";
 import { useNavigate } from "react-router-dom";
 import GetUser from "../../lib/Get";
- import { useContext,useEffect } from "react";
+ import { useContext,useEffect, useState } from "react";
 import { DataContex } from "../Gobal";
 
 
 const MainFeed = () => {
-  const {setData}=useContext(DataContex)
+  const { setData } = useContext(DataContex);
+   const [post, setPost] = useState([]);
   const Navigate = useNavigate();
   useEffect(() => {
     const stor = localStorage.getItem("userDitials");
     const token = localStorage.getItem("token");
     const url = "http://localhost:3300/route/api/user/retrive";
+    const url2 = "http://localhost:3300/route/api/user/suggest";
     if (stor && token) {
       //const {ID,token } = stor;
       (async () => {
         const data = await GetUser(url, token.split(`"`)[1]);
-       
+        const PostData = await GetUser(url2, token.split(`"`)[1]);
        setData ({
           fname: data.fname,
           lname: data.lname,
@@ -33,13 +35,13 @@ const MainFeed = () => {
           following: data.following,
           Bio: data.Bio,
         });
-        
+        setPost(PostData);
       })();
     } else {
       Navigate("/login");
     }
   }, [Navigate, setData]);
-
+  
   return (
     <div className="feedDividor">
       <div className="FeedCountuner">
@@ -133,10 +135,13 @@ const MainFeed = () => {
               <div className="texts">Name</div>
             </div>
           </div>
-          <Post />
-          <Post />
-          <Post />
-          <Post />
+          {
+            post.map((value, index) => (
+              
+              <Post key={index} Data={value} />
+            ))
+          }
+          
         </div>
       </div>
       <div className="sussagedfirend">

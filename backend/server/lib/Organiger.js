@@ -12,13 +12,13 @@ exports.Consumer = async (file, path, names) => {
       if (err) {
         fs.mkdir(path, (err) => {
           if (err) {
-            console.log(err + 'file all ready exist so ...');
+            console.log(err);
           } else {
-            sherp(binData).jpeg({ quality: 70 }).toFile(imagePath);
+            sherp(binData).jpeg({ quality: 65 }).toFile(imagePath);
           }
         });
       } else {
-        sherp(binData).jpeg({ quality: 70 }).toFile(imagePath);
+        sherp(binData).jpeg({ quality: 65 }).toFile(imagePath);
       }
       });
     return imagePath;
