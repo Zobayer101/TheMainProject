@@ -6,12 +6,18 @@ import { IoAttachOutline } from "react-icons/io5";
 import { IoIosSend } from "react-icons/io";
 import { HiOutlineMicrophone } from "react-icons/hi2";
 import { AppContex } from "../../lib/Reducher";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import photo from "../../assets/img/habib.png";
 //import bgImg from "../../assets/BGimg/Wallpaper.jpg";
+import ClintSocket from "../../lib/Socket";
 const MessagePage = () => {
-   const { state:{msgpag,setimge},dispach} = useContext(AppContex);
-  // console.log(state);
+  const {
+    state: { msgpag, setimge },
+    dispach,
+  } = useContext(AppContex);
+  const [message, setMessage] = useState({ text: "", files: "", voies: "" });
+  ClintSocket();
+console.log(message.text)
   return (
     <div className="PageCon">
       <div className="pageHead">
@@ -40,7 +46,7 @@ const MessagePage = () => {
       <div
         className="mainMsgPag"
         style={{
-          background:`url("../../../public/images/photo/${setimge}.jpg")`,
+          background: `url("../../../public/images/photo/${setimge}.jpg")`,
           objectFit: "cover",
           // backgroundRepeat: "no-repeat",
           //backgroundSize:"cover",
@@ -87,7 +93,18 @@ const MessagePage = () => {
         </div>
       </div>
       <div className="SenderOption">
-        <input autoComplete="off" type="text" placeholder="massages.." />
+        <input
+          autoComplete="off"
+          type="text"
+          placeholder="massages.."
+          value={message.text}
+          onChange={(e) => {
+            setMessage((pre) => ({
+              ...pre,
+              text:e.target.value,
+            }))
+          }}
+        />
         <div className="icons">
           <div className="microphone">
             <HiOutlineMicrophone />

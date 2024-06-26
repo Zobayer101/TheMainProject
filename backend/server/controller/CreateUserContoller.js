@@ -7,6 +7,7 @@ const mailSend = require("../service/MailGenarator");
 const Organizer = require("../lib/Organiger");
 const PostUsers = require("../model/PostUser");
 
+
 //signup controller
 exports.signupUser = async (req, res) => {
     try {
@@ -97,6 +98,7 @@ exports.UserDitials = async (req, res) => {
         
         const data = await UserDB.findOne({ _id: req.ID }, { OTP: 0, status: 0, password: 0, __v: 0, _id: 0 });
         //data.Photo = await Converter.converter(data.Photo);
+        
         data.Photo = await Organizer.Provider(data.Photo, 'jpeg');
         res.status(200).json(data);
     } catch (error) {
@@ -125,3 +127,21 @@ exports.UserPost = async (req, res) => {
     }
 }
 
+exports.MessageBar = async (req, res) => {
+    try {
+        const data = await UserDB.find({ _id: { $ne: "6605aa190ae3d34d70a48081" } }, { Bio: 0, });
+        const DataObj = [];
+        for (let i = 0; i < data.length; i++){
+            const { Photo, fname, lname , _id } = data[i];
+            DataObj[i] = {
+                image:Photo ? await Organizer.Provider(Photo, `jpeg`) : '',
+                fname,
+                lname,
+                _id,
+            }
+        }
+        res.status(200).json(DataObj);
+    } catch (error) {
+        console.log(error);
+    }
+}

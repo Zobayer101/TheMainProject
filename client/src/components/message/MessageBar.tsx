@@ -1,23 +1,49 @@
-import photo from "../../assets/img/habib.png";
+import photo from "../../assets/img/npphoto.jpg";
 import { BiCheckDouble } from "react-icons/bi";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AppContex } from "../../lib/Reducher";
 import { useContext } from "react";
 import SideBar from "../Feed/Sidebar";
+import GetUser from "../../lib/Get";
+import PostData from "../../lib/Post";
 
 const MessageBar = () => {
-  const {state:{msgpag},dispach } = useContext(AppContex);
+  const {
+    state: { msgpag },
+    dispach,
+  } = useContext(AppContex);
   const [bar, setBar] = useState(false);
-  //console.log(state.msgpag);
+  const [data, setData] = useState([]);
+  const Token = localStorage.getItem('token');
+  useEffect(() => {
+    if (Token) {
+      
+      const URL = "http://localhost:3300/route/api/allUser/ditials";
+      (async () => {
+  
+        const userData = await GetUser(URL, Token.split(`"`)[1]);
+        
+       setData(userData)
+      })();
+    }
+  }, [setData,Token]);
+  const sendID = async (ID: string) => {
+    const url = "http://localhost:3300/route/api/create/conversation";
+    if (Token) {
+      console.log(Token)
+      const userData = await PostData(url,{ID},Token.split(`"`)[1]);
+      alert(JSON.stringify(userData));
+    }
+  }
   return (
     <div className="barcoun">
       <div className={bar ? "sideBar showbar" : "sideBar"}>
         <div className="IconBar">
           <div
             onClick={() => {
-              dispach({type:"MORE",value:false}),
-              dispach({type:"BGIMG",value:false}),
-              setBar(!bar)
+              dispach({ type: "MORE", value: false }),
+                dispach({ type: "BGIMG", value: false }),
+                setBar(!bar);
             }}
             className={bar ? "togglebtn ON" : "togglebtn"}
           >
@@ -26,7 +52,7 @@ const MessageBar = () => {
             <div className="bar3"></div>
           </div>
         </div>
-        <SideBar/>
+        <SideBar />
       </div>
       <div className="barhed">
         <div className="searchBox">
@@ -35,27 +61,31 @@ const MessageBar = () => {
       </div>
       <div className="allusers">
         {/* User bar */}
-
-        <div
-          onClick={() => {
-            dispach({ type: "MSGPAGE", value: !msgpag });
-          }}
-          className="usersBar"
-        >
-          <div className="userImg">
-            <div className="acttive"></div>
-            <img src={photo} alt="" />
-          </div>
-          <div className="userdigials">
-            <div className="Name">
-              <h3>Habib</h3>
-              <p>10-12-2024</p>
+        {data.map((_, index) => (
+         
+          <div
+            onClick={() => {
+              dispach({ type: "MSGPAGE", value: !msgpag });
+              sendID(data[index]._id);
+            }}
+            className="usersBar"
+            key={index}
+          >
+            <div className="userImg">
+              <div className="acttive"></div>
+              <img src={data[index].image||photo} alt="" />
             </div>
-            <div className="sendMessage">
-              <BiCheckDouble className="Tick" />
+            <div className="userdigials">
+              <div className="Name">
+                <h3>{data[index].fname}</h3>
+                <p>10-12-2024</p>
+              </div>
+              <div className="sendMessage">
+                <BiCheckDouble className="Tick" />
+              </div>
             </div>
           </div>
-        </div>
+        ))}
       </div>
     </div>
   );
