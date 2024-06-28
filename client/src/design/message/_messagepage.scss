@@ -28,7 +28,8 @@
       @include DwithL(100%, 90px, center, center);
       position: relative;
       img {
-        width: 60px;
+        @include Lingth(60px,60px);
+        object-fit: cover;
         border: 2px solid #b5c908;
         border-radius: 50%;
       }
@@ -84,7 +85,7 @@
         .IMG {
           @include Lingth(100px, 100px);
           img {
-            width: 100px;
+            @include Lingth(100px, 100px);
             border-radius: 50%;
           }
         }
@@ -174,8 +175,9 @@
               border-radius: 0px 10px 10px 10px ;
             }
             img {
-              width: 200px;
-              height: 200px;
+              max-width: 200px;
+              height: auto;
+              object-fit: contain;
               border-radius: 5px;
             }
           }
@@ -203,7 +205,7 @@
             align-items: start;
             justify-content: center;
             img {
-              height: 40px;
+              @include Lingth(40px,40px);
               border-radius: 50%;
             }
           }
@@ -229,8 +231,10 @@
             img {
               float: right;
               width: 200px;
-              height: 200px;
+              height: auto;
+              object-fit: cover;
               border-radius: 5px;
+              border: none;
             }
           }
         }

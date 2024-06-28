@@ -6,18 +6,62 @@ import { IoAttachOutline } from "react-icons/io5";
 import { IoIosSend } from "react-icons/io";
 import { HiOutlineMicrophone } from "react-icons/hi2";
 import { AppContex } from "../../lib/Reducher";
-import { useContext, useState } from "react";
-import photo from "../../assets/img/habib.png";
+import { useContext } from "react";
+import photo from "../../assets/img/npphoto.jpg";
 //import bgImg from "../../assets/BGimg/Wallpaper.jpg";
 import ClintSocket from "../../lib/Socket";
+import { MsgContex } from "../Message";
+import Inputhandel from "../../lib/InputHandel";
+import PostData from "../../lib/Post";
+import { DataContex } from "../Gobal";
 const MessagePage = () => {
+  // const [msg,setMsg]=useState({text:''})
   const {
-    state: { msgpag, setimge },
+    state: { msgpag, setimge, showPage },
     dispach,
   } = useContext(AppContex);
-  const [message, setMessage] = useState({ text: "", files: "", voies: "" });
+  const { data } = useContext(DataContex);
+  const { message, setMessage, msgData, setMsgData, img } =
+    useContext(MsgContex);
+  const { text } = message;
+
   ClintSocket();
-console.log(message.text)
+
+  const token = localStorage.getItem("token");
+  const user = localStorage.getItem("userDitials") ?? "";
+  const userID = JSON.parse(user);
+
+  const SendData = async () => {
+    if (token) {
+      const URL = "http://localhost:3300/route/api/user/msg/save";
+      const data = await PostData(URL, message, token.split(`"`)[1]);
+      data ?
+        setMessage((pre) => ({
+          ...pre,
+          text:''
+        }))
+      : ''
+      console.log(data);
+    }
+
+    const newMsg = {
+      ResiverId: message.risiverID,
+      SenderId: userID.ID,
+      ConversationId: message.conversationID,
+      messages: message.text,
+    };
+    setMsgData([...msgData, newMsg]);
+
+    console.log(msgData);
+  };
+
+  if (showPage)
+    return (
+      <div>
+        <h1>blank massage!</h1>
+      </div>
+    );
+  console.log(msgData);
   return (
     <div className="PageCon">
       <div className="pageHead">
@@ -29,12 +73,12 @@ console.log(message.text)
         </div>
         <div className="Imgbox">
           <div className="acctive"></div>
-          <img src={photo} alt="userPhoto" />
+          <img src={img.hisPhoto || photo} alt="userPhoto" />
         </div>
         <div className="otherOptin">
           <div className="Names">
-            <h3>MD habib</h3>
-            <p>34-10-2024</p>
+            <h3>{img.hisName}</h3>
+            <p>{img.hisDate}</p>
           </div>
           <div className="Icons">
             <IoMdCall />
@@ -48,61 +92,61 @@ console.log(message.text)
         style={{
           background: `url("../../../public/images/photo/${setimge}.jpg")`,
           objectFit: "cover",
-          // backgroundRepeat: "no-repeat",
-          //backgroundSize:"cover",
-          //backgroundPosition:"center",
         }}
       >
         <div className="pagecountuner">
           <div className="userPro">
             <div className="IMG">
-              <img src={photo} alt="userphoto" />
+              <img src={img.hisPhoto || photo} alt="userphoto" />
             </div>
             <div className="Ditils">
               <div className="name">
-                <h3>MD Habib</h3>
-                <p>Join 4-30-2023</p>
+                <h3>{img.hisName}</h3>
+                <p>{img.hisDate}</p>
               </div>
               <div className="acctives">
                 <div className="mainAc"></div>
               </div>
             </div>
           </div>
-          <div className="sendermsg">
-            <div className="mainmassage">
-              <div className="img">
-                <img src={photo} alt="myphoto" />
+          {msgData.map((_, i) =>
+            msgData[i].SenderId == userID.ID ? (
+              <div key={i} className="sendermsg">
+                <div className="mainmassage">
+                  <div className="img">
+                    <img src={data.Photo} alt="myphoto" />
+                  </div>
+                  <div className="msgbox">
+                    <p>{msgData[i].messages} </p>
+                    <img src={msgData[i].photo} alt="" />
+                  </div>
+                </div>
               </div>
-              <div className="msgbox">
-                <p>hello world </p>
-                <img src={photo} alt="mypro" />
+            ) : (
+              <div className="resivermsg">
+                <div className="mainmassage">
+                  <div className="img">
+                    <img src={img.hisPhoto} alt="" />
+                  </div>
+                  <div className="msgbox">
+                    <p>{msgData[i].messages}</p>
+                    <img src={msgData[i].photo} alt="" />
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-          <div className="resivermsg">
-            <div className="mainmassage">
-              <div className="img">
-                <img src={photo} alt="" />
-              </div>
-              <div className="msgbox">
-                <p>hellow next message</p>
-                <img src={photo} alt="" />
-              </div>
-            </div>
-          </div>
+            )
+          )}
         </div>
+        ;
       </div>
       <div className="SenderOption">
         <input
           autoComplete="off"
           type="text"
           placeholder="massages.."
-          value={message.text}
+          value={text}
           onChange={(e) => {
-            setMessage((pre) => ({
-              ...pre,
-              text:e.target.value,
-            }))
+            Inputhandel("text", e.target.value, setMessage);
           }}
         />
         <div className="icons">
@@ -113,7 +157,7 @@ console.log(message.text)
             <input type="file" accept="image/* video/mp4 audio/mp3" />
             <IoAttachOutline />
           </div>
-          <button>
+          <button onClick={() => SendData()}>
             <IoIosSend />
           </button>
         </div>

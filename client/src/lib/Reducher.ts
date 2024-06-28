@@ -10,7 +10,7 @@ interface State {
   setimge: string;
   proData: boolean;
   postData: boolean;
-  
+  showPage: boolean;
 }
 type Action =
   | { type: "INCREMANT"; value: number }
@@ -21,7 +21,8 @@ type Action =
   | { type: "BGIMG"; value: boolean }
   | { type: "SETIMGE"; value: string }
   | { type: "PRODATA"; value: boolean }
-  | { type: "POSTDATA"; value:boolean};
+  | { type: "POSTDATA"; value: boolean }
+  | { type: "SHOWPAGE"; value:boolean};
 
 const Initalvalue: State = {
   counter: 30,
@@ -32,7 +33,8 @@ const Initalvalue: State = {
   bgimage: false,
   setimge: "image",
   proData: false,
-  postData:false,
+  postData: false,
+  showPage:true,
 };
 
 const AppContex = createContext<{
@@ -62,6 +64,8 @@ const Reducher = (state: State, action: Action) => {
       return { ...state, proData: action.value };
     case "POSTDATA":
       return { ...state, postData: action.value };
+    case "SHOWPAGE":
+      return { ...state, showPage: action.value };
     default:
       return state;
   }

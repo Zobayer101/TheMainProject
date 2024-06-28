@@ -10,7 +10,7 @@ const Feed = () => {
   useEffect(() => {
     const stor = localStorage.getItem("userDitials");
     if (stor) {
-      console.log(stor);
+      //console.log(stor);
       // Navigate("/login");
     } else {
       navigate("/login");

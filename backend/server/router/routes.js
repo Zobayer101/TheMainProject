@@ -39,4 +39,7 @@ route.get("/api/allUser/ditials", Gard, userControll.MessageBar);
 //Create a convertation
 route.post("/api/create/conversation", Gard, Messanger.CreateConversation);
 
+//msg save
+route.post("/api/user/msg/save", Gard, Messanger.SaveMsg);
+
 module.exports = route;

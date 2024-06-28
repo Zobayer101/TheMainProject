@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import GetUser from "../../lib/Get";
  import { useContext,useEffect, useState } from "react";
 import { DataContex } from "../Gobal";
+import Loading from "../Loading";
 
 
 const MainFeed = () => {
@@ -41,7 +42,9 @@ const MainFeed = () => {
       Navigate("/login");
     }
   }, [Navigate, setData]);
-  
+  if (!post) return (
+   Loading()
+  )
   return (
     <div className="feedDividor">
       <div className="FeedCountuner">
