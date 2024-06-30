@@ -9,7 +9,7 @@ const http = require("http");
 //intrenal import
 const route = require("./server/router/routes");
 const DBconnect = require("./server/database/DBconnection");
-
+const MSG = require('./server/model/Messages');
 
 const app = express();
 const server = http.createServer(app);
@@ -29,12 +29,48 @@ const io = new socketio.Server(server, {
     origin: `http://localhost:5173`,
   },
 });
+const Counter = {};
 
+const userMessage = async (data) => {
+  Counter[data.message.SenderID] = data.ID;
+  console.log(data);
+  if (data.message.text) {
+    const SID = Counter[data.message.RisiverID];
+    const usermsg = new MSG({
+      ConversationId: data.message.ConversatoonID,
+      SenderId: data.message.SenderID,
+      ResiverId: data.message.RisiverID,
+      messages: data.message.text,
+      photo: data.message.file,
+    });
+    await usermsg.save(usermsg);
+
+    if (SID) {
+      const newMsg = {
+        ResiverId: data.message.RisiverID,
+        SenderId: data.message.SenderID,
+        ConversationId: data.message.ConversatoonID,
+        messages: data.message.text,
+      }
+      io.to(SID).emit("resive", newMsg);
+    }
+    console.log(Counter);
+    console.log(SID);
+  }
+  
+}
 io.on('connection', (socket) => {
   console.log('connection is successful');
-  socket.emit('servers', "This is a message");
+  socket.on('msg', userMessage)
+  
+  //Disconnect
   socket.on('disconnect', () => {
-    console.log('connection is fale');
+    Object.keys(Counter).forEach((value) => {
+      if (Counter[value] == socketio.id) {
+        console.log('delete');
+        delete Counter[value];
+      }
+    })
   })
 })
 

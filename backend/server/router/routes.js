@@ -42,4 +42,7 @@ route.post("/api/create/conversation", Gard, Messanger.CreateConversation);
 //msg save
 route.post("/api/user/msg/save", Gard, Messanger.SaveMsg);
 
+//search message
+route.post('/api/user/search/getdata', userControll.SearchUserData);
+
 module.exports = route;

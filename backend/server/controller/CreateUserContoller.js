@@ -47,7 +47,7 @@ exports.loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
     let data = await UserDB.findOne({ email: email });
-    console.log(data);
+    
     if (data) {
       const isvalid = bcrypt.compare(password, data.password);
       if (isvalid) {
@@ -178,3 +178,13 @@ exports.MessageBar = async (req, res) => {
     console.log(error);
   }
 };
+
+exports.SearchUserData = async (req, res) => {
+  try {
+    const data = await UserDB.find({fname:req.body.fname});
+    
+    res.status(200).json(data);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+}

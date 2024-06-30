@@ -6,62 +6,74 @@ import { IoAttachOutline } from "react-icons/io5";
 import { IoIosSend } from "react-icons/io";
 import { HiOutlineMicrophone } from "react-icons/hi2";
 import { AppContex } from "../../lib/Reducher";
-import { useContext } from "react";
+import { MouseEvent, useContext,useEffect,useRef} from "react";
 import photo from "../../assets/img/npphoto.jpg";
 //import bgImg from "../../assets/BGimg/Wallpaper.jpg";
 import ClintSocket from "../../lib/Socket";
 import { MsgContex } from "../Message";
-import Inputhandel from "../../lib/InputHandel";
-import PostData from "../../lib/Post";
+//import Inputhandel from "../../lib/InputHandel";
+// import PostData from "../../lib/Post";
 import { DataContex } from "../Gobal";
-const MessagePage = () => {
+
+const MessagePage:React.FC = () => {
   // const [msg,setMsg]=useState({text:''})
   const {
     state: { msgpag, setimge, showPage },
     dispach,
   } = useContext(AppContex);
   const { data } = useContext(DataContex);
-  const { message, setMessage, msgData, setMsgData, img } =
+  const { message,setMessage, msgData, setMsgData, img,socket,setSocket } =
     useContext(MsgContex);
-  const { text } = message;
 
-  ClintSocket();
+  
+  const scrollRef = useRef<HTMLDivElement | null>(null);
 
-  const token = localStorage.getItem("token");
+  //Socket Impimantation
+  ClintSocket(socket,setSocket,setMsgData,msgData);
+
+  
   const user = localStorage.getItem("userDitials") ?? "";
   const userID = JSON.parse(user);
+  
+  useEffect(() => {
+    
+     const scrollElement = scrollRef.current;
+     if (scrollElement && msgData.length > 0) {
+       scrollElement.scrollTop = scrollElement.scrollHeight;
+     }
+  }, [msgData])
+  
+  const SendData = async (e: MouseEvent<HTMLButtonElement, MouseEvent>) => {
+     e.preventDefault();
+    setSocket((pre) => ({
+      ...pre,
+      send: true,
+      text: message
+    }))
+    // if (token && text) {
 
-  const SendData = async () => {
-    if (token) {
-      const URL = "http://localhost:3300/route/api/user/msg/save";
-      const data = await PostData(URL, message, token.split(`"`)[1]);
-      data ?
-        setMessage((pre) => ({
-          ...pre,
-          text:''
-        }))
-      : ''
-      console.log(data);
-    }
-
+    //   const URL = "http://localhost:3300/route/api/user/msg/save";
+    //   const data = await PostData(URL, socket, token.split(`"`)[1]);
+    //   data ?''
+    //   : ''
+    //   console.log(data)
+    // }
+    setMessage('')
     const newMsg = {
-      ResiverId: message.risiverID,
+      ResiverId: socket.RisiverID,
       SenderId: userID.ID,
-      ConversationId: message.conversationID,
-      messages: message.text,
+      ConversationId: socket.ConversatoonID,
+      messages: message,
     };
     setMsgData([...msgData, newMsg]);
-
-    console.log(msgData);
   };
-
+ 
   if (showPage)
     return (
       <div>
         <h1>blank massage!</h1>
       </div>
     );
-  console.log(msgData);
   return (
     <div className="PageCon">
       <div className="pageHead">
@@ -89,6 +101,7 @@ const MessagePage = () => {
       </div>
       <div
         className="mainMsgPag"
+        ref={scrollRef}
         style={{
           background: `url("../../../public/images/photo/${setimge}.jpg")`,
           objectFit: "cover",
@@ -123,7 +136,7 @@ const MessagePage = () => {
                 </div>
               </div>
             ) : (
-              <div className="resivermsg">
+              <div key={i} className="resivermsg">
                 <div className="mainmassage">
                   <div className="img">
                     <img src={img.hisPhoto} alt="" />
@@ -144,9 +157,10 @@ const MessagePage = () => {
           autoComplete="off"
           type="text"
           placeholder="massages.."
-          value={text}
+          value={message}
           onChange={(e) => {
-            Inputhandel("text", e.target.value, setMessage);
+           
+            setMessage(e.target.value);
           }}
         />
         <div className="icons">
@@ -157,7 +171,10 @@ const MessagePage = () => {
             <input type="file" accept="image/* video/mp4 audio/mp3" />
             <IoAttachOutline />
           </div>
-          <button onClick={() => SendData()}>
+          <button onClick={(e) => {
+            
+            SendData(e)
+            }}>
             <IoIosSend />
           </button>
         </div>

@@ -32,8 +32,9 @@ exports.CreateConversation = async (req, res) => {
         CreateorId: wonID,
         PaticipatorId: otherID,
       });
-       await user.save(user);
-      res.status(200).json([]);
+      const msData = await user.save(user);
+      console.log(msData);
+      res.status(200).json(msData);
     }
   } catch (error) {
     console.log(error);
@@ -44,11 +45,13 @@ exports.CreateConversation = async (req, res) => {
 exports.SaveMsg = async (req, res) => {
   try {
     const senderID = req.ID;
-    const { risiverID, conversationID, text ,photo} = req.body;
+    console.log(req.body)
+    console.log('this is a body')
+    const { RisiverID, ConversatoonID, text, photo } = req.body;
     const msg = new MSG({
-      ConversationId: conversationID,
+      ConversationId: ConversatoonID,
       SenderId: senderID,
-      ResiverId: risiverID,
+      ResiverId: RisiverID,
       messages: text,
       photo,
     });
