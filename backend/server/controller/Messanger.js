@@ -1,11 +1,13 @@
 const Conversation = require("../model/Conversation");
 const MSG = require("../model/Messages");
+const UserDB = require("../model/UserModel");
+const Organizer = require('../lib/Organiger');
 
 exports.CreateConversation = async (req, res) => {
   try {
     const wonID = req.ID;
     const otherID = req.body.ID;
-    
+   
     const data = await Conversation.find({
       $or: [
         { $and: [{ CreateorId: wonID }, { PaticipatorId: otherID }] },
@@ -33,8 +35,19 @@ exports.CreateConversation = async (req, res) => {
         PaticipatorId: otherID,
       });
       const msData = await user.save(user);
-      console.log(msData);
-      res.status(200).json(msData);
+      const data = await UserDB.find({ _id: otherID }, { email: 0, Bio: 0, follower: 0, following: 0 });
+     
+      const      DataObj = {
+          photo: data[0].Photo ? await Organizer.Provider(data[0].Photo, "jpeg") : "",
+          fname:data[0].fname,
+          lname:data[0].lname,
+          date: msData.Date,
+          ConversationID: msData._id,
+          senderID: wonID,
+          resiverID: msData.PaticipatorId,
+        };
+     
+      res.status(200).json(DataObj);
     }
   } catch (error) {
     console.log(error);

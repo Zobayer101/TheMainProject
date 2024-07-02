@@ -11,8 +11,6 @@ interface MsgContextType {
   setData: React.Dispatch<React.SetStateAction<string[]>>;
   msgData: string[];
   setMsgData: React.Dispatch<React.SetStateAction<string[]>>;
-  message: string;
-  setMessage: React.Dispatch<React.SetStateAction<string>>;
   img: object;
   setImg: React.Dispatch<React.SetStateAction<object>>;
   socket: object;
@@ -23,8 +21,6 @@ const defaultValue: MsgContextType = {
   setData: () => {},
   msgData: [],
   setMsgData: () => {},
-  message:'',
-  setMessage: () => {},
   img: {},
   setImg: () => {},
   socket: {},
@@ -40,7 +36,7 @@ const Message: React.FC = () => {
   const navigate = useNavigate();
   const [data, setData] = useState<string[]>([]);
   const [msgData, setMsgData] = useState<string[]>([]);
-  const [message, setMessage] = useState<string>('');
+  
   const [socket, setSocket] = useState<object>({
     text: "",
     file: "",
@@ -48,7 +44,7 @@ const Message: React.FC = () => {
     SenderID: "",
     RisiverID: "",
     ConversatoonID: "",
-    send: true,
+   
   });
   const [img, setImg] = useState<object>({
     myPhoto: "",
@@ -72,8 +68,6 @@ const Message: React.FC = () => {
         value={{
           data,
           setData,
-          message,
-          setMessage,
           msgData,
           setMsgData,
           img,

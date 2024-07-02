@@ -6,12 +6,12 @@ import { IoAttachOutline } from "react-icons/io5";
 import { IoIosSend } from "react-icons/io";
 import { HiOutlineMicrophone } from "react-icons/hi2";
 import { AppContex } from "../../lib/Reducher";
-import { MouseEvent, useContext,useEffect,useRef} from "react";
+import {  useContext,useEffect,useMemo,useRef} from "react";
 import photo from "../../assets/img/npphoto.jpg";
 //import bgImg from "../../assets/BGimg/Wallpaper.jpg";
 import ClintSocket from "../../lib/Socket";
 import { MsgContex } from "../Message";
-//import Inputhandel from "../../lib/InputHandel";
+import Inputhandel from "../../lib/InputHandel";
 // import PostData from "../../lib/Post";
 import { DataContex } from "../Gobal";
 
@@ -22,52 +22,53 @@ const MessagePage:React.FC = () => {
     dispach,
   } = useContext(AppContex);
   const { data } = useContext(DataContex);
-  const { message,setMessage, msgData, setMsgData, img,socket,setSocket } =
+  const { setSocket, msgData, setMsgData, img, socket } =
     useContext(MsgContex);
-
-  
+  const { text } = socket;
   const scrollRef = useRef<HTMLDivElement | null>(null);
+  const optionObj = useMemo(() => ({
+   transports: ['websocket'],
+ }),[])
 
   //Socket Impimantation
-  ClintSocket(socket,setSocket,setMsgData,msgData);
 
-  
+  const {sendMessage,risivemsg }=ClintSocket("http://localhost:3300",optionObj);
+
   const user = localStorage.getItem("userDitials") ?? "";
   const userID = JSON.parse(user);
+
+  //Risive massage
+  useEffect(() => {
+    risivemsg("resive", (msg) => {
+      setMsgData((pre) => [...pre, msg])
+    });
+  }, [risivemsg, setMsgData]);
   
   useEffect(() => {
-    
-     const scrollElement = scrollRef.current;
-     if (scrollElement && msgData.length > 0) {
-       scrollElement.scrollTop = scrollElement.scrollHeight;
-     }
-  }, [msgData])
-  
-  const SendData = async (e: MouseEvent<HTMLButtonElement, MouseEvent>) => {
-     e.preventDefault();
-    setSocket((pre) => ({
-      ...pre,
-      send: true,
-      text: message
-    }))
-    // if (token && text) {
+    const scrollElement = scrollRef.current;
+    if (scrollElement && msgData.length > 0) {
+      scrollElement.scrollTop = scrollElement.scrollHeight;
+    }
+  }, [msgData]);
 
-    //   const URL = "http://localhost:3300/route/api/user/msg/save";
-    //   const data = await PostData(URL, socket, token.split(`"`)[1]);
-    //   data ?''
-    //   : ''
-    //   console.log(data)
-    // }
-    setMessage('')
+  //Data send
+  const SendData = () => {
+   
+    sendMessage('msg',socket)
+    
     const newMsg = {
       ResiverId: socket.RisiverID,
       SenderId: userID.ID,
       ConversationId: socket.ConversatoonID,
-      messages: message,
+      messages: text,
     };
     setMsgData([...msgData, newMsg]);
+    setSocket((pre) => ({
+      ...pre,
+      text:''
+    }))
   };
- 
+
   if (showPage)
     return (
       <div>
@@ -157,10 +158,9 @@ const MessagePage:React.FC = () => {
           autoComplete="off"
           type="text"
           placeholder="massages.."
-          value={message}
+          value={text}
           onChange={(e) => {
-           
-            setMessage(e.target.value);
+            Inputhandel("text",e.target.value,setSocket);
           }}
         />
         <div className="icons">
@@ -171,10 +171,11 @@ const MessagePage:React.FC = () => {
             <input type="file" accept="image/* video/mp4 audio/mp3" />
             <IoAttachOutline />
           </div>
-          <button onClick={(e) => {
-            
-            SendData(e)
-            }}>
+          <button
+            onClick={() => {
+              SendData();
+            }}
+          >
             <IoIosSend />
           </button>
         </div>

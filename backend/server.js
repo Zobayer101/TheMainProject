@@ -32,8 +32,8 @@ const io = new socketio.Server(server, {
 const Counter = {};
 
 const userMessage = async (data) => {
-  Counter[data.message.SenderID] = data.ID;
   console.log(data);
+  Counter[data.message.SenderID] = data.ID;
   if (data.message.text) {
     const SID = Counter[data.message.RisiverID];
     const usermsg = new MSG({
