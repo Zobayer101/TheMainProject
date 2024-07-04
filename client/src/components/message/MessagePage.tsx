@@ -6,67 +6,101 @@ import { IoAttachOutline } from "react-icons/io5";
 import { IoIosSend } from "react-icons/io";
 import { HiOutlineMicrophone } from "react-icons/hi2";
 import { AppContex } from "../../lib/Reducher";
-import {  useContext,useEffect,useMemo,useRef} from "react";
+import { useContext, useEffect, useRef, useMemo, useState } from "react";
 import photo from "../../assets/img/npphoto.jpg";
 //import bgImg from "../../assets/BGimg/Wallpaper.jpg";
 import ClintSocket from "../../lib/Socket";
 import { MsgContex } from "../Message";
-import Inputhandel from "../../lib/InputHandel";
+// import Inputhandel from "../../lib/InputHandel";
 // import PostData from "../../lib/Post";
 import { DataContex } from "../Gobal";
+import React from "react";
 
-const MessagePage:React.FC = () => {
+const MessagePage: React.FC =React.memo( () =>  {
   // const [msg,setMsg]=useState({text:''})
   const {
     state: { msgpag, setimge, showPage },
     dispach,
   } = useContext(AppContex);
   const { data } = useContext(DataContex);
-  const { setSocket, msgData, setMsgData, img, socket } =
-    useContext(MsgContex);
-  const { text } = socket;
+  const { msgData, setMsgData, img, socket,setSocket } = useContext(MsgContex);
+  
   const scrollRef = useRef<HTMLDivElement | null>(null);
-  const optionObj = useMemo(() => ({
-   transports: ['websocket'],
- }),[])
+  const [input, setInput] = useState<string>('');
 
+  //memorize object
+  const optionObj = useMemo(
+    () => ({
+      transports: ["websocket"],
+    }),
+    []
+  );
+  const { sendMessage, risivemsg } = ClintSocket(
+    "http://localhost:3300",
+    optionObj
+  );
   //Socket Impimantation
-
-  const {sendMessage,risivemsg }=ClintSocket("http://localhost:3300",optionObj);
 
   const user = localStorage.getItem("userDitials") ?? "";
   const userID = JSON.parse(user);
 
   //Risive massage
   useEffect(() => {
+    ;
     risivemsg("resive", (msg) => {
-      setMsgData((pre) => [...pre, msg])
+      setMsgData((pre) => [...pre, msg]);
     });
   }, [risivemsg, setMsgData]);
-  
+
   useEffect(() => {
     const scrollElement = scrollRef.current;
     if (scrollElement && msgData.length > 0) {
       scrollElement.scrollTop = scrollElement.scrollHeight;
     }
   }, [msgData]);
-
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const objpre = {
+    text: "",
+    file: "",
+    voies: "",
+    SenderID: userID.ID,
+    RisiverID: socket.RisiverID,
+    ConversatoonID: socket.ConversatoonID,
+  };
+  //pre data send 
+  useEffect(() => {
+    if (socket.send) {
+      console.log('inner reander')
+      sendMessage("msg", objpre);
+      
+    }
+    setTimeout(() => {
+      setSocket((pre) => ({...pre,
+        send: false}))
+  }, 200);
+  }, [sendMessage,objpre,socket,setSocket]);
   //Data send
   const SendData = () => {
    
-    sendMessage('msg',socket)
     
+
     const newMsg = {
-      ResiverId: socket.RisiverID,
+      ResiverId: '',
       SenderId: userID.ID,
-      ConversationId: socket.ConversatoonID,
-      messages: text,
+      ConversationId: '',
+      messages: input,
     };
+    const msg = {
+      text: input,
+      file: "",
+      voies: "",
+      SenderID: userID.ID,
+      RisiverID: socket.RisiverID,
+      ConversatoonID: socket.ConversatoonID,
+    };
+    sendMessage("msg", msg);
     setMsgData([...msgData, newMsg]);
-    setSocket((pre) => ({
-      ...pre,
-      text:''
-    }))
+    setInput('')
   };
 
   if (showPage)
@@ -75,6 +109,7 @@ const MessagePage:React.FC = () => {
         <h1>blank massage!</h1>
       </div>
     );
+
   return (
     <div className="PageCon">
       <div className="pageHead">
@@ -158,9 +193,9 @@ const MessagePage:React.FC = () => {
           autoComplete="off"
           type="text"
           placeholder="massages.."
-          value={text}
+          value={input}
           onChange={(e) => {
-            Inputhandel("text",e.target.value,setSocket);
+             setInput(e.target.value)
           }}
         />
         <div className="icons">
@@ -182,6 +217,6 @@ const MessagePage:React.FC = () => {
       </div>
     </div>
   );
-};
+});
 
 export default MessagePage;

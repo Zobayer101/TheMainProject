@@ -10,13 +10,14 @@ import { MsgContex } from "../Message";
 import DeBounce from "../../lib/DeBounce";
 
 const MessageBar = () => {
-  const { data,setMsgData ,setData,setImg,setSocket } = useContext(MsgContex);
+  const { data, setMsgData, setData, setImg, setSocket } =
+    useContext(MsgContex);
   const {
     state: { msgpag },
     dispach,
   } = useContext(AppContex);
-  const [bar, setBar] = useState<object>({showbar:false,showuser:false});
-  const [search, setSearch] = useState<string>('');
+  const [bar, setBar] = useState<object>({ showbar: false, showuser: false });
+  const [search, setSearch] = useState<string>("");
   const [finduser, setFinguser] = useState<string[]>([]);
   const Token = localStorage.getItem("token");
   const url = "http://localhost:3300/route/api/create/conversation";
@@ -25,50 +26,48 @@ const MessageBar = () => {
       const URL = "http://localhost:3300/route/api/allUser/ditials";
       (async () => {
         const userData = await GetUser(URL, Token.split(`"`)[1]);
-        
+
         setData(userData);
       })();
     }
   }, [setData, Token]);
   const DeBounceData = DeBounce(search, 1000);
   useEffect(() => {
-     const url = "http://localhost:3300/route/api/user/search/getdata";
-    (async() => {
-      const data = await PostData(url, { fname: DeBounceData }, '');
-      
+    const url = "http://localhost:3300/route/api/user/search/getdata";
+    (async () => {
+      const data = await PostData(url, { fname: DeBounceData }, "");
+
       if (data[0]) {
         setFinguser(data);
         setBar((pre) => ({
           ...pre,
-          showuser:true,
+          showuser: true,
         }));
       } else {
         setBar((pre) => ({
           ...pre,
-          showuser:false,
+          showuser: false,
         }));
-        
       }
-      })()
- },[DeBounceData])
+    })();
+  }, [DeBounceData]);
 
   const sendID = async (ID: string) => {
-    
     if (Token) {
       const msg = await PostData(url, { ID }, Token.split(`"`)[1]);
-      console.log(msg);
-      setMsgData(msg)
+
+      setMsgData(msg);
     }
     dispach({ type: "SHOWPAGE", value: false });
   };
-  const sendConversation = async (ID:string) => {
+  const sendConversation = async (ID: string) => {
     if (Token) {
-       const msgData = await PostData(url, { ID }, Token.split(`"`)[1]);
-      console.log(msgData);
+      const msgData = await PostData(url, { ID }, Token.split(`"`)[1]);
+
       setData([...data, msgData]);
     }
-  }
-  console.log(data);
+  };
+
   return (
     <div className="barcoun">
       <div className={bar.showbar ? "sideBar showbar" : "sideBar"}>
@@ -103,18 +102,18 @@ const MessageBar = () => {
         </div>
       </div>
       <div className={bar.showuser ? "searching" : "removeSearch"}>
-         {finduser.map((_,i)=>(
-           <div key={i} className="searchItem" onClick={() => {
-             sendConversation(finduser[i]._id);
-            setSearch('')
-        }}>
-         
-           
-             <p> { finduser[i].fname +' '+ finduser[i].lname}</p>
-           </div>
-             ))
-        }
-       
+        {finduser.map((_, i) => (
+          <div
+            key={i}
+            className="searchItem"
+            onClick={() => {
+              sendConversation(finduser[i]._id);
+              setSearch("");
+            }}
+          >
+            <p> {finduser[i].fname + " " + finduser[i].lname}</p>
+          </div>
+        ))}
       </div>
       <div className="allusers">
         {/* User bar */}
